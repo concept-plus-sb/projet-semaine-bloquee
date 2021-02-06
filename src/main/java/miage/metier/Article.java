@@ -44,6 +44,7 @@ public class Article implements Serializable {
     private String composition; 
     private String marque;
     
+    //Références et relations.
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
     @MapKeyJoinColumn(name = "CodeCom")
     private Map<Commande, QteArticle> qteArticles = new HashMap<>();
@@ -66,6 +67,16 @@ public class Article implements Serializable {
     @ManyToOne
     @JoinColumn(name = "codeN")
     private Nutriscore codeN;
+    
+    @OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
+    private Set<Photo> photos = new HashSet(0);
+
+    @OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
+    private Set<EAN> eans = new HashSet(0);
+
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
+    @MapKeyJoinColumn(name = "CodePromo")
+    private Map<Promotion, QuantitePromo> qtePromo = new HashMap<>();
     
     
     //Constructeur
