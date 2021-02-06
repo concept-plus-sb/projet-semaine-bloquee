@@ -27,7 +27,7 @@ import javax.persistence.OneToMany;
 @Entity
 @SuppressWarnings("PersistenceUnitPresent")
 public class Article implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codeA; 
@@ -54,7 +54,6 @@ public class Article implements Serializable {
     private MarqueProprietaire marqueProprietaire; 
     
     //Constructeur
-
     public Article() {}
     
     public Article(int codeA, String libelleA, float contenance, String uniteM, String uniteL, EnumStockage typeStockage, int nbDose, String origine, String composition, String marque) {
