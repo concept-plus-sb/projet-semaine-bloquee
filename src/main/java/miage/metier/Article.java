@@ -49,6 +49,10 @@ public class Article implements Serializable {
     @JoinColumn(name="IdSousFamille")
     SousFamille sousfamille;
     
+        @ManyToOne
+    @MapKeyJoinColumn(name = "IdMarque")
+    private MarqueProprietaire marqueProprietaire; 
+    
     //Constructeur
 
     public Article() {}

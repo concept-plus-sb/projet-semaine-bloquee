@@ -8,6 +8,8 @@ package miage.metier;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Embeddable;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
@@ -15,9 +17,11 @@ import javax.persistence.ManyToOne;
  *
  * @author Ismail
  */
-@Embeddable
+@Entity
 public class QuantitePromo implements Serializable {
-    
+   
+    @EmbeddedId
+    private QuantitePromoId Id;
     //References
     @ManyToOne
     @JoinColumn(name="CodePromo")
