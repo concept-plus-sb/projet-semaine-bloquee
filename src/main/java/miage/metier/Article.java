@@ -57,16 +57,16 @@ public class Article implements Serializable {
     @JoinColumn(name = "IdMarque")
     private MarqueProprietaire marqueProprietaire; 
     
-    @ManyToMany(mappedBy = "article")
+    @ManyToMany(mappedBy = "articles")
     private Set<LabelQualite> label = new HashSet(0);
     
     @ManyToOne
     @JoinColumn(name = "prixV")
-    private PrixVente prix;
+    private PrixVente prixVente;
     
     @ManyToOne
     @JoinColumn(name = "codeN")
-    private Nutriscore codeN;
+    private Nutriscore nutriscore;
     
     @OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
     private Set<Photo> photos = new HashSet(0);
