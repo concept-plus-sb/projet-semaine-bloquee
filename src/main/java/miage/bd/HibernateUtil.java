@@ -35,6 +35,10 @@ public class HibernateUtil
 			configuration.addAnnotatedClass(miage.metier.LabelQualite.class);
                         configuration.addAnnotatedClass(miage.metier.Nutriscore.class);
                         configuration.addAnnotatedClass(miage.metier.PrixVente.class);
+                        configuration.addAnnotatedClass(miage.metier.Article.class);
+                        configuration.addAnnotatedClass(miage.metier.Commande.class);
+                        configuration.addAnnotatedClass(miage.metier.QteArticle.class);
+                        configuration.addAnnotatedClass(miage.metier.Client.class);
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
             System.out.println("Hibernate serviceRegistry created");

@@ -6,11 +6,16 @@
 package miage.metier;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MapKeyJoinColumn;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -32,6 +37,10 @@ public class Article implements Serializable {
     private String origine;
     private String composition; 
     private String marque;
+    
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
+    @MapKeyJoinColumn(name = "CodeCom")
+    private Map<Commande, QteArticle> qteArticles = new HashMap<>();
     
     //Constructeur
 
@@ -71,6 +80,16 @@ public class Article implements Serializable {
     public void setComposition(String composition) {this.composition = composition;}
     public String getMarque() {return marque;}
     public void setMarque(String marque) {this.marque = marque;}
+
+    public Map<Commande, QteArticle> getQteArticles() {
+        return qteArticles;
+    }
+
+    public void setQteArticles(Map<Commande, QteArticle> qteArticles) {
+        this.qteArticles = qteArticles;
+    }
+    
+    
     
     
     //HashCode et Equals
