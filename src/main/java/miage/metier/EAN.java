@@ -8,10 +8,12 @@ package miage.metier;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import org.hibernate.annotations.ManyToAny;
 
 /**
@@ -30,9 +32,9 @@ public class EAN {
             inverseJoinColumns = @JoinColumn(name = "dateDebut"))
     private Set<Calendrier> calendriers = new HashSet(0);
     
-    //@ManyToOne(fetch=FetchType.EAGER)
-    //@JoinColumn(name="codeA")
-    //private Article article;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="codeA")
+    private Article article;
     
     //Dans la table article 
     //@OneToMany(mappedBy = "article", fetch = FetchType.LAZY)

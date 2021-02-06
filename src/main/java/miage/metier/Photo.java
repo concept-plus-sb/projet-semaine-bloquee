@@ -25,10 +25,10 @@ public class Photo {
     private int idPhoto;
     private String lien;
     
-    //@ManyToOne(fetch=FetchType.EAGER)
-    //@JoinColumn(name="codeA")
-    //private Article article;
-    
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="codeA")
+    private Article article;
+      
     //Dans la table article 
     //@OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
     //private Set<Photo> photos = new HashSet(0);
