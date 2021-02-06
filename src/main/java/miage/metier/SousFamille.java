@@ -26,8 +26,8 @@ public class SousFamille implements Serializable{
     @ManyToMany(mappedBy = "sousfamilles")
     Set<Famille> familles = new HashSet<>(0);
     
-  //  @OneToMany(mappedBy = "sousfamille", cascade = CascadeType.ALL)
-  //  Set<Article> articles = new HashSet<>(0);
+   @OneToMany(mappedBy = "sousfamille", cascade = CascadeType.ALL)
+    Set<Article> articles = new HashSet<>(0);
     
     //constructor
     public SousFamille() {}
@@ -42,6 +42,8 @@ public class SousFamille implements Serializable{
     public void setLibelleSF(String libelleSF) {this.libelleSF = libelleSF;}
     public Set<Famille> getFamilles() {return familles;}
     public void setFamilles(Set<Famille> familles) {this.familles = familles;}
+    public Set<Article> getArticles() {return articles;}
+    public void setArticles(Set<Article> articles) {this.articles = articles;}
 
     //equals and hash
     @Override

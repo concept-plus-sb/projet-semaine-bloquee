@@ -11,9 +11,12 @@ import java.util.Map;
 import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyJoinColumn;
 import javax.persistence.OneToMany;
 
@@ -41,6 +44,10 @@ public class Article implements Serializable {
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
     @MapKeyJoinColumn(name = "CodeCom")
     private Map<Commande, QteArticle> qteArticles = new HashMap<>();
+    
+    @ManyToOne(fetch = FetchType.LAZY) //ou @ManyToOne(fetch = FetchType.EAGER) => une seule requete pour charger l'objet et l (this is question8)
+    @JoinColumn(name="IdSousFamille")
+    SousFamille sousfamille;
     
     //Constructeur
 
@@ -81,13 +88,11 @@ public class Article implements Serializable {
     public String getMarque() {return marque;}
     public void setMarque(String marque) {this.marque = marque;}
 
-    public Map<Commande, QteArticle> getQteArticles() {
-        return qteArticles;
-    }
+    public Map<Commande, QteArticle> getQteArticles() {return qteArticles;}
+    public void setQteArticles(Map<Commande, QteArticle> qteArticles) {this.qteArticles = qteArticles;}
 
-    public void setQteArticles(Map<Commande, QteArticle> qteArticles) {
-        this.qteArticles = qteArticles;
-    }
+    public SousFamille getSousfamille() {return sousfamille;}
+    public void setSousfamille(SousFamille sousfamille) {this.sousfamille = sousfamille;}
     
     
     
