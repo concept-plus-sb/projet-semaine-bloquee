@@ -6,11 +6,15 @@
 package miage.metier;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -32,6 +36,10 @@ public class Nutriscore implements Serializable {
         this.codeN = codeN;
         this.description = description;
     }
+    
+    //Références et relations. 
+    @OneToMany(mappedBy = "Nutriscore", fetch = FetchType.LAZY)
+    private Set<Article> articles = new HashSet(0);
     
     //Getter et Setter.
     public int getCodeN() {return codeN;}

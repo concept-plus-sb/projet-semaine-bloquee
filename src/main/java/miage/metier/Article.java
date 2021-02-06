@@ -7,8 +7,10 @@ package miage.metier;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,6 +18,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyJoinColumn;
 import javax.persistence.OneToMany;
@@ -27,7 +30,7 @@ import javax.persistence.OneToMany;
 @Entity
 @SuppressWarnings("PersistenceUnitPresent")
 public class Article implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codeA; 
@@ -41,6 +44,7 @@ public class Article implements Serializable {
     private String composition; 
     private String marque;
     
+    //Références et relations.
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
     @MapKeyJoinColumn(name = "CodeCom")
     private Map<Commande, QteArticle> qteArticles = new HashMap<>();
@@ -50,11 +54,32 @@ public class Article implements Serializable {
     SousFamille sousfamille;
     
     @ManyToOne
-    @MapKeyJoinColumn(name = "IdMarque")
+    @JoinColumn(name = "IdMarque")
     private MarqueProprietaire marqueProprietaire; 
     
-    //Constructeur
+    @ManyToMany(mappedBy = "article")
+    private Set<LabelQualite> label = new HashSet(0);
+    
+    @ManyToOne
+    @JoinColumn(name = "prixV")
+    private PrixVente prix;
+    
+    @ManyToOne
+    @JoinColumn(name = "codeN")
+    private Nutriscore codeN;
+    
+    @OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
+    private Set<Photo> photos = new HashSet(0);
 
+    @OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
+    private Set<EAN> eans = new HashSet(0);
+
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
+    @MapKeyJoinColumn(name = "CodePromo")
+    private Map<Promotion, QuantitePromo> qtePromo = new HashMap<>();
+    
+    
+    //Constructeur
     public Article() {}
     
     public Article(int codeA, String libelleA, float contenance, String uniteM, String uniteL, EnumStockage typeStockage, int nbDose, String origine, String composition, String marque) {
