@@ -32,7 +32,9 @@ public class HibernateUtil
 			/**
 			 * Entité.
 			 */
-			//configuration.addAnnotatedClass(miage.metier.Employe.class);
+			configuration.addAnnotatedClass(miage.metier.LabelQualite.class);
+                        configuration.addAnnotatedClass(miage.metier.Nutriscore.class);
+                        configuration.addAnnotatedClass(miage.metier.PrixVente.class);
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
             System.out.println("Hibernate serviceRegistry created");
