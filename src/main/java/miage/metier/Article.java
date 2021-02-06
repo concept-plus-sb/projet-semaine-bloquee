@@ -6,13 +6,18 @@
 package miage.metier;
 
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  *
  * @author 21606937
  */
+@Entity
+@SuppressWarnings("PersistenceUnitPresent")
 public class Article {
     
+    @Id
     private int codeA; 
     private String libelleA;
     private float contenance; 
