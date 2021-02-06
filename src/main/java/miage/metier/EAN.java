@@ -30,6 +30,14 @@ public class EAN {
             inverseJoinColumns = @JoinColumn(name = "dateDebut"))
     private Set<Calendrier> calendriers = new HashSet(0);
     
+    //@ManyToOne(fetch=FetchType.EAGER)
+    //@JoinColumn(name="codeA")
+    //private Article article;
+    
+    //Dans la table article 
+    //@OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
+    //private Set<EAN> eans = new HashSet(0);
+    
     
     //Getters & Setters
 

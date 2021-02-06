@@ -37,7 +37,8 @@ public class HibernateUtil
                         configuration.addAnnotatedClass(miage.metier.EAN.class);
                         configuration.addAnnotatedClass(miage.metier.Calendrier.class);
                         configuration.addAnnotatedClass(miage.metier.Photo.class);
-
+                        configuration.addAnnotatedClass(miage.metier.Article.class);
+                        configuration.addAnnotatedClass(miage.metier.EnumStockage.class);
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
             System.out.println("Hibernate serviceRegistry created");
 
