@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.List;
+import miage.metier.SousFamille;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -14,14 +15,15 @@ import org.hibernate.Transaction;
 public class TestHibernate
 {
     public static SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+    public static void enregistrerSousFamille(){
+        try (Session session = HibernateUtil.getSessionFactory().getCurrentSession())
+            {
+            Transaction t = session.beginTransaction();
+            session.save(new SousFamille("ssf test 01"));
+            t.commit();
+            }
+    }
     
-    
-    
-    
-    
-	/**
-	 * Programme de test.
-	 */
 	public static void main(String[] args) throws ParseException
 		{
 		/*----- Format de date -----*/
@@ -31,8 +33,7 @@ public class TestHibernate
 		try (Session session = HibernateUtil.getSessionFactory().getCurrentSession())
 			{
 			/*----- enregistrement des employés -----*/
-                            //enregistrerEmployes();
-                            
+                          enregistrerSousFamille();
                             
                         /*----- information des employés -----*/
                             //infoEmploye(1);
