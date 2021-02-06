@@ -7,8 +7,10 @@ package miage.metier;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,6 +18,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyJoinColumn;
 import javax.persistence.OneToMany;
@@ -49,9 +52,21 @@ public class Article implements Serializable {
     @JoinColumn(name="IdSousFamille")
     SousFamille sousfamille;
     
-        @ManyToOne
-    @MapKeyJoinColumn(name = "IdMarque")
+    @ManyToOne
+    @JoinColumn(name = "IdMarque")
     private MarqueProprietaire marqueProprietaire; 
+    
+    @ManyToMany(mappedBy = "article")
+    private Set<LabelQualite> label = new HashSet(0);
+    
+    @ManyToOne
+    @JoinColumn(name = "prixV")
+    private PrixVente prix;
+    
+    @ManyToOne
+    @JoinColumn(name = "codeN")
+    private Nutriscore codeN;
+    
     
     //Constructeur
     public Article() {}

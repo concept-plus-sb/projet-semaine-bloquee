@@ -6,11 +6,16 @@
 package miage.metier;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -33,6 +38,13 @@ public class LabelQualite implements Serializable {
         this.idLQ = idLQ;
         this.libelleLQ = libelleLQ;
     }
+    
+    //Références et relations.
+    @ManyToMany
+    @JoinTable(name = "Detenir",
+    joinColumns = @JoinColumn(name = "idLQ"),
+    inverseJoinColumns = @JoinColumn(name = "codeA"))
+    private Set<Article> articles = new HashSet(0);
     
     //Getter et Setter. 
     public int getIdLQ() {return idLQ;}
