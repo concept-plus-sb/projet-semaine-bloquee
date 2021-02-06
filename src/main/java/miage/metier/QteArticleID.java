@@ -15,7 +15,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class QteArticleID implements Serializable {
     
-    private int codeCom, codeCli;
+    private int codeCom, codeA;
 
     public QteArticleID() {
     }
@@ -28,19 +28,19 @@ public class QteArticleID implements Serializable {
         this.codeCom = codeCom;
     }
 
-    public int getCodeCli() {
-        return codeCli;
+    public int getCodeA() {
+        return codeA;
     }
 
-    public void setCodeCli(int codeCli) {
-        this.codeCli = codeCli;
+    public void setCodeA(int codeA) {
+        this.codeA = codeA;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 23 * hash + this.codeCom;
-        hash = 23 * hash + this.codeCli;
+        hash = 31 * hash + this.codeCom;
+        hash = 31 * hash + this.codeA;
         return hash;
     }
 
@@ -59,11 +59,13 @@ public class QteArticleID implements Serializable {
         if (this.codeCom != other.codeCom) {
             return false;
         }
-        if (this.codeCli != other.codeCli) {
+        if (this.codeA != other.codeA) {
             return false;
         }
         return true;
     }
+
+    
     
     
     
