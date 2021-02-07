@@ -57,7 +57,7 @@ public class Article implements Serializable {
     @JoinColumn(name = "IdMarque")
     private MarqueProprietaire marqueProprietaire; 
     
-    @ManyToMany(mappedBy = "article")
+    @ManyToMany(mappedBy = "articles")
     private Set<LabelQualite> label = new HashSet(0);
     
     @ManyToOne
