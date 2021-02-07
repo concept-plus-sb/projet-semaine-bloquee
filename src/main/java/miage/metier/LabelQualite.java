@@ -19,7 +19,7 @@ import javax.persistence.ManyToMany;
 
 /**
  *
- * @author 21606937
+ * @author Afaf
  */
 @Entity
 @SuppressWarnings("PersistenceUnitPresent")
@@ -52,7 +52,7 @@ public class LabelQualite implements Serializable {
     public String getLibelleLQ() {return libelleLQ;}
     public void setLibelleLQ(String libelleLQ) {this.libelleLQ = libelleLQ;}
     
-   //HashCode et Equals. 
+    //HashCode et Equals. 
     @Override
     public int hashCode() {
         int hash = 5;

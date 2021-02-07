@@ -18,7 +18,7 @@ import javax.persistence.OneToMany;
 
 /**
  *
- * @author 21606937
+ * @author  Afaf
  */
 @Entity
 @SuppressWarnings("PersistenceUnitPresent")
@@ -27,32 +27,38 @@ public class Nutriscore implements Serializable {
     //Propriétes. 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int codeN; 
+    private int idN; 
+    private String nutriscore;
     private String description;
     
     //Constructeurs. 
     public Nutriscore(){}
-    public Nutriscore(int codeN, String description) {
-        this.codeN = codeN;
+    public Nutriscore(int idN, String nutriscore, String description) {
+        this.idN = idN;
+        this.nutriscore = nutriscore;
         this.description = description;
     }
+    
     
     //Références et relations. 
     @OneToMany(mappedBy = "nutriscore", fetch = FetchType.LAZY)
     private Set<Article> articles = new HashSet(0);
     
     //Getter et Setter.
-    public int getCodeN() {return codeN;}
-    public void setCodeN(int codeN) {this.codeN = codeN;}
+    public int getIdN() {return idN;}
+    public void setIdN(int idN) {this.idN = idN;}
+    public String getNutriscore() {return nutriscore;}
+    public void setNutriscore(String nutriscore) {this.nutriscore = nutriscore;}
     public String getDescription() {return description;}
     public void setDescription(String description) {this.description = description;}
-    
-    //HashCode et Equals. 
+    public Set<Article> getArticles() {return articles;}
+    public void setArticles(Set<Article> articles) {this.articles = articles;}
 
+   //HashCode et Equals. 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 83 * hash + this.codeN;
+        int hash = 7;
+        hash = 89 * hash + this.idN;
         return hash;
     }
 
@@ -62,10 +68,10 @@ public class Nutriscore implements Serializable {
         if (obj == null) {return false;}
         if (getClass() != obj.getClass()) {return false;}
         final Nutriscore other = (Nutriscore) obj;
-        if (this.codeN != other.codeN) {return false;}
+        if (this.idN != other.idN) {return false;}
         return true;
     }
-   
+    
     
     
 }

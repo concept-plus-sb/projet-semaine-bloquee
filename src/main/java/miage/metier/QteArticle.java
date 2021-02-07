@@ -18,13 +18,12 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class QteArticle implements  Serializable{
-    
+    //Propriétes
     @EmbeddedId
     private QteArticleID id;
-    
     private int NombreArticle;
     
-    
+    //Références et relations.
     @ManyToOne
     @JoinColumn(name = "codeA", insertable = false, updatable = false)
     private Article article;
@@ -33,45 +32,26 @@ public class QteArticle implements  Serializable{
     @JoinColumn(name = "CodeCom", insertable = false, updatable = false)
     private Commande commande;
 
-    public QteArticle() {
-    }
-
-    public QteArticle(int NombreArticle) {
-        this.NombreArticle = NombreArticle;
-    }
-
-    public QteArticleID getId() {
-        return id;
-    }
-
-    public void setId(QteArticleID id) {
+    //Constructeurs.
+    public QteArticle() {}
+    public QteArticle(QteArticleID id, int NombreArticle, Article article, Commande commande) {
         this.id = id;
-    }
-
-    public int getNombreArticle() {
-        return NombreArticle;
-    }
-
-    public void setNombreArticle(int NombreArticle) {
         this.NombreArticle = NombreArticle;
-    }
-
-    public Article getArticle() {
-        return article;
-    }
-
-    public void setArticle(Article article) {
         this.article = article;
-    }
-
-    public Commande getCommande() {
-        return commande;
-    }
-
-    public void setCommande(Commande commande) {
         this.commande = commande;
     }
+    
+    //Getter et setter.
+    public QteArticleID getId() {return id;}
+    public void setId(QteArticleID id) {this.id = id;}
+    public int getNombreArticle() {return NombreArticle;}
+    public void setNombreArticle(int NombreArticle) {this.NombreArticle = NombreArticle;}
+    public Article getArticle() {return article;}
+    public void setArticle(Article article) {this.article = article;}
+    public Commande getCommande() {return commande;}
+    public void setCommande(Commande commande) {this.commande = commande;}
 
+    //HashCode et Equals.
     @Override
     public int hashCode() {
         int hash = 3;
@@ -81,24 +61,12 @@ public class QteArticle implements  Serializable{
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
+        if (this == obj) {return true;}
+        if (obj == null) {return false;}
+        if (getClass() != obj.getClass()) {return false;}
         final QteArticle other = (QteArticle) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
+        if (!Objects.equals(this.id, other.id)) {return false;}
         return true;
     }
-    
-    
-    
-    
     
 }

@@ -25,7 +25,7 @@ import javax.persistence.OneToMany;
 
 /**
  *
- * @author 21606937
+ * @author Afaf
  */
 @Entity
 @SuppressWarnings("PersistenceUnitPresent")
@@ -42,7 +42,7 @@ public class Article implements Serializable {
     private int nbDose; 
     private String origine;
     private String composition; 
-    private String marque;
+    private String marqueP;
     
     //Références et relations.
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
@@ -55,7 +55,7 @@ public class Article implements Serializable {
     
     @ManyToOne
     @JoinColumn(name = "IdMarque")
-    private MarqueProprietaire marqueProprietaire; 
+    private MarqueA marqueProprietaire; 
     
     @ManyToMany(mappedBy = "articles")
     private Set<LabelQualite> label = new HashSet(0);
@@ -65,7 +65,7 @@ public class Article implements Serializable {
     private PrixVente prixVente;
     
     @ManyToOne
-    @JoinColumn(name = "codeN")
+    @JoinColumn(name = "idN")
     private Nutriscore nutriscore;
     
     @OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
@@ -81,8 +81,7 @@ public class Article implements Serializable {
     
     //Constructeur
     public Article() {}
-    
-    public Article(int codeA, String libelleA, float contenance, String uniteM, String uniteL, EnumStockage typeStockage, int nbDose, String origine, String composition, String marque) {
+    public Article(int codeA, String libelleA, float contenance, String uniteM, String uniteL, EnumStockage typeStockage, int nbDose, String origine, String composition, String marqueP, SousFamille sousfamille, MarqueA marqueProprietaire, PrixVente prixVente, Nutriscore nutriscore) {
         this.codeA = codeA;
         this.libelleA = libelleA;
         this.contenance = contenance;
@@ -92,8 +91,13 @@ public class Article implements Serializable {
         this.nbDose = nbDose;
         this.origine = origine;
         this.composition = composition;
-        this.marque = marque;
+        this.marqueP = marqueP;
+        this.sousfamille = sousfamille;
+        this.marqueProprietaire = marqueProprietaire;
+        this.prixVente = prixVente;
+        this.nutriscore = nutriscore;
     }
+    
     
     // Getter et Setter
     public int getCodeA() {return codeA;}
@@ -114,20 +118,29 @@ public class Article implements Serializable {
     public void setOrigine(String origine) {this.origine = origine;}
     public String getComposition() {return composition;}
     public void setComposition(String composition) {this.composition = composition;}
-    public String getMarque() {return marque;}
-    public void setMarque(String marque) {this.marque = marque;}
-
+    public String getMarqueP() {return marqueP;}
+    public void setMarqueP(String marqueP) {this.marqueP = marqueP;}
+    public MarqueA getMarqueProprietaire() {return marqueProprietaire;}
+    public void setMarqueProprietaire(MarqueA marqueProprietaire) {this.marqueProprietaire = marqueProprietaire;}
+    public Set<LabelQualite> getLabel() {return label;}
+    public void setLabel(Set<LabelQualite> label) {this.label = label;}
+    public PrixVente getPrixVente() {return prixVente;}
+    public void setPrixVente(PrixVente prixVente) {this.prixVente = prixVente;}
+    public Nutriscore getNutriscore() {return nutriscore;}
+    public void setNutriscore(Nutriscore nutriscore) {this.nutriscore = nutriscore;}
+    public Set<Photo> getPhotos() {return photos;}
+    public void setPhotos(Set<Photo> photos) {this.photos = photos;}
+    public Set<EAN> getEans() {return eans;}
+    public void setEans(Set<EAN> eans) {this.eans = eans;}
+    public Map<Promotion, QuantitePromo> getQtePromo() {return qtePromo;}
+    public void setQtePromo(Map<Promotion, QuantitePromo> qtePromo) {this.qtePromo = qtePromo;}
     public Map<Commande, QteArticle> getQteArticles() {return qteArticles;}
     public void setQteArticles(Map<Commande, QteArticle> qteArticles) {this.qteArticles = qteArticles;}
-
     public SousFamille getSousfamille() {return sousfamille;}
     public void setSousfamille(SousFamille sousfamille) {this.sousfamille = sousfamille;}
     
     
-    
-    
     //HashCode et Equals
-
     @Override
     public int hashCode() {
         int hash = 7;

@@ -48,7 +48,7 @@ public class HibernateUtil
                         configuration.addAnnotatedClass(miage.metier.Client.class);
                         configuration.addAnnotatedClass(miage.metier.Promotion.class);
                         configuration.addAnnotatedClass(miage.metier.QuantitePromo.class);
-                        configuration.addAnnotatedClass(miage.metier.MarqueProprietaire.class);
+                        configuration.addAnnotatedClass(miage.metier.MarqueA.class);
 			configuration.addAnnotatedClass(miage.metier.SousFamille.class);
 			configuration.addAnnotatedClass(miage.metier.Famille.class);
 			configuration.addAnnotatedClass(miage.metier.Rayon.class);

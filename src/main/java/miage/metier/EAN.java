@@ -34,46 +34,28 @@ public class EAN {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="codeA")
     private Article article;
-    
-    
-    //Getters & Setters
-
-    public long getEAN() {
-        return EAN;
-    }
-
-    public void setEAN(long EAN) {
-        this.EAN = EAN;
-    }
-
-    public String getDescription() {
-        return Description;
-    }
-
-    public void setDescription(String Description) {
-        this.Description = Description;
-    }
-
-    public Set<Calendrier> getCalendriers() {
-        return calendriers;
-    }
-
-    public void setCalendriers(Set<Calendrier> calendriers) {
-        this.calendriers = calendriers;
-    }
+ 
     
     //Constructeurs
-
-    public EAN() {
-    }
-
-    public EAN(long EAN, String Description) {
+    public EAN() {}
+    public EAN(long EAN, String Description, Article article) {
         this.EAN = EAN;
         this.Description = Description;
+        this.article = article;
     }
     
-    //hashCode & equals 
+    //Getters & Setters
+    public Article getArticle() {return article;}
+    public void setArticle(Article article) {this.article = article;}
+    public long getEAN() {return EAN;}
+    public void setEAN(long EAN) {this.EAN = EAN;}
+    public String getDescription() {return Description;}
+    public void setDescription(String Description) {this.Description = Description;}
+    public Set<Calendrier> getCalendriers() {return calendriers;}
+    public void setCalendriers(Set<Calendrier> calendriers) {this.calendriers = calendriers;}
+    
 
+    //hashCode & equals 
     @Override
     public int hashCode() {
         int hash = 7;
@@ -83,22 +65,12 @@ public class EAN {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
+        if (this == obj) {return true;}
+        if (obj == null) {return false;}
+        if (getClass() != obj.getClass()) {return false;}
         final EAN other = (EAN) obj;
-        if (this.EAN != other.EAN) {
-            return false;
-        }
+        if (this.EAN != other.EAN) {return false;}
         return true;
     }
-    
-    
     
 }

@@ -43,41 +43,19 @@ public class Commande implements Serializable {
     @MapKeyJoinColumn(name = "codeA")
     private Map<Article, QteArticle> qteArticles = new HashMap<>();
 
-    public Commande() {
-    }
-
-    public Commande(Client client) {
-        this.client = client;
-    }
+    //Constructeurs.
+    public Commande() {}
+    public Commande(Client client) {this.client = client;}
     
+    //Setter et Getter.
+    public int getCodeCom() {return CodeCom;}
+    public void setCodeCom(int CodeCom) {this.CodeCom = CodeCom;}
+    public Client getClient() {return client;}
+    public void setClient(Client client) {this.client = client;}
+    public Map<Article, QteArticle> getQteArticles() {return qteArticles;}
+    public void setQteArticles(Map<Article, QteArticle> qteArticles) {this.qteArticles = qteArticles;}
     
-
-    public int getCodeCom() {
-        return CodeCom;
-    }
-
-    public void setCodeCom(int CodeCom) {
-        this.CodeCom = CodeCom;
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
-    public Map<Article, QteArticle> getQteArticles() {
-        return qteArticles;
-    }
-
-    public void setQteArticles(Map<Article, QteArticle> qteArticles) {
-        this.qteArticles = qteArticles;
-    }
-    
-    
-
+    //HashCode et Equals.
     @Override
     public int hashCode() {
         int hash = 7;
@@ -87,19 +65,11 @@ public class Commande implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
+        if (this == obj) {return true;}
+        if (obj == null) {return false;}
+        if (getClass() != obj.getClass()) {return false;}
         final Commande other = (Commande) obj;
-        if (this.CodeCom != other.CodeCom) {
-            return false;
-        }
+        if (this.CodeCom != other.CodeCom) {return false;}
         return true;
     }
     

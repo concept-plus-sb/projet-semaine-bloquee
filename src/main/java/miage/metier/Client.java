@@ -35,38 +35,24 @@ public class Client implements Serializable{
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     Set<Commande> commandes =  new HashSet<>();
 
-    public Client() {
-    }
-
+    //Constructeurs.
+    public Client() {}
     public Client(String email, String motDePasse) {
         this.email = email;
         this.motDePasse = motDePasse;
     }
+    
+    //Setter et Getter.
+    public Set<Commande> getCommandes() {return commandes;}
+    public void setCommandes(Set<Commande> commandes) {this.commandes = commandes;}
+    public int getCodeCli() {return codeCli;}
+    public void setCodeCli(int codeCli) {this.codeCli = codeCli;}
+    public String getEmail() {return email;}
+    public void setEmail(String email) {this.email = email;}
+    public String getMotDePasse() {return motDePasse;}
+    public void setMotDePasse(String motDePasse) {this.motDePasse = motDePasse;}
 
-    public int getCodeCli() {
-        return codeCli;
-    }
-
-    public void setCodeCli(int codeCli) {
-        this.codeCli = codeCli;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getMotDePasse() {
-        return motDePasse;
-    }
-
-    public void setMotDePasse(String motDePasse) {
-        this.motDePasse = motDePasse;
-    }
-
+    //HashCode et Equals.
     @Override
     public int hashCode() {
         int hash = 7;
@@ -76,22 +62,12 @@ public class Client implements Serializable{
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
+        if (this == obj) {return true;}
+        if (obj == null) {return false;}
+        if (getClass() != obj.getClass()) {return false;}
         final Client other = (Client) obj;
-        if (this.codeCli != other.codeCli) {
-            return false;
-        }
+        if (this.codeCli != other.codeCli) {return false;}
         return true;
     }
-    
-    
     
 }
