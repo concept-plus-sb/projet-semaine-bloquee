@@ -6,7 +6,9 @@
 package miage.metier;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,6 +16,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MapKeyJoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -31,6 +34,10 @@ public class Magasin implements Serializable {
     @Column(name="idMagasin")
     private int idMagasin;
     private String libelleMagasin;
+    
+    @OneToMany(mappedBy = "magasin", cascade = CascadeType.ALL)
+    @MapKeyJoinColumn(name = "codeA")
+    private Map<Article, Disponibilite> dispo = new HashMap<>();
     
     @OneToMany(mappedBy = "magasin", cascade = CascadeType.ALL)
     Set<Creneau> creneaux =  new HashSet<>();
