@@ -62,11 +62,11 @@ public class Article implements Serializable {
     
     @ManyToOne
     @JoinColumn(name = "prixV")
-    private PrixVente prix;
+    private PrixVente prixVente;
     
     @ManyToOne
     @JoinColumn(name = "codeN")
-    private Nutriscore codeN;
+    private Nutriscore nutriscore;
     
     @OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
     private Set<Photo> photos = new HashSet(0);
