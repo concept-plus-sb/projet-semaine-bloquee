@@ -46,6 +46,10 @@ public class Article implements Serializable {
     
     //Références et relations.
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
+    @MapKeyJoinColumn(name = "idMagasin")
+    private Map<Magasin, Disponibilite> dispo = new HashMap<>();
+    
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
     @MapKeyJoinColumn(name = "CodeCom")
     private Map<Commande, QteArticle> qteArticles = new HashMap<>();
     
