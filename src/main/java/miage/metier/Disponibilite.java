@@ -10,6 +10,7 @@ import java.util.Objects;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -22,13 +23,13 @@ public class Disponibilite implements  Serializable{
     private DisponibiliteId id;
     private int qte;
     
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "codeA", insertable = false, updatable = false)
     private Article article;
     
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "idMagasin", insertable = false, updatable = false)
-    private Magasin idMagasin;
+    private Magasin magasin;
     
     //constructeur
     public Disponibilite() {}
@@ -36,7 +37,7 @@ public class Disponibilite implements  Serializable{
         this.id = id;
         this.qte = qte;
         this.article = article;
-        this.idMagasin = idMagasin;
+        this.magasin = idMagasin;
     }
     
     //Getter et setter
@@ -46,8 +47,8 @@ public class Disponibilite implements  Serializable{
     public void setQte(int qte) {this.qte = qte;}
     public Article getArticle() {return article;}
     public void setArticle(Article article) {this.article = article;}
-    public Magasin getIdMagasin() {return idMagasin;}
-    public void setIdMagasin(Magasin idMagasin) {this.idMagasin = idMagasin;}
+    public Magasin getIdMagasin() {return magasin;}
+    public void setIdMagasin(Magasin idMagasin) {this.magasin = idMagasin;}
 
     //HashCode et Equals
     @Override
