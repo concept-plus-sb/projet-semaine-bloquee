@@ -10,7 +10,6 @@
     <name>projet-semaine-bloquee</name>
     
     
-    <name>${project.groupId}:${project.artifactId}</name>
     <description>This library … .</description>
     <url>https://https://github.com/concept-plus-sb/projet-semaine-bloquee</url>
 
