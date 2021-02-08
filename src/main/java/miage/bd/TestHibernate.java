@@ -51,6 +51,15 @@ public class TestHibernate
 		try (Session session = HibernateUtil.getSessionFactory().getCurrentSession())
 			{
 			/*----- enregistrement des employés -----*/
+                          //enregistrerSousFamille();
+                            
+                        /*----- liste articles -----*/
+                            try{
+                                Articles.listeArticlesByMagasin(1);
+                            }catch(Exception e){
+                                System.out.println(e.getMessage());
+                            }
+                            
                         
                           //enregistrerSousFamille();
                           try{
