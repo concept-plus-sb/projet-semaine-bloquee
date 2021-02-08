@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.List;
+import miage.metier.Creneau;
 import miage.metier.SousFamille;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -23,6 +24,23 @@ public class TestHibernate
             t.commit();
             }
     }
+//    public static void afficherCreneau(int id){
+//        
+//        /*----- Ouverture de la session -----*/
+//		try (Session session = HibernateUtil.getSessionFactory().getCurrentSession())
+//			{
+//                            session.beginTransaction();
+//                            
+//                            Creneau c = session.get(Creneau.class, id);
+//                            
+//                            if(c.getNbPlaceOccupee()<c.getNbPlaceTotal()){
+//                            System.out.println("Créneau : "+ id + " Heure : "+ c.getHeureCreneau() + " Jour : "+c.getJourSemaine());
+//                            }
+//                            
+//                            
+//                        }
+//        
+//    }
     
 	public static void main(String[] args) throws ParseException
 		{
@@ -33,7 +51,13 @@ public class TestHibernate
 		try (Session session = HibernateUtil.getSessionFactory().getCurrentSession())
 			{
 			/*----- enregistrement des employés -----*/
-                          enregistrerSousFamille();
+                        
+                          //enregistrerSousFamille();
+                          try{
+                            Bd.afficherCreneau(1);
+                          }catch(Exception e){
+                              System.out.println("Erreur"+e.getMessage());
+                          }
                             
                         /*----- information des employés -----*/
                             //infoEmploye(1);

@@ -4,9 +4,33 @@
         <servlet-name>NewServlet</servlet-name>
         <servlet-class>miage.ctrl.NewServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletCreneau</servlet-name>
+        <servlet-class>miage.ctrl.ServletCreneau</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>creneau</servlet-name>
+        <jsp-file>/jsp/Creneau.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>Index</servlet-name>
+        <jsp-file>/index.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewServlet</servlet-name>
         <url-pattern>/NewServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletCreneau</servlet-name>
+        <url-pattern>/ServletCreneau</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>creneau</servlet-name>
+        <url-pattern>/creneau</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Index</servlet-name>
+        <url-pattern>/index</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

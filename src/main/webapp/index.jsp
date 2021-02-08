@@ -9,5 +9,6 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+        <p><a href="ServletCreneau?idM=1">Test</a></p>
     </body>
 </html>

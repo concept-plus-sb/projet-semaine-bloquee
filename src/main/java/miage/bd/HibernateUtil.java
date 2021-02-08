@@ -52,7 +52,6 @@ public class HibernateUtil
 			configuration.addAnnotatedClass(miage.metier.SousFamille.class);
 			configuration.addAnnotatedClass(miage.metier.Famille.class);
 			configuration.addAnnotatedClass(miage.metier.Rayon.class);
-                        
                         configuration.addAnnotatedClass(miage.metier.Magasin.class);
                         configuration.addAnnotatedClass(miage.metier.Creneau.class);
                         configuration.addAnnotatedClass(miage.metier.EnumJourSemaine.class);
