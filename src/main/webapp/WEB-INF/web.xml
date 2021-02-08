@@ -12,6 +12,38 @@
         <servlet-name>CtrlListeArticles</servlet-name>
         <servlet-class>miage.ctrl.CtrlListeArticles</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Connexion</servlet-name>
+        <jsp-file>/jsp/Connexion.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlConnexion</servlet-name>
+        <servlet-class>miage.ctrl.CtrlConnexion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TestAffichageSession</servlet-name>
+        <jsp-file>/jsp/AfficherSession.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlAjouterArt</servlet-name>
+        <servlet-class>miage.ctrl.CtrlAjouterArt</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Test</servlet-name>
+        <jsp-file>/jsp/Test.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>AjoutArt</servlet-name>
+        <servlet-class>miage.ctrl.CtrlAjouterArt</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlConfirmer</servlet-name>
+        <servlet-class>miage.ctrl.CtrlConfirmer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>test</servlet-name>
+        <jsp-file>/jsp/newjsp.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewServlet</servlet-name>
         <url-pattern>/NewServlet</url-pattern>
@@ -23,6 +55,42 @@
     <servlet-mapping>
         <servlet-name>CtrlListeArticles</servlet-name>
         <url-pattern>/CtrlListeArticles</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Connexion</servlet-name>
+        <url-pattern>/Connexion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TestAffichageSession</servlet-name>
+        <url-pattern>/aff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AjoutArt</servlet-name>
+        <url-pattern>/ajout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Test</servlet-name>
+        <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlConnexion</servlet-name>
+        <url-pattern>/CtrlConnexion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlAjouterArt</servlet-name>
+        <url-pattern>/CtrlAjouterArt</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlConfirmer</servlet-name>
+        <url-pattern>/CtrlConfirmer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>test</servlet-name>
+        <url-pattern>/test2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>articles</servlet-name>
+        <url-pattern>/articles</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
