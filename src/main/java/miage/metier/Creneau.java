@@ -30,7 +30,7 @@ public class Creneau implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idCreneau")
     private int idCreneau;
-    private int heureCreneau;
+    private String heureCreneau;
     private int nbPlaceTotal;
     private EnumJourSemaine jourSemaine;
     private int nbPlaceOccupee;
@@ -41,7 +41,7 @@ public class Creneau implements Serializable{
 
     //Constructeur
     public Creneau() {}    
-    public Creneau(int idCreneau, int heureCreneau, int nbPlaceTotal, EnumJourSemaine jourSemaine, int nbPlaceOccupee, Magasin magasin) {
+    public Creneau(int idCreneau, String heureCreneau, int nbPlaceTotal, EnumJourSemaine jourSemaine, int nbPlaceOccupee, Magasin magasin) {
         this.idCreneau = idCreneau;
         this.heureCreneau = heureCreneau;
         this.nbPlaceTotal = nbPlaceTotal;
@@ -54,12 +54,12 @@ public class Creneau implements Serializable{
     public Magasin getMagasin() {return magasin;}
     public void setMagasin(Magasin magasin) {this.magasin = magasin;}
     public int getIdCreneau() {return idCreneau;}
-    public int getHeureCreneau() {return heureCreneau;}
+    public String getHeureCreneau() {return heureCreneau;}
     public int getNbPlaceTotal() {return nbPlaceTotal;}
     public EnumJourSemaine getJourSemaine() {return jourSemaine;}
     public int getNbPlaceOccupee() {return nbPlaceOccupee;}
     public void setIdCreneau(int idCreneau) {this.idCreneau = idCreneau;}
-    public void setHeureCreneau(int heureCreneau) {this.heureCreneau = heureCreneau;}
+    public void setHeureCreneau(String heureCreneau) {this.heureCreneau = heureCreneau;}
     public void setNbPlaceTotal(int nbPlaceTotal) {this.nbPlaceTotal = nbPlaceTotal;}
     public void setJourSemaine(EnumJourSemaine jourSemaine) {this.jourSemaine = jourSemaine;}
     public void setNbPlaceOccupee(int nbPlaceOccupee) {this.nbPlaceOccupee = nbPlaceOccupee;}
