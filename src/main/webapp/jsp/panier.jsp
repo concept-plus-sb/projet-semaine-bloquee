@@ -50,6 +50,6 @@
                 }
             %>
         <input type="button" onclick="window.location.href='http://localhost:8080/projet-semaine-bloquee/newservlet';" value="retour"/>
-        <input type="button" onclick="window.location.href='http://localhost:8080/projet-semaine-bloquee/newservlet';" value="valider"/>
+        <input type="button" onclick="window.location.href='http://localhost:8080/projet-semaine-bloquee/ServletCreneau';" value="valider"/>
     </body>
 </html>

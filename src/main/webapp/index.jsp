@@ -8,6 +8,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <a href="CtrlListeArticles">test</a>
         <h1>Hello World!</h1>
+        <p><a href="ServletCreneau?idM=1">Test</a></p>
     </body>
 </html>

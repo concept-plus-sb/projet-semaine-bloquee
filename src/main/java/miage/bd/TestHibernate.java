@@ -10,14 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import miage.metier.Article;
-import miage.metier.Client;
-import miage.metier.Commande;
-import static miage.metier.EnumStockage.normal;
-import miage.metier.MarqueA;
-import miage.metier.Nutriscore;
-import miage.metier.PrixVente;
-import miage.metier.QteArticle;
+import miage.metier.Creneau;
 import miage.metier.SousFamille;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -38,6 +31,23 @@ public class TestHibernate
             t.commit();
             }
     }
+//    public static void afficherCreneau(int id){
+//        
+//        /*----- Ouverture de la session -----*/
+//		try (Session session = HibernateUtil.getSessionFactory().getCurrentSession())
+//			{
+//                            session.beginTransaction();
+//                            
+//                            Creneau c = session.get(Creneau.class, id);
+//                            
+//                            if(c.getNbPlaceOccupee()<c.getNbPlaceTotal()){
+//                            System.out.println("Créneau : "+ id + " Heure : "+ c.getHeureCreneau() + " Jour : "+c.getJourSemaine());
+//                            }
+//                            
+//                            
+//                        }
+//        
+//    }
     
    /* public static ArrayList<QteArticle> showPanierArticles(HashMap<Article,Integer> panier){
         try (Session session = HibernateUtil.getSessionFactory().getCurrentSession())
@@ -60,6 +70,21 @@ public class TestHibernate
 			{
 			/*----- enregistrement des employés -----*/
                           //enregistrerSousFamille();
+                            
+                        /*----- liste articles -----*/
+                            try{
+                                Articles.listeArticlesByMagasin(1);
+                            }catch(Exception e){
+                                System.out.println(e.getMessage());
+                            }
+                            
+                        
+                          //enregistrerSousFamille();
+                          try{
+                            Bd.afficherCreneau(1);
+                          }catch(Exception e){
+                              System.out.println("Erreur"+e.getMessage());
+                          }
                             
                         /*----- information des employés -----*/
                             //infoEmploye(1);
