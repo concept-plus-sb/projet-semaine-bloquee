@@ -88,10 +88,6 @@
         <servlet-name>test</servlet-name>
         <url-pattern>/test2</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>articles</servlet-name>
-        <url-pattern>/articles</url-pattern>
-    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
