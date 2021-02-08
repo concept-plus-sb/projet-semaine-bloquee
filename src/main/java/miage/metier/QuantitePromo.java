@@ -20,8 +20,10 @@ import javax.persistence.ManyToOne;
 @Entity
 public class QuantitePromo implements Serializable {
    
+    //Propriétes
     @EmbeddedId
     private QuantitePromoId Id;
+    
     //References
     @ManyToOne
     @JoinColumn(name="CodePromo")
@@ -33,30 +35,22 @@ public class QuantitePromo implements Serializable {
     
     //Constructeurs
     public QuantitePromo(){}
-    public QuantitePromo(Promotion promotion, Article article) {
+    public QuantitePromo(QuantitePromoId Id, Promotion promotion, Article article) {
+        this.Id = Id;
         this.promotion = promotion;
         this.article = article;
     }
-    
+ 
+
     //Getters et Setters
-    public Promotion getPromotion() {
-        return promotion;
-    }
-
-    public void setPromotion(Promotion promotion) {
-        this.promotion = promotion;
-    }
-
-    public Article getArticle() {
-        return article;
-    }
-
-    public void setArticle(Article article) {
-        this.article = article;
-    }
+    public QuantitePromoId getId() {return Id;}
+    public void setId(QuantitePromoId Id) {this.Id = Id;}
+    public Promotion getPromotion() {return promotion;}
+    public void setPromotion(Promotion promotion) {this.promotion = promotion;}
+    public Article getArticle() {return article;}
+    public void setArticle(Article article) {this.article = article;}
     
     //Hashcode et Equals
-
     @Override
     public int hashCode() {
         int hash = 3;
@@ -67,22 +61,12 @@ public class QuantitePromo implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
+        if (this == obj) {return true;}
+        if (obj == null) {return false;}
+        if (getClass() != obj.getClass()) {return false;}
         final QuantitePromo other = (QuantitePromo) obj;
-        if (!Objects.equals(this.promotion, other.promotion)) {
-            return false;
-        }
-        if (!Objects.equals(this.article, other.article)) {
-            return false;
-        }
+        if (!Objects.equals(this.promotion, other.promotion)) {return false;}
+        if (!Objects.equals(this.article, other.article)) {return false;}
         return true;
     }
     

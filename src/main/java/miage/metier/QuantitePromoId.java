@@ -12,24 +12,14 @@ import java.io.Serializable;
  * @author Ismail
  */
 public class QuantitePromoId implements Serializable{
+    //Propriétes
     private int codePromo,codeA;
 
     //Getters et setters
-    public int getCodePromo() {
-        return codePromo;
-    }
-
-    public void setCodePromo(int codePromo) {
-        this.codePromo = codePromo;
-    }
-
-    public int getCodeA() {
-        return codeA;
-    }
-
-    public void setCodeA(int codeA) {
-        this.codeA = codeA;
-    }
+    public int getCodePromo() {return codePromo;}
+    public void setCodePromo(int codePromo) {this.codePromo = codePromo;}
+    public int getCodeA() {return codeA;}
+    public void setCodeA(int codeA) {this.codeA = codeA;}
     
     //Constructeur
     public QuantitePromoId(){}
@@ -39,7 +29,6 @@ public class QuantitePromoId implements Serializable{
     }
     
     //HashCode et Map
-
     @Override
     public int hashCode() {
         int hash = 3;
@@ -50,22 +39,12 @@ public class QuantitePromoId implements Serializable{
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
+        if (this == obj) {return true;}
+        if (obj == null) {return false;}
+        if (getClass() != obj.getClass()) {return false;}
         final QuantitePromoId other = (QuantitePromoId) obj;
-        if (this.codePromo != other.codePromo) {
-            return false;
-        }
-        if (this.codeA != other.codeA) {
-            return false;
-        }
+        if (this.codePromo != other.codePromo) {return false;}
+        if (this.codeA != other.codeA) {return false;}
         return true;
     }
     

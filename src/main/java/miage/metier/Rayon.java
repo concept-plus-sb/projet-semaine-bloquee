@@ -19,6 +19,7 @@ public class Rayon implements Serializable{
     private int idR;
     private String libelleR;
     
+    //Références
     @OneToMany(mappedBy = "rayon", cascade = CascadeType.ALL)
     Set<Famille> familles = new HashSet<>(0);
     

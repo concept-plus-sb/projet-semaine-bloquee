@@ -37,13 +37,14 @@ public class PrixVente implements Serializable {
     public PrixVente(float prix) {
         this.prix = prix;
     }
-    
-    //Getter et Setter. 
+
+    //Getter et Setter.
+    public Set<Article> getArticles() {return articles;}
+    public void setArticles(Set<Article> articles) {this.articles = articles;}
     public float getPrix() {return prix;}
     public void setPrix(float prix) {this.prix = prix;}
     
     //HashCode et Equals.
-
     @Override
     public int hashCode() {
         int hash = 5;
@@ -60,8 +61,5 @@ public class PrixVente implements Serializable {
         if (Float.floatToIntBits(this.prix) != Float.floatToIntBits(other.prix)) {return false;}
         return true;
     }
-    
-    
-  
     
 }

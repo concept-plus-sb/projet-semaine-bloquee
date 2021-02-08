@@ -20,8 +20,7 @@ import javax.persistence.OneToMany;
 public class Disponibilite implements  Serializable{
     @EmbeddedId
     private DisponibiliteId id;
-    
-    private boolean disponible;
+    private int qte;
     
     @OneToMany
     @JoinColumn(name = "codeA", insertable = false, updatable = false)
@@ -33,39 +32,23 @@ public class Disponibilite implements  Serializable{
     
     //constructeur
     public Disponibilite() {}
-
-    public Disponibilite(boolean disponible) {
-        this.disponible = disponible;        
-    }
-    
-    //Getter et setter
-
-    public DisponibiliteId getId() {
-        return id;
-    }
-    public boolean isDisponible() {
-        return disponible;
-    }
-    public Article getArticle() {
-        return article;
-    }
-    public Magasin getIdMagasin() {
-        return idMagasin;
-    }
-
-    public void setId(DisponibiliteId id) {
+    public Disponibilite(DisponibiliteId id, int qte, Article article, Magasin idMagasin) {
         this.id = id;
-    }
-    public void setDisponible(boolean disponible) {
-        this.disponible = disponible;
-    }
-    public void setArticle(Article article) {
+        this.qte = qte;
         this.article = article;
-    }
-    public void setIdMagasin(Magasin idMagasin) {
         this.idMagasin = idMagasin;
     }
     
+    //Getter et setter
+    public DisponibiliteId getId() {return id;}
+    public void setId(DisponibiliteId id) {this.id = id;}
+    public int getQte() {return qte;}
+    public void setQte(int qte) {this.qte = qte;}
+    public Article getArticle() {return article;}
+    public void setArticle(Article article) {this.article = article;}
+    public Magasin getIdMagasin() {return idMagasin;}
+    public void setIdMagasin(Magasin idMagasin) {this.idMagasin = idMagasin;}
+
     //HashCode et Equals
     @Override
     public int hashCode() {
@@ -76,19 +59,11 @@ public class Disponibilite implements  Serializable{
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
+        if (this == obj) {return true;}
+        if (obj == null) {return false;}
+        if (getClass() != obj.getClass()) {return false;}
         final Disponibilite other = (Disponibilite) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
+        if (!Objects.equals(this.id, other.id)) {return false;}
         return true;
     }
 

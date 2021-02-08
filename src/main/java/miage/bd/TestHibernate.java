@@ -33,7 +33,10 @@ public class TestHibernate
 		try (Session session = HibernateUtil.getSessionFactory().getCurrentSession())
 			{
 			/*----- enregistrement des employés -----*/
-                          enregistrerSousFamille();
+                          //enregistrerSousFamille();
+                            
+                        /*----- liste articles -----*/
+                            Articles.listeArticlesByMagasin(1);
                             
                         /*----- information des employés -----*/
                             //infoEmploye(1);

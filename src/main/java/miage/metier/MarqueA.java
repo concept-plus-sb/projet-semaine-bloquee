@@ -25,7 +25,7 @@ import javax.persistence.OneToMany;
  */
 @Entity
 @SuppressWarnings("PersistenceUnitPresent")
-public class MarqueProprietaire implements Serializable {
+public class MarqueA implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int IdMarque; 
@@ -37,40 +37,21 @@ public class MarqueProprietaire implements Serializable {
     Set<Article> articles= new HashSet<>(0);
     
     //Constructeurs
-    public MarqueProprietaire(){}
-    public MarqueProprietaire(int IdMarque, String Marque) {
+    public MarqueA(){}
+    public MarqueA(int IdMarque, String Marque) {
         this.IdMarque = IdMarque;
         this.Marque = Marque;
     }
     
     //Getters et Setters
-
-    public int getIdMarque() {
-        return IdMarque;
-    }
-
-    public void setIdMarque(int IdMarque) {
-        this.IdMarque = IdMarque;
-    }
-
-    public String getMarque() {
-        return Marque;
-    }
-
-    public void setMarque(String Marque) {
-        this.Marque = Marque;
-    }
-
-    public Set<Article> getArticles() {
-        return articles;
-    }
-
-    public void setArticles(Set<Article> articles) {
-        this.articles = articles;
-    }
+    public int getIdMarque() {return IdMarque;}
+    public void setIdMarque(int IdMarque) {this.IdMarque = IdMarque;}
+    public String getMarque() {return Marque;}
+    public void setMarque(String Marque) {this.Marque = Marque;}
+    public Set<Article> getArticles() {return articles;}
+    public void setArticles(Set<Article> articles) {this.articles = articles;}
     
     //Hashcode et Equals
-
     @Override
     public int hashCode() {
         int hash = 3;
@@ -80,21 +61,12 @@ public class MarqueProprietaire implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final MarqueProprietaire other = (MarqueProprietaire) obj;
-        if (this.IdMarque != other.IdMarque) {
-            return false;
-        }
+        if (this == obj){return true;}
+        if (obj == null) {return false;}
+        if (getClass() != obj.getClass()) {return false;}
+        final MarqueA other = (MarqueA) obj;
+        if (this.IdMarque != other.IdMarque) {return false;}
         return true;
     }
-    
     
 }

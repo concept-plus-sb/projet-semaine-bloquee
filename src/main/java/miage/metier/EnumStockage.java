@@ -7,10 +7,6 @@ package miage.metier;
 
 /**
  *
- * @author 21606937
+ * @author Afaf
  */
-public enum EnumStockage  {
-    
-    frais, congele, normal
-    
-}
+public enum EnumStockage  {frais, congele, normal}

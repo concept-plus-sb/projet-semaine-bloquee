@@ -41,46 +41,28 @@ public class Creneau implements Serializable{
 
     //Constructeur
     public Creneau() {}    
-    public Creneau(int idCreneau, int heureCreneau, int nbPlaceTotal, EnumJourSemaine jourSemaine, int nbPlaceOccupee) {
+    public Creneau(int idCreneau, int heureCreneau, int nbPlaceTotal, EnumJourSemaine jourSemaine, int nbPlaceOccupee, Magasin magasin) {
         this.idCreneau = idCreneau;
         this.heureCreneau = heureCreneau;
         this.nbPlaceTotal = nbPlaceTotal;
         this.jourSemaine = jourSemaine;
         this.nbPlaceOccupee = nbPlaceOccupee;
-    }
-    
-    //Getter et setter
-    public int getIdCreneau() {
-        return idCreneau;
-    }
-    public int getHeureCreneau() {
-        return heureCreneau;
-    }
-    public int getNbPlaceTotal() {
-        return nbPlaceTotal;
-    }
-    public EnumJourSemaine getJourSemaine() {
-        return jourSemaine;
-    }
-    public int getNbPlaceOccupee() {
-        return nbPlaceOccupee;
+        this.magasin = magasin;
     }
 
-    public void setIdCreneau(int idCreneau) {
-        this.idCreneau = idCreneau;
-    }
-    public void setHeureCreneau(int heureCreneau) {
-        this.heureCreneau = heureCreneau;
-    }
-    public void setNbPlaceTotal(int nbPlaceTotal) {
-        this.nbPlaceTotal = nbPlaceTotal;
-    }
-    public void setJourSemaine(EnumJourSemaine jourSemaine) {
-        this.jourSemaine = jourSemaine;
-    }
-    public void setNbPlaceOccupee(int nbPlaceOccupee) {
-        this.nbPlaceOccupee = nbPlaceOccupee;
-    }
+    //Getter et setter
+    public Magasin getMagasin() {return magasin;}
+    public void setMagasin(Magasin magasin) {this.magasin = magasin;}
+    public int getIdCreneau() {return idCreneau;}
+    public int getHeureCreneau() {return heureCreneau;}
+    public int getNbPlaceTotal() {return nbPlaceTotal;}
+    public EnumJourSemaine getJourSemaine() {return jourSemaine;}
+    public int getNbPlaceOccupee() {return nbPlaceOccupee;}
+    public void setIdCreneau(int idCreneau) {this.idCreneau = idCreneau;}
+    public void setHeureCreneau(int heureCreneau) {this.heureCreneau = heureCreneau;}
+    public void setNbPlaceTotal(int nbPlaceTotal) {this.nbPlaceTotal = nbPlaceTotal;}
+    public void setJourSemaine(EnumJourSemaine jourSemaine) {this.jourSemaine = jourSemaine;}
+    public void setNbPlaceOccupee(int nbPlaceOccupee) {this.nbPlaceOccupee = nbPlaceOccupee;}
 
     //HashCode et Equals
     @Override
@@ -92,22 +74,12 @@ public class Creneau implements Serializable{
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
+        if (this == obj) {return true;}
+        if (obj == null) {return false;}
+        if (getClass() != obj.getClass()) {return false;}
         final Creneau other = (Creneau) obj;
-        if (this.idCreneau != other.idCreneau) {
-            return false;
-        }
+        if (this.idCreneau != other.idCreneau) {return false;}
         return true;
     }
-    
-    
     
 }

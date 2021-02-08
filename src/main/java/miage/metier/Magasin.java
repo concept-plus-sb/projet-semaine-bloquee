@@ -43,19 +43,12 @@ public class Magasin implements Serializable {
     }
     
     //Getters et setters
-    public int getIdMagasin() {
-        return idMagasin;
-    }
-    public String getLibelleMagasin() {
-        return libelleMagasin;
-    }
-
-    public void setIdMagasin(int idMagasin) {
-        this.idMagasin = idMagasin;
-    }
-    public void setLibelleMagasin(String libelleMagasin) {
-        this.libelleMagasin = libelleMagasin;
-    }
+    public Set<Creneau> getCreneaux() {return creneaux;}
+    public void setCreneaux(Set<Creneau> creneaux) {this.creneaux = creneaux;}
+    public int getIdMagasin() {return idMagasin;}
+    public String getLibelleMagasin() {return libelleMagasin;}
+    public void setIdMagasin(int idMagasin) {this.idMagasin = idMagasin;}
+    public void setLibelleMagasin(String libelleMagasin) {this.libelleMagasin = libelleMagasin;}
     
     //HashCode et Equals
     @Override
@@ -67,19 +60,11 @@ public class Magasin implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
+        if (this == obj) {return true;}
+        if (obj == null) {return false;}
+        if (getClass() != obj.getClass()) {return false;}
         final Magasin other = (Magasin) obj;
-        if (this.idMagasin != other.idMagasin) {
-            return false;
-        }
+        if (this.idMagasin != other.idMagasin) {return false;}
         return true;
     }
     

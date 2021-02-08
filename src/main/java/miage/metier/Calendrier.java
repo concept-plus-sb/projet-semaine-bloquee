@@ -30,44 +30,23 @@ public class Calendrier {
     @ManyToMany(mappedBy = "calendriers")
     Set<EAN> eans = new HashSet(0);
     
-    //Getters & Setters
-
-    public Date getDateDebut() {
-        return dateDebut;
-    }
-
-    public void setDateDebut(Date dateDebut) {
-        this.dateDebut = dateDebut;
-    }
-
-    public Date getDateFin() {
-        return dateFin;
-    }
-
-    public void setDateFin(Date dateFin) {
-        this.dateFin = dateFin;
-    }
-
-    public Set<EAN> getEans() {
-        return eans;
-    }
-
-    public void setEans(Set<EAN> eans) {
-        this.eans = eans;
-    }
-    
     //Constructeur 
-
-    public Calendrier() {
-    }
-
+    public Calendrier() {}
     public Calendrier(Date dateDebut, Date dateFin) {
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
     }
     
-    //hashCode & equals 
+    //Getters & Setters
+    public Date getDateDebut() {return dateDebut;}
+    public void setDateDebut(Date dateDebut) {this.dateDebut = dateDebut;}
+    public Date getDateFin() {return dateFin;}
+    public void setDateFin(Date dateFin) {this.dateFin = dateFin;}
+    public Set<EAN> getEans() {return eans;}
+    public void setEans(Set<EAN> eans) {this.eans = eans;}
+    
 
+    //hashCode & equals 
     @Override
     public int hashCode() {
         int hash = 5;
@@ -77,19 +56,11 @@ public class Calendrier {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
+        if (this == obj) {return true;}
+        if (obj == null) {return false;}
+        if (getClass() != obj.getClass()) {return false;}
         final Calendrier other = (Calendrier) obj;
-        if (!Objects.equals(this.dateDebut, other.dateDebut)) {
-            return false;
-        }
+        if (!Objects.equals(this.dateDebut, other.dateDebut)) {return false;}
         return true;
     }
     
