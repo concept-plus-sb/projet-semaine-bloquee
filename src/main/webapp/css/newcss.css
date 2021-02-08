@@ -8,3 +8,12 @@ and open the template in the editor.
     Author     : 21606937
 */
 
+
+.title {
+  margin:  auto;
+  width:   auto;
+  padding: auto;
+}
+img{
+  width: 80%;
+}

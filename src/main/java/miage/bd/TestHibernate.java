@@ -1,12 +1,27 @@
 package miage.bd;
 
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import miage.metier.Article;
+import miage.metier.Client;
+import miage.metier.Commande;
+import static miage.metier.EnumStockage.normal;
+import miage.metier.MarqueA;
+import miage.metier.Nutriscore;
+import miage.metier.PrixVente;
+import miage.metier.QteArticle;
 import miage.metier.SousFamille;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 
 /**
@@ -24,6 +39,17 @@ public class TestHibernate
             }
     }
     
+   /* public static ArrayList<QteArticle> showPanierArticles(HashMap<Article,Integer> panier){
+        try (Session session = HibernateUtil.getSessionFactory().getCurrentSession())
+            {
+            Transaction t = session.beginTransaction();
+            String hql = "FROM QteArticle Q WHERE Q.codeCom = 1101";
+            Query<CloneQteArticle> query = session.createQuery(hql, CloneQteArticle.class);
+            ArrayList<CloneQteArticle> qteArticleList = (ArrayList<CloneQteArticle>) query.list();
+            return qteArticleList;
+            }
+    }  */  
+    
 	public static void main(String[] args) throws ParseException
 		{
 		/*----- Format de date -----*/
@@ -33,7 +59,7 @@ public class TestHibernate
 		try (Session session = HibernateUtil.getSessionFactory().getCurrentSession())
 			{
 			/*----- enregistrement des employés -----*/
-                          enregistrerSousFamille();
+                          //enregistrerSousFamille();
                             
                         /*----- information des employés -----*/
                             //infoEmploye(1);
@@ -52,7 +78,7 @@ public class TestHibernate
 			/**
 			 * ...
 			 */
-
+                        
                         //System.out.println("Bonjour !");
 			}
 
