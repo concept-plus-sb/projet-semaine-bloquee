@@ -11,7 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import miage.bd.Bd;
+//import miage.bd.Bd;
 import miage.metier.Creneau;
 
 /**
@@ -64,7 +64,7 @@ public class ServletCreneau extends HttpServlet {
 //                                System.out.println(c.getHeureCreneau());
 //                            }
                 // affichage
-                request.setAttribute("liste",Bd.afficherCreneau(1));
+                //request.setAttribute("liste",Bd.afficherCreneau(1));
 //                System.out.println("Je suis ici !");
 //                for(Creneau c : Bd.afficherCreneau(1))
 //                    System.out.println("--> " + c.getHeureCreneau()+" le "+c.getJourSemaine());
