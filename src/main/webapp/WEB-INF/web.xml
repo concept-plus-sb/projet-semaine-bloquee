@@ -44,6 +44,14 @@
         <servlet-name>test</servlet-name>
         <jsp-file>/jsp/newjsp.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>creneau</servlet-name>
+        <jsp-file>/jsp/Creneau.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletCreneau</servlet-name>
+        <servlet-class>miage.ctrl.ServletCreneau</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewServlet</servlet-name>
         <url-pattern>/NewServlet</url-pattern>
@@ -87,6 +95,14 @@
     <servlet-mapping>
         <servlet-name>test</servlet-name>
         <url-pattern>/test2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>creneau</servlet-name>
+        <url-pattern>/creneau</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletCreneau</servlet-name>
+        <url-pattern>/ServletCreneau</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
