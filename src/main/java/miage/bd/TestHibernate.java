@@ -36,7 +36,12 @@ public class TestHibernate
                           //enregistrerSousFamille();
                             
                         /*----- liste articles -----*/
-                            Articles.listeArticlesByMagasin(1);
+                            try{
+                                Articles.listeArticlesByMagasin(1);
+                            }catch(Exception e){
+                                System.out.println(e.getMessage());
+                            }
+                            
                             
                         /*----- information des employés -----*/
                             //infoEmploye(1);
