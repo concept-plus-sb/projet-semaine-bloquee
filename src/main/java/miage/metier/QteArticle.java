@@ -29,13 +29,14 @@ public class QteArticle implements  Serializable{
     private Article article;
     
     @ManyToOne
-    @JoinColumn(name = "CodeCom", insertable = false, updatable = false)
+    @JoinColumn(name = "codeCom", insertable = false, updatable = false)
     private Commande commande;
 
     //Constructeurs.
     public QteArticle() {}
-    public QteArticle(QteArticleID id, int NombreArticle, Article article, Commande commande) {
-        this.id = id;
+    
+    public QteArticle(int NombreArticle, Article article, Commande commande) {
+        this.id = new QteArticleID(commande.getCodeCom(),article.getCodeA());
         this.NombreArticle = NombreArticle;
         this.article = article;
         this.commande = commande;

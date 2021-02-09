@@ -33,11 +33,11 @@ public class Nutriscore implements Serializable {
     
     //Constructeurs. 
     public Nutriscore(){}
-    public Nutriscore(int idN, String nutriscore, String description) {
-        this.idN = idN;
+    public Nutriscore(String nutriscore, String description) {
         this.nutriscore = nutriscore;
         this.description = description;
     }
+    
     
     
     //Références et relations. 

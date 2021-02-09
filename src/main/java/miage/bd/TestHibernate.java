@@ -10,7 +10,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import miage.metier.Article;
+import miage.metier.Client;
 import miage.metier.Creneau;
+import miage.metier.EnumStockage;
+import miage.metier.MarqueA;
+import miage.metier.Nutriscore;
+import miage.metier.PrixVente;
 import miage.metier.SousFamille;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -31,23 +37,7 @@ public class TestHibernate
             t.commit();
             }
     }
-//    public static void afficherCreneau(int id){
-//        
-//        /*----- Ouverture de la session -----*/
-//		try (Session session = HibernateUtil.getSessionFactory().getCurrentSession())
-//			{
-//                            session.beginTransaction();
-//                            
-//                            Creneau c = session.get(Creneau.class, id);
-//                            
-//                            if(c.getNbPlaceOccupee()<c.getNbPlaceTotal()){
-//                            System.out.println("Créneau : "+ id + " Heure : "+ c.getHeureCreneau() + " Jour : "+c.getJourSemaine());
-//                            }
-//                            
-//                            
-//                        }
-//        
-//    }
+
     
    /* public static ArrayList<QteArticle> showPanierArticles(HashMap<Article,Integer> panier){
         try (Session session = HibernateUtil.getSessionFactory().getCurrentSession())
@@ -72,38 +62,13 @@ public class TestHibernate
                           //enregistrerSousFamille();
                             
                         /*----- liste articles -----*/
-                            try{
-                                Articles.listeArticlesByMagasin(1);
-                            }catch(Exception e){
-                                System.out.println(e.getMessage());
-                            }
-                            
-                        
-                          //enregistrerSousFamille();
-                          try{
-                            //Bd.afficherCreneau(1);
-                          }catch(Exception e){
-                              System.out.println("Erreur"+e.getMessage());
-                          }
-                            
-                        /*----- information des employés -----*/
-                            //infoEmploye(1);
-                            
-                        /*----- enregistrer des demandes -----*/
-                            //enregDemande();   
-                            
-                        /*----- enregistrer des demandes -----*/    
-                            //enregistrerServices();
-                            
-                            
-                        /*----- enregistrer des demandes -----*/
-                            //infoDemandes(1);
-                            //infoDemandes(2);
-                        
-			/**
-			 * ...
-			 */
-                        
+
+                    
+//                    try{
+//                        ConfirmerCommande.creerCommande();
+//                    }catch(Exception e){
+//                        System.out.println("Erreur: "+e.getMessage());
+//                    }
                         //System.out.println("Bonjour !");
 			}
 

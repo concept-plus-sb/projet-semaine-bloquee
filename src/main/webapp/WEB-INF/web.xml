@@ -68,6 +68,10 @@
         <servlet-name>TestAjout</servlet-name>
         <jsp-file>/jsp/TestAjout.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>Conf</servlet-name>
+        <jsp-file>/jsp/Confirmer.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>viewPanier</servlet-name>
         <url-pattern>/viewPanier</url-pattern>
@@ -135,6 +139,10 @@
     <servlet-mapping>
         <servlet-name>TestAjout</servlet-name>
         <url-pattern>/TestAjout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Conf</servlet-name>
+        <url-pattern>/Conf</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

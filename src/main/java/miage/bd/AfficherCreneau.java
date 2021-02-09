@@ -16,8 +16,14 @@ import org.hibernate.query.Query;
  *
  * @author Afaf
  */
-public class Bd {
+public class AfficherCreneau {
 private static Connection cx = null;
+
+/**
+ * Les créneaux disponibles
+ * @param id
+ * @return List<Creneau> 
+ */
 
     public static List<Creneau> afficherCreneau(int id){
         
@@ -37,10 +43,35 @@ private static Connection cx = null;
 //                                System.out.println(c.getHeureCreneau()+" le "+c.getJourSemaine());
 //                            }
                             
-                            return l;
-                            
+                            return l; 
                         }
         
-      
+    }
+    
+    /**
+     * Les créneaux indisponibles
+     * @param id
+     * @return List<Creneau> 
+     */
+        public static List<Creneau> afficherCreneauINDISPO(int id){
+        
+        /*----- Ouverture de la session -----*/
+		try (Session session = HibernateUtil.getSessionFactory().getCurrentSession())
+			{
+                            session.beginTransaction();
+                            
+                            Magasin m = session.get(Magasin.class, id);
+                            System.out.println(m.getLibelleMagasin());
+                            
+                            Query q= session.createQuery("from Creneau c where c.magasin =\""+m.getIdMagasin()+"\" and c.nbPlaceOccupee=c.nbPlaceTotal");
+                            
+                            List<Creneau> l = (List<Creneau>)q.getResultList();
+//                            System.out.println(l.size());
+//                            for(Creneau c: l){
+//                                System.out.println(c.getHeureCreneau()+" le "+c.getJourSemaine());
+//                            }
+                            
+                            return l;
+                        }
     }
 }

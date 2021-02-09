@@ -102,8 +102,11 @@ public class Article implements Serializable {
         this.nutriscore = nutriscore;
     }
     
-    
+        
+
     // Getter et Setter
+    public Map<Magasin, Disponibilite> getDispo() {return dispo;}
+    public void setDispo(Map<Magasin, Disponibilite> dispo) {this.dispo = dispo;}
     public int getCodeA() {return codeA;}
     public void setCodeA(int codeA) {this.codeA = codeA;}
     public String getLibelleA() {return libelleA;}

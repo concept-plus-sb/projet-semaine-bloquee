@@ -47,7 +47,7 @@ public class NewServlet extends HttpServlet {
             MarqueA marquea = new MarqueA(10, "m_test");
             SousFamille sf=new SousFamille("sf_test");
             PrixVente prix = new PrixVente(1.2f);
-            Nutriscore nu= new Nutriscore(14, "nutriscore", "description");
+            Nutriscore nu= new Nutriscore("A", "description");
             Article a = new Article(2, "Biscuits bio aux céréales", 0, "g", "kg", EnumStockage.normal, 0, "france", "composition", "Carrefour", sf, marquea, prix, nu);
             panier.put(a,2);
             session.setAttribute("panier",panier);

@@ -21,6 +21,7 @@ import javax.persistence.OneToMany;
 public class Disponibilite implements  Serializable{
     @EmbeddedId
     private DisponibiliteId id;
+    
     private int qteDispo;
     
     @ManyToOne
@@ -45,6 +46,8 @@ public class Disponibilite implements  Serializable{
     public void setId(DisponibiliteId id) {this.id = id;}
     public int getQteDispo() {return qteDispo;}
     public void setQteDispo(int qte) {this.qteDispo = qte;}
+    //A TESTER AFAF
+    public void decQteDispo(int qte) {this.qteDispo = this.qteDispo-qte;}
     public Article getArticle() {return article;}
     public void setArticle(Article article) {this.article = article;}
     public Magasin getIdMagasin() {return magasin;}
