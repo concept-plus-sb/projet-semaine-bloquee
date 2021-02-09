@@ -4,6 +4,8 @@
     Author     : mamad
 --%>
 
+<%@page import="java.util.HashMap"%>
+<%@page import="miage.metier.Article"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -39,9 +41,23 @@
                     </ul>
                 </div>
                 <div class="d-flex">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="jsp/GoToPanierTemp.jsp">
                         <img src="img/126083.png" alt="" width="40" height="34">
                     </a>
+                    <%//si la session existe, calcule le prix total
+                        if (session.getAttribute("panier")!=null){
+                            session = request.getSession(false);
+                            HashMap<Article, Integer> panier = new HashMap<Article, Integer>();
+                            panier = (HashMap<Article, Integer>)session.getAttribute("panier");
+                            float prixTotal = 0;
+                            for(HashMap.Entry <Article,Integer> map: panier.entrySet()){
+                                prixTotal = prixTotal + map.getKey().getPrixVente().getPrix()*map.getValue();
+                            }
+                            out.println("<span id='prixPanier'>"+prixTotal+"&euro;</span>");
+                        }else{//sinon affiche 0
+                            out.println(0);
+                        }
+                    %>
                 </div>
             </div>
         </nav>
@@ -55,7 +71,7 @@
                             <img src="img/Sachet-HARIBO-Schtroumpfs-PIK-275G.png" alt="" class="img-fluid" >
                             <div class="ajouter">
                                 <a href="#" class="btn btn-primary"><i class="bi bi-basket"></i></a>
-                            </div>    
+                            </div>
                             <div class="prix">
                                 <h6 class="card-title">1,90€</h6> 
                             </div>
