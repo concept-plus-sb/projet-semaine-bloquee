@@ -72,7 +72,7 @@ public class Article implements Serializable {
     @JoinColumn(name = "idN")
     private Nutriscore nutriscore;
     
-    @OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "article", fetch = FetchType.EAGER)
     private Set<Photo> photos = new HashSet(0);
 
     @OneToMany(mappedBy = "article", fetch = FetchType.LAZY)

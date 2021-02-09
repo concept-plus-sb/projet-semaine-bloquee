@@ -52,8 +52,25 @@ public class Magasin implements Serializable {
         this.libelleMagasin = libelleMagasin;
     }
     
+
+
     //Getters et setters
-    public Set<Creneau> getCreneaux() {return creneaux;}
+        public Map<Article, Disponibilite> getDispo() {return dispo;}
+
+    public void setDispo(Map<Article, Disponibilite> dispo) {
+        this.dispo = dispo;
+    }
+
+    public Set<Client> getClients() {
+        return clients;
+    }
+    public void setClients(Set<Client> clients) {
+        this.clients = clients;
+    }
+
+    public Set<Creneau> getCreneaux() {
+        return creneaux;
+    }
     public void setCreneaux(Set<Creneau> creneaux) {this.creneaux = creneaux;}
     public int getIdMagasin() {return idMagasin;}
     public String getLibelleMagasin() {return libelleMagasin;}
