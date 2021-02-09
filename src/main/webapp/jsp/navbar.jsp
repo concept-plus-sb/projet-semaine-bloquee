@@ -24,7 +24,8 @@
                     <li><a href="#" class="active">Accueil</a>
                     <li><a href="#">Rayons</a></li>
                     <li><a href="#">Catégories</a></li>
-                    <li><a href="#">Produits</a></li></li>
+                    <li><a href="#">Produits</a></li>
+                    <li><a href="#">Connexion</a></li></li>
                 </ul>
             </nav>
             <div class="clearfix"></div>
