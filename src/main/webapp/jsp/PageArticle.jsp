@@ -21,17 +21,19 @@
     <body>
         
   <main class="container">
-    <%Article a=new Article();
+    <%
+        Article a=new Article();
         a= (Article)request.getAttribute("objetArticle");
         Set<LabelQualite> labels= a.getLabel();
-        Set<Photo> photos=a.getPhotos();%>
+        Set<Photo> photos=a.getPhotos();
+    %>
   <!-- Left Column / Headphones Image -->
   <div class="left-column">
       <div class="blocimages">
       <% for(Photo p: photos){ %>
         <div class="images" >
          <% out.print("<img data-image=\"\" src=\""+p.getLien()+"\" alt=\"\">");%>
-         </div> <%} %>
+        </div> <%} %>
      </div>
      <!-- Product Pricing -->
     
@@ -41,18 +43,19 @@
  
     <!-- Product Description -->
     <div class="product-description">
-      <%
+        <%
             out.print("<span>"+a.getSousfamille().getLibelleSF()+ "</span>");
-%>
-         <% out.print("<h1>"+a.getLibelleA()+"-"+(int)a.getContenance()+" "+a.getUniteM()+ "</h1>");
-          out.print("<p>"+a.getMarqueP()+"</p>");
-         if(a.getNbDose()>0){
-           out.print("<p>Nb de doses:"+a.getNbDose()+"</p>");
-         }
+        %>
+        <%  out.print("<h1>"+a.getLibelleA()+"-"+(int)a.getContenance()+" "+a.getUniteM()+ "</h1>");
+            out.print("<p>"+a.getMarqueP()+"</p>");
+            if(a.getNbDose()>0){
+                out.print("<p>Nb de doses:"+a.getNbDose()+"</p>");
+            }
             out.print("<p> Origine:"+a.getOrigine()+ "</p>");%>
          
-         <% out.print("<p>"+a.getComposition() +"</p>");
-         %>       
+        <% 
+            out.print("<p>"+a.getComposition() +"</p>");
+        %>       
     </div>
       
       <!-- label Configuration -->
@@ -60,8 +63,9 @@
         <span>Labels:</span>
  
         <div class="label-view">
-        <% for(LabelQualite l: labels){
-            out.print("<button disabled>"+l.getLibelleLQ()+"</button>");
+        <% 
+            for(LabelQualite l: labels){
+                out.print("<button disabled>"+l.getLibelleLQ()+"</button>");
             }
         %>
         </div> 
@@ -73,13 +77,13 @@
  
         <div class="nutriscore-view">
           <% switch((a.getNutriscore().getNutriscore())){
-              case "A": %>
+            case "A": %>
                   <img data-image="black" src="img/NutriscoreA.png" alt="" height="31" weight="51">
                 <% break;
-             case "B": %>
+            case "B": %>
                    <img data-image="black" src="img/NutriscoreB.png" alt="" height="31" weight="51">
                  <%break;
-             case "C":%>
+            case "C":%>
                    <img data-image="black" src="img/NutriscoreC.png" alt="" height="31" weight="51">
                  <%break;
              case "D":%>

@@ -84,7 +84,7 @@ public class CtrlConnexion extends HttpServlet {
                         RequestDispatcher rd = request.getRequestDispatcher("articles");
                         rd.forward(request, response);
                 
-                    //Si mpp et email non valide.
+                    //Si mdp et email non valide.
                     } else {
                         request.setAttribute("erreur",
                             "Le mot de passe et/ou le mail incorrect(s)");
