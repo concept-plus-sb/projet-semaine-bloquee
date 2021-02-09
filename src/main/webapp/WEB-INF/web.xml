@@ -62,7 +62,7 @@
     </servlet>
     <servlet>
         <servlet-name>ServletCreneau</servlet-name>
-        <servlet-class>miage.ctrl.ServletCreneau</servlet-class>
+        <servlet-class>miage.ctrl.CtrlCreneau</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>TestAjout</servlet-name>

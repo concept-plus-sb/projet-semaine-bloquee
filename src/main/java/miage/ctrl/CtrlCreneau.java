@@ -28,7 +28,7 @@ import org.hibernate.Transaction;
  *
  * @author Afaf
  */
-public class ServletCreneau extends HttpServlet {
+public class CtrlCreneau extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

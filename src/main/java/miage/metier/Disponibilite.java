@@ -34,8 +34,8 @@ public class Disponibilite implements  Serializable{
     
     //constructeur
     public Disponibilite() {}
-    public Disponibilite(DisponibiliteId id, int qte, Article article, Magasin idMagasin) {
-        this.id = id;
+    public Disponibilite(int qte, Article article, Magasin idMagasin) {
+        this.id = new DisponibiliteId(article.getCodeA(),idMagasin.getIdMagasin());
         this.qteDispo = qte;
         this.article = article;
         this.magasin = idMagasin;
