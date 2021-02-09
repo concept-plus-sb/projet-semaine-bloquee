@@ -81,7 +81,7 @@ public class TestHibernate
                         
                           //enregistrerSousFamille();
                           try{
-                            Bd.afficherCreneau(1);
+                            //Bd.afficherCreneau(1);
                           }catch(Exception e){
                               System.out.println("Erreur"+e.getMessage());
                           }

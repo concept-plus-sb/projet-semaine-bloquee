@@ -71,7 +71,7 @@ public class ServletCreneau extends HttpServlet {
 //                                System.out.println(c.getHeureCreneau());
 //                            }
                 // affichage
-                request.setAttribute("liste",Bd.afficherCreneau(1));
+                //request.setAttribute("liste",Bd.afficherCreneau(1));
 //                System.out.println("Je suis ici !");
 //                for(Creneau c : Bd.afficherCreneau(1))
 //                    System.out.println("--> " + c.getHeureCreneau()+" le "+c.getJourSemaine());

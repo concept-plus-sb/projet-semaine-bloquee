@@ -74,15 +74,13 @@ public class CtrlConnexion extends HttpServlet {
                     //Création session
                     HttpSession session = request.getSession(true);
                     session.setAttribute("client", p_c_client);
-                    
-                    RequestDispatcher rd = request.
-                            getRequestDispatcher("test2");
+                        System.out.println("test!!!");
+                    RequestDispatcher rd = request.getRequestDispatcher("articles");
                     rd.forward(request, response);
                 } else {
                     request.setAttribute("erreur",
                             "Le mot de passe et/ou le mail incorrect(s)");
-                    RequestDispatcher rd = request.
-                            getRequestDispatcher("Connexion");
+                    RequestDispatcher rd = request.getRequestDispatcher("Connexion");
                     rd.forward(request, response);
                 }
                 } catch (Exception ex) {
