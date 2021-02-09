@@ -57,7 +57,7 @@
       
       <!-- label Configuration -->
       <div class="label-config">
-        <span>Type stockage</span>
+        <span>Labels:</span>
  
         <div class="label-view">
         <% for(LabelQualite l: labels){
