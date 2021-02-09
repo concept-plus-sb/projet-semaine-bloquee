@@ -25,12 +25,12 @@ public class TestHibernate
 {
     public static SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
     public static void enregistrerSousFamille(){
-        try (Session session = HibernateUtil.getSessionFactory().getCurrentSession())
-            {
-            Transaction t = session.beginTransaction();
-            session.save(new SousFamille("ssf test 01"));
-            t.commit();
-            }
+//        try (Session session = HibernateUtil.getSessionFactory().getCurrentSession())
+//            {
+//            Transaction t = session.beginTransaction();
+//            session.save(new SousFamille("ssf test 01"));
+//            t.commit();
+//            }
     }
 //    public static void afficherCreneau(int id){
 //        
@@ -64,7 +64,7 @@ public class TestHibernate
 	public static void main(String[] args) throws ParseException
 		{
 		/*----- Format de date -----*/
-		SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+//		SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 
 		/*----- Ouverture de la session -----*/
 		try (Session session = HibernateUtil.getSessionFactory().getCurrentSession())
@@ -85,11 +85,11 @@ public class TestHibernate
                             
                         
                           //enregistrerSousFamille();
-                          try{
-                            //Bd.afficherCreneau(1);
-                          }catch(Exception e){
-                              System.out.println("Erreur"+e.getMessage());
-                          }
+//                          try{
+//                            //Bd.afficherCreneau(1);
+//                          }catch(Exception e){
+//                              System.out.println("Erreur"+e.getMessage());
+//                          }
                             
                         /*----- information des employés -----*/
                             //infoEmploye(1);
