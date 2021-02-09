@@ -16,16 +16,14 @@
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     </head>
     <body>
-        <div class="container">
+         <div class="container">
             <div class="box">
-                <h3>Product four</h3>
-                <img src="../img/biscuits_1.jpg" alt="biscuits">
-                <div class="addToCart">          
-                    <form>
-                        <input type="number" id="btnPanier" name="btnPanier" min="0" max="100">
-                    </form>
-                    <p class="prix">Prix<span>€</span></p>
-                </div>
+                <h3>Product one</h3>
+                <img src="bueno.jpg" alt="">    
+                <div class="addToCart">  
+                    <p class="prix">1,9<span> €</span></p>
+                    <input type="number" name="" id="" min="0"> 
+                </div> 
             </div>
         </div>
     </body>
