@@ -20,11 +20,11 @@
             <div class="box">
                 <h3>Product four</h3>
                 <img src="../img/biscuits_1.jpg" alt="biscuits">
-                <div class="addToCart">           
-                    <p class="prix">Prix<span>€</span></p>
+                <div class="addToCart">          
                     <form>
                         <input type="number" id="btnPanier" name="btnPanier" min="0" max="100">
                     </form>
+                    <p class="prix">Prix<span>€</span></p>
                 </div>
             </div>
         </div>
