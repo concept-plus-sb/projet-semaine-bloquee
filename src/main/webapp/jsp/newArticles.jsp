@@ -23,7 +23,7 @@
                 <div class="addToCart">           
                     <p class="prix">Prix<span>€</span></p>
                     <form>
-                        <input type="number" id="tentacles" name="tentacles" min="0" max="100">
+                        <input type="number" id="btnPanier" name="btnPanier" min="0" max="100">
                     </form>
                 </div>
             </div>
