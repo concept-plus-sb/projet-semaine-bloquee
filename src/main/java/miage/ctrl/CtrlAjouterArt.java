@@ -57,7 +57,7 @@ public class CtrlAjouterArt extends HttpServlet {
             //Renvoie du HashMap à la session.
             session.setAttribute("panier", paniertemp);
             
-            RequestDispatcher rd = request.getRequestDispatcher("TestAjout");
+            RequestDispatcher rd = request.getRequestDispatcher("CtrlPageArticle?article="+idA);
             rd.forward(request, response);  
         }
     }
