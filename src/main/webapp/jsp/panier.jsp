@@ -58,6 +58,7 @@
                 HashMap<Article, Integer> panier = new HashMap<Article, Integer>();
                 panier = (HashMap<Article, Integer>)session.getAttribute("panier");
                 int i=1;
+                float prixTotal = 0;
                 for(HashMap.Entry <Article,Integer> map: panier.entrySet()){
                     out.println("<div>");
                     out.println("<form methode='get' action='ctrlSupprimer'>");
@@ -73,10 +74,11 @@
                             + "<span id='"+i+"'> "+map.getValue()+" </span>"
                             + "<button type='submit' formaction='ctrlOperationArticlePanier' name = 'articlePanierBtn' id='btn_add'>+</button></td></tr>");*/
                     out.println("</table></form></div>");
-                    out.println("<div id='footer'><div id='price_total'>Prix total: "+map.getKey().getPrixVente().getPrix()*map.getValue()+"</div>");
+                    prixTotal = prixTotal + map.getKey().getPrixVente().getPrix()*map.getValue();
+                }
+                    out.println("<div id='footer'><div id='price_total'>Prix total: "+prixTotal+"</div>");
                     /*<input type="button" value="Valider mon panier" id="btn_submit" />*/
                     out.println("</div></div></div>");
-                }
             %>
         <input type="button" onclick="window.location.href='http://localhost:8080/projet-semaine-bloquee/newservlet';" value="retour"/>
         <input type="button" onclick="window.location.href='http://localhost:8080/projet-semaine-bloquee/ServletCreneau?action=afficher';" value="valider"/>

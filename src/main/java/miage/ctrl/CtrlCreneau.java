@@ -91,7 +91,7 @@ public class CtrlCreneau extends HttpServlet {
                 System.out.println(cr.getIdCreneau());
                 
                 session.setAttribute("radio", cr.getJourSemaine()+" à "+cr.getHeureCreneau());
-                RequestDispatcher rd1 = request.getRequestDispatcher("Conf");
+                RequestDispatcher rd1 = request.getRequestDispatcher("conf");//PB
                 rd1.forward(request, response);
                 }
                 catch(Exception e){

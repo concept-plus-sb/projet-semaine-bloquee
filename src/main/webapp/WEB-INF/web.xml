@@ -69,8 +69,12 @@
         <jsp-file>/jsp/TestAjout.jsp</jsp-file>
     </servlet>
     <servlet>
-        <servlet-name>Conf</servlet-name>
-        <jsp-file>/jsp/Confirmer.jsp</jsp-file>
+        <servlet-name>CtrlPageArticle</servlet-name>
+        <servlet-class>miage.ctrl.CtrlPageArticle</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PageArticle</servlet-name>
+        <jsp-file>/jsp/PageArticle.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>viewPanier</servlet-name>
@@ -141,8 +145,12 @@
         <url-pattern>/TestAjout</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Conf</servlet-name>
-        <url-pattern>/Conf</url-pattern>
+        <servlet-name>CtrlPageArticle</servlet-name>
+        <url-pattern>/CtrlPageArticle</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PageArticle</servlet-name>
+        <url-pattern>/pagearticle</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

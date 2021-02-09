@@ -7,21 +7,21 @@ package miage.ctrl;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import miage.bd.AjouterArticle;
+import miage.bd.ClassArticle;
+import miage.bd.HibernateUtil;
+import miage.bd.TestHibernate;
 import miage.metier.Article;
 
 /**
  *
- * @author estel
+ * @author Ismail
  */
-public class CtrlAjouterArt extends HttpServlet {
+public class CtrlPageArticle extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,31 +35,16 @@ public class CtrlAjouterArt extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            Article a=null;
-            int idA = Integer.parseInt(request.getParameter("idA"));
-            HashMap<Article, Integer> paniertemp = new HashMap<>();
-            
-            a=AjouterArticle.recupArt(idA);
-            
-            //Ouverture de la session. 
-            HttpSession session = request.getSession(true);
-            
-            //Test si la session panier est vide.
-            if(session.getAttribute("panier")!=null){
-                //On récupère la session dans paniertemp.
-               paniertemp = (HashMap<Article, Integer>)session.getAttribute("panier"); 
-            }
-            
-            //Ajout de l'article.
-            paniertemp.put(a, 1);
-            
-            //Renvoie du HashMap à la session.
-            session.setAttribute("panier", paniertemp);
-            
-            RequestDispatcher rd = request.getRequestDispatcher("CtrlPageArticle?article="+idA);
-            rd.forward(request, response);  
+        try{
+        int id;
+        id = Integer.parseInt(request.getParameter("article"));
+        request.setAttribute("objetArticle",ClassArticle.getArticle(id) );
+        RequestDispatcher rd= request.getRequestDispatcher("pagearticle");
+        rd.forward(request, response);
         }
+         catch(Exception e){
+                System.out.println("");
+                   }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -89,6 +74,7 @@ public class CtrlAjouterArt extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+
     }
 
     /**

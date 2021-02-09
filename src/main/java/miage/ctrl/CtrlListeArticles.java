@@ -12,7 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import miage.bd.Articles;
+import miage.bd.ListeArticles;
 
 /**
  *
@@ -33,7 +33,7 @@ public class CtrlListeArticles extends HttpServlet {
             throws ServletException, IOException {
         //response.setContentType("text/html;charset=UTF-8");
         try {
-            request.setAttribute("liste", Articles.listeArticlesByMagasin(1));
+            request.setAttribute("liste", ListeArticles.listeArticlesByMagasin(1));
             
             RequestDispatcher rd = request.getRequestDispatcher("articles");
             
