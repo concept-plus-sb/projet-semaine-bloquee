@@ -27,9 +27,6 @@ public class ConfirmerCommande {
                 c.setNbPlaceOccupee(c.getNbPlaceOccupee()+1);
                 
                 session.save(c);
-                
-                 
-                
                 t.commit();
                 
                 
