@@ -4,6 +4,9 @@
     Author     : Ismail
 --%>
 
+<%@page import="miage.metier.Photo"%>
+<%@page import="miage.metier.LabelQualite"%>
+<%@page import="java.util.Set"%>
 <%@page import="miage.bd.TestHibernate"%>
 <%@page import="miage.metier.Article"%>
 <%@page import="miage.metier.SousFamille"%>
@@ -12,43 +15,57 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="webapp/css/articleStyle.css"/>
+        <link rel="stylesheet" href="css/articleStyle.css"/>
         <title>Page article</title>
     </head>
     <body>
         
   <main class="container">
-    
+    <%Article a=new Article();
+        a= (Article)request.getAttribute("objetArticle");
+        Set<LabelQualite> labels= a.getLabel();
+        Set<Photo> photos=a.getPhotos();%>
   <!-- Left Column / Headphones Image -->
   <div class="left-column">
-    <img data-image="black" src="images/black.png" alt="">
+      <div class="blocimages">
+      <% for(Photo p: photos){ %>
+        <div class="images" >
+         <% out.print("<img data-image=\"\" src=\""+p.getLien()+"\" alt=\"\">");%>
+         </div> <%} %>
+     </div>
+     <!-- Product Pricing -->
+    <div class="product-price">
+        <% out.print("<span> Prix :"+a.getPrixVente().getPrix()+"</span>"); %>
+      <a href="#" class="cart-btn">Ajouter au panier</a>
+    </div>
   </div>
- 
- 
   <!-- Right Column -->
   <div class="right-column">
  
     <!-- Product Description -->
     <div class="product-description">
-      <span><%Article a=new Article();
-        a= (Article)request.getAttribute("objetArticle");
-        out.print(a.getSousfamille()+"!!");
-//   out.print("<h1>"+a.getSousfamille().getLibelleSF()+ "</h1>");
-%></span>
-         <% out.print("<h1>"+a.getLibelleA()+ "</h1>");%>
+      <%
+            out.print("<span>"+a.getSousfamille().getLibelleSF()+ "</span>");
+%>
+         <% out.print("<h1>"+a.getLibelleA()+"-"+(int)a.getContenance()+" "+a.getUniteM()+ "</h1>");%>
+         <% out.print("<p>"+a.getMarqueP()+"</p>");%>
+         <% out.print("<p> Origine:"+a.getOrigine()+ "</p>");%>
          <% out.print("<p>"+a.getComposition() +"</p>");
-         %>       </div>
+         %>       
+    </div>
 
  
+      </div>
       <!-- label Configuration -->
       <div class="label-config">
-        <span>Labels</span>
+        <span>Type stockage</span>
  
         <div class="label-view">
-          <button disabled>Straight</button>
-          <button disabled>Coiled</button>
-          <button disabled>Long-coiled</button></br>
-        </div>
+        <% for(LabelQualite l: labels){
+            out.print("<button disabled>"+l.getLibelleLQ()+"</button>");
+            }
+        %>
+        </div> 
  
       </div>
       
@@ -56,16 +73,28 @@
         <span>Nutriscore</span>
  
         <div class="nutriscore-view">
-          <button disabled><% out.print(a.getNutriscore().getNutriscore()); %></button>
+          <% switch((a.getNutriscore().getNutriscore())){
+              case "A": %>
+                  <img data-image="black" src="img/NutriscoreA.png" alt="" height="31" weight="51">
+                <% break;
+             case "B": %>
+                   <img data-image="black" src="img/NutriscoreB.png" alt="" height="31" weight="51">
+                 <%break;
+             case "C":%>
+                   <img data-image="black" src="img/NutriscoreC.png" alt="" height="31" weight="51">
+                 <%break;
+             case "D":%>
+                   <img data-image="black" src="img/NutriscoreD.png" alt="" height="31" weight="51">
+                 <%break;
+             case "E":%>
+                   <img data-image="black" src="img/NutriscoreE.png" alt="" height="31" weight="51">
+                 <%break;
+          }
+          %>
         </div> 
       </div>
     </div>
- 
-    <!-- Product Pricing -->
-    <div class="product-price">
-      <span>prix</span>
-      <a href="#" class="cart-btn">Add to cart</a>
-    </div>
+    
   
 </main>
         
