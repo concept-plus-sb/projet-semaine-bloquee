@@ -53,7 +53,7 @@ public class Article implements Serializable {
     @MapKeyJoinColumn(name = "CodeCom")
     private Map<Commande, QteArticle> qteArticles = new HashMap<>();
     
-    @ManyToOne(fetch = FetchType.LAZY) //ou @ManyToOne(fetch = FetchType.EAGER) => une seule requete pour charger l'objet et l (this is question8)
+    @ManyToOne(fetch = FetchType.EAGER) //ou @ManyToOne(fetch = FetchType.EAGER) => une seule requete pour charger l'objet et l (this is question8)
     @JoinColumn(name="IdSousFamille")
     SousFamille sousfamille;
     
@@ -61,7 +61,7 @@ public class Article implements Serializable {
     @JoinColumn(name = "IdMarque")
     private MarqueA marqueProprietaire; 
     
-    @ManyToMany(mappedBy = "articles")
+    @ManyToMany(mappedBy = "articles",fetch = FetchType.EAGER)
     private Set<LabelQualite> label = new HashSet(0);
     
     @ManyToOne

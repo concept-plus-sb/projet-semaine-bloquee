@@ -7,18 +7,15 @@ package miage.ctrl;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import miage.bd.HibernateUtil;
 import miage.bd.SeConnecter;
 import miage.metier.Client;
-import org.hibernate.Hibernate;
+
 
 /**
  *
@@ -43,65 +40,67 @@ public class CtrlConnexion extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+         
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String p_s_email = (String)request.getParameter("txtEmail");
             String p_s_mdp = (String)request.getParameter("txtMdp");
-  
+        
+        //si email et mdp vide.
         if (p_s_email=="" && p_s_mdp==""){
             request.setAttribute("erreursaisie", "Le mail et le mot de passe doivent être remplis");
             RequestDispatcher rd = request.getRequestDispatcher("Connexion");
             rd.forward(request, response);
+        
+        //si email vide et pas mdp.
         } else if (p_s_email=="" && p_s_mdp!=""){
             request.setAttribute("erreursaisie", "Le mail doit être rempli");
             RequestDispatcher rd = request.getRequestDispatcher("Connexion");
             rd.forward(request, response);
+            
+        //si mdp vide et pas email.
         } else if (p_s_email!="" && p_s_mdp==""){
             request.setAttribute("erreursaisie", "Le mot de passe doit être rempli");
             RequestDispatcher rd = request.getRequestDispatcher("Connexion");
             rd.forward(request, response);
+        
+        //si mdp et email rempli.
         } else {
-            
-            try {
                 boolean p_b_result;
                 
                 try {
-                    p_b_result = SeConnecter.verifierConnexion(p_s_email, p_s_mdp);
-                    if(p_b_result==true){
-                    Client p_c_client=SeConnecter.recupClient(p_s_email, p_s_mdp);
                     
-                    //Création session
-                    HttpSession session = request.getSession(true);
-                    session.setAttribute("client", p_c_client);
-                        System.out.println("test!!!");
-                    RequestDispatcher rd = request.getRequestDispatcher("articles");
-                    rd.forward(request, response);
-                } else {
-                    request.setAttribute("erreur",
+                    p_b_result = SeConnecter.verifierConnexion(p_s_email, p_s_mdp);
+                    
+                    //si mdp et email valide.
+                    if(p_b_result==true){
+                        Client p_c_client=SeConnecter.recupClient(p_s_email, p_s_mdp);
+                    
+                        //Création session.
+                        HttpSession session = request.getSession(true);
+                        session.setAttribute("client", p_c_client);
+                    
+                        //Rediriger vers la page articles
+                        RequestDispatcher rd = request.getRequestDispatcher("articles");
+                        rd.forward(request, response);
+                
+                    //Si mpp et email non valide.
+                    } else {
+                        request.setAttribute("erreur",
                             "Le mot de passe et/ou le mail incorrect(s)");
-                    RequestDispatcher rd = request.getRequestDispatcher("Connexion");
-                    rd.forward(request, response);
-                }
+                        RequestDispatcher rd = request.getRequestDispatcher("Connexion");
+                        rd.forward(request, response);
+                    }
+                    
                 } catch (Exception ex) {
                     request.setAttribute("erreur", ex.getMessage());
                 RequestDispatcher rd = request.
                         getRequestDispatcher("Connexion");
                 rd.forward(request, response); 
                 }
-                //System.out.println(p_b_result);
- 
-            } catch (Exception e){
-                request.setAttribute("erreur", e.getMessage());
-                RequestDispatcher rd = request.
-                        getRequestDispatcher("Connexion");
-                rd.forward(request, response);
             }
-        
-        
-
         }
-        }
+        
     }
         
 
