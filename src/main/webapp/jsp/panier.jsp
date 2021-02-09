@@ -15,15 +15,44 @@
         <title>Mon panier</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="css/newcss.css" type="text/css" />
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="css/css.css">
     </head>
     <body>
-        <main>
-            <div><img src="img/logo.JPG" width="200" alt="logo_concept_plus" /></div>
-            <div class="title">Mon panier</div>
-        </main>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="img/E.png" alt="" width="60" height="54">
+                </a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Rayons
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="d-flex">
+                    <a class="navbar-brand" href="#">
+                        <img src="img/126083.png" alt="" width="40" height="34">
+                    </a>
+                </div>
+            </div>
+        </nav>
         <div>
             <div id="all_articles">
+                
             <%
                 session = request.getSession(false);
                 HashMap<Article, Integer> panier = new HashMap<Article, Integer>();
@@ -33,7 +62,7 @@
                     out.println("<div>");
                     out.println("<form methode='get' action='ctrlSupprimer'>");
                     out.println("<table>");
-                    out.println("<tr><td rowspan='4'><img src='img/biscuits_1.JPG' width='200'/></td><td>"+map.getKey().getLibelleA()+"</td><td></td></tr>");
+                    out.println("<tr><td rowspan='4'><img src='img/biscuits_1.jpg' alt='img-biscuits' width='200'/></td><td>"+map.getKey().getLibelleA()+"</td><td></td></tr>");
                     /*out.println("<tr><td rowspan='4'><img src='img/biscuits_1.JPG' width='200'/></td><td>"+map.getKey().getLibelleA()+"</td><td>"
                             + "<button type='submit' formaction='ctrlOperationArticlePanier' name = 'articlePanierBtn' id='btn_del'>supprimer</button></td></tr>");*/
                     out.println("<tr><td colspan='2'>"+map.getKey().getMarqueP()+"</td></tr>");
