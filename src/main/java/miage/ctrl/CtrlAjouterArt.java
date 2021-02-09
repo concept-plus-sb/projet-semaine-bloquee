@@ -16,11 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import miage.bd.AjouterArticle;
 import miage.metier.Article;
-import miage.metier.EnumStockage;
-import miage.metier.MarqueA;
-import miage.metier.Nutriscore;
-import miage.metier.PrixVente;
-import miage.metier.SousFamille;
 
 /**
  *
@@ -41,43 +36,29 @@ public class CtrlAjouterArt extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             Article a=null;
             int idA = Integer.parseInt(request.getParameter("idA"));
+            HashMap<Article, Integer> paniertemp = new HashMap<>();
+            
             a=AjouterArticle.recupArt(idA);
             
-            
-            //MarqueA marquea = new MarqueA(10, "m_test");
-            //SousFamille sf=new SousFamille("sf_test");
-            //PrixVente prix = new PrixVente(1.2f);
-            //Nutriscore nu= new Nutriscore(14, "nutriscore", "description");
-            //if (idA==1){
-            //a = new Article(2, "art2", 0, "g", "kg", EnumStockage.frais, 0, "france", "composition", "mm", sf, marquea, prix, nu);
-            //} else {
-            //a = new Article(3, "art3", 0, "g", "kg", EnumStockage.frais, 0, "france", "composition", "mm", sf, marquea, prix, nu);
-            //}
-             
-            HashMap<Article, Integer> paniertemp = new HashMap<Article, Integer>();
-            //System.out.println("taille : "+paniertemp.size());
-            
+            //Ouverture de la session. 
             HttpSession session = request.getSession(true);
             
-           if(session.getAttribute("panier")!=null){
+            //Test si la session panier est vide.
+            if(session.getAttribute("panier")!=null){
+                //On récupère la session dans paniertemp.
                paniertemp = (HashMap<Article, Integer>)session.getAttribute("panier"); 
-               //System.out.println("IF");
-               //System.out.println("taille : "+paniertemp.size());
-           }
-
+            }
+            
+            //Ajout de l'article.
             paniertemp.put(a, 1);
-            //System.out.println("taille : "+paniertemp.size());
             
+            //Renvoie du HashMap à la session.
             session.setAttribute("panier", paniertemp);
-         
+            
             RequestDispatcher rd = request.getRequestDispatcher("TestAjout");
-            rd.forward(request, response);
-            
-
-            
+            rd.forward(request, response);  
         }
     }
 
