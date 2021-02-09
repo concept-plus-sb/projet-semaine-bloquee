@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.List;
+import miage.metier.Article;
 import miage.metier.SousFamille;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -37,7 +38,11 @@ public class TestHibernate
                             
                         /*----- liste articles -----*/
                             try{
-                                Articles.listeArticlesByMagasin(1);
+                                List<Article> articles = ListeArticles.listeArticlesByMagasin(1);
+                                
+                                for(Article a : articles){
+                                    System.out.println(a.getPhotos());
+                                }
                             }catch(Exception e){
                                 System.out.println(e.getMessage());
                             }
