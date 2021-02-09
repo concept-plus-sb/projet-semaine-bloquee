@@ -16,7 +16,7 @@
     <body>
         <h1>Hello World!</h1>
         
-        <a href="http://localhost:8080/TpRtt/ajout?idA=1"> AjoutArticle1 </a>
+        <a href="http://localhost:8080/projet-semaine-bloquee/ajout?idA=1"> AjoutArticle1 </a>
         
         
         <% 
@@ -33,7 +33,7 @@
 
         %>
         
-        <a href="http://localhost:8080/TpRtt/ajout?idA=2"> AjoutArticle1 </a>
+        <a href="http://localhost:8080/projet-semaine-bloquee/ajout?idA=2"> AjoutArticle2 </a>
         
     </body>
 </html>
