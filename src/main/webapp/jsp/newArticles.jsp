@@ -19,7 +19,7 @@
          <div class="container">
             <div class="box">
                 <h3>Product one</h3>
-                <img src="bueno.jpg" alt="">    
+                <img src="../img/biscuits_1.jpg" alt="">    
                 <div class="addToCart">  
                     <p class="prix">1,9<span> €</span></p>
                     <input type="number" name="" id="" min="0"> 
