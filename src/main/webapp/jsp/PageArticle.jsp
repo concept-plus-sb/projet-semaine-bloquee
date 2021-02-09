@@ -44,9 +44,13 @@
       <%
             out.print("<span>"+a.getSousfamille().getLibelleSF()+ "</span>");
 %>
-         <% out.print("<h1>"+a.getLibelleA()+"-"+(int)a.getContenance()+" "+a.getUniteM()+ "</h1>");%>
-         <% out.print("<p>"+a.getMarqueP()+"</p>");%>
-         <% out.print("<p> Origine:"+a.getOrigine()+ "</p>");%>
+         <% out.print("<h1>"+a.getLibelleA()+"-"+(int)a.getContenance()+" "+a.getUniteM()+ "</h1>");
+          out.print("<p>"+a.getMarqueP()+"</p>");
+         if(a.getNbDose()>0){
+           out.print("<p>Nb de doses:"+a.getNbDose()+"</p>");
+         }
+            out.print("<p> Origine:"+a.getOrigine()+ "</p>");%>
+         
          <% out.print("<p>"+a.getComposition() +"</p>");
          %>       
     </div>
