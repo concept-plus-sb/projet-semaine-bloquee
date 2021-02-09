@@ -81,12 +81,6 @@ img {
     height: auto;
   }
 
-.container .box .prix{
-    float:right;
-    border: solid;
-    padding: 10px;
-}
-
 .basket
 {
     content: '\f291';
@@ -98,5 +92,10 @@ img {
 {
     display: flex;
     justify-content:space-between;  
-    margin: 20px;
+    margin: 0 20px;
+}
+
+.addToCart input{
+    width: 30%;
+    height: 30px;
 }
