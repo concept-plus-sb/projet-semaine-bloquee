@@ -1,11 +1,14 @@
 package miage.bd;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
 import miage.bd.HibernateUtil;
+import miage.metier.Article;
 import miage.metier.Disponibilite;
 import miage.metier.Magasin;
+import miage.metier.Photo;
 import org.hibernate.Session;
 
 /*
@@ -17,9 +20,12 @@ import org.hibernate.Session;
  *
  * @author mamad
  */
-public class Articles {
+public class ListeArticles {
 
-    public static List<Disponibilite> listeArticlesByMagasin(int id){
+    public static List<Article> listeArticlesByMagasin(int id){
+        
+        ArrayList<Article> articles = new ArrayList<>();
+        
         /*----- Ouverture de la session -----*/
         try ( Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
             session.beginTransaction();
@@ -30,12 +36,27 @@ public class Articles {
             
             List<Disponibilite> ldisponibilite = (List<Disponibilite>)q.getResultList();
             
+            for(Disponibilite d : ldisponibilite){
+                articles.add(d.getArticle());
+            }
+
+            return articles;
+        }
+    }
+
+        public static void PhotobyArticle(int codeA){
+        /*----- Ouverture de la session -----*/
+        try ( Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
+            session.beginTransaction();
+            
+            Article a = session.get(Article.class, codeA);
+            
+            Photo p = session.get(Photo.class, a.getCodeA());
+            
 //            for(Disponibilite d : ldisponibilite){
 //                System.out.println(d.getArticle().getLibelleA());
 //            }
 
-            return ldisponibilite;
         }
-    }
-
+        }
 }
