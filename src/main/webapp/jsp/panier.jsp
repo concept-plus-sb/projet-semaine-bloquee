@@ -4,6 +4,8 @@
     Author     : luqil
 --%>
 
+<%@page import="miage.metier.Photo"%>
+<%@page import="java.util.Set"%>
 <%@page import="java.util.ListIterator"%>
 <%@page import="java.util.ListIterator"%>
 <%@page import="java.util.Map"%>
@@ -48,13 +50,16 @@
                 </div>
                 <div class="d-flex">
                     <a class="navbar-brand" href="#">
-                        <img src="img/126083.png" alt="" width="40" height="34">
+                        <!--<img src="img/126083.png" alt="" width="40" height="34">-->
                     </a>
                 </div>
             </div>
         </nav>
         <div>
             <div id="all_articles">
+  <!-- Left Column / Headphones Image -->
+  <div class="left-column">
+      
             <%
                 session = request.getSession(false);
                 HashMap<Article, Integer> panier = new HashMap<Article, Integer>();
@@ -67,10 +72,12 @@
                     ListIterator<Map.Entry<Article, Integer>> lst = new ArrayList<Map.Entry<Article, Integer>>(panier.entrySet()).listIterator(panier.size());
                     while(lst.hasPrevious()) {  
                         Map.Entry<Article, Integer> entry = lst.previous();  
+                        Set<Photo> photos=entry.getKey().getPhotos();
                         out.println("<div>");
                         out.println("<form methode='get' action='ctrlSupprimer'>");
                         out.println("<table>");
-                        out.println("<tr><td rowspan='4'><img src='img/biscuits_1.jpg' alt='img-biscuits' width='200'/></td><td colspan='2'>"+entry.getKey().getLibelleA()+"</td><td></td></tr>");
+                        out.println("<tr><td rowspan='4'><img data-image='' src='"+photos.iterator().next().getLien()+"' alt=''></td><td colspan='2'>"+entry.getKey().getLibelleA()+"</td><td></td></tr>");
+                        //out.println("<tr><td rowspan='4'><img src='img/biscuits_1.jpg' alt='img-biscuits' width='200'/></td><td colspan='2'>"+entry.getKey().getLibelleA()+"</td><td></td></tr>");
                         /*out.println("<tr><td rowspan='4'><img src='img/biscuits_1.JPG' width='200'/></td><td>"+map.getKey().getLibelleA()+"</td><td>"
                                 + "<button type='submit' formaction='ctrlOperationArticlePanier' name = 'articlePanierBtn' id='btn_del'>supprimer</button></td></tr>");*/
                         out.println("<tr><td colspan='2'>"+entry.getKey().getMarqueP()+"</td></tr>");
@@ -90,6 +97,6 @@
                     out.println("<input type='button' onclick='window.location.href='http://localhost:8080/projet-semaine-bloquee/ServletCreneau';' value='valider'/>");
                 }
             %>
-        <input type="button" onclick="window.location.href='http://localhost:8080/projet-semaine-bloquee/newservlet';" value="retour"/>
+        <input type="button" onclick="window.location.href='http://localhost:8080/projet-semaine-bloquee/articles.jsp';" value="retour"/>
     </body>
 </html>

@@ -41,10 +41,9 @@ public class NewServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */ 
             HttpSession session=request.getSession(true);
             HashMap<Article,Integer> panier= new HashMap<Article,Integer>();
-            MarqueA marquea = new MarqueA(10, "mark 1");
+            /*MarqueA marquea = new MarqueA(10, "mark 1");
             MarqueA marqueb = new MarqueA(11, "mark 2");
             SousFamille sf1=new SousFamille("sous famille 1");
             SousFamille sf2=new SousFamille("sous famille 2");
@@ -58,8 +57,8 @@ public class NewServlet extends HttpServlet {
                     "france", "composition", "Barilla", sf2, marqueb, prix2, nu2);
             panier.put(a1,2);
             panier.put(a2,1);
-            session.setAttribute("panier",panier);
-            RequestDispatcher rd = request.getRequestDispatcher("gotopaniertemp");
+            session.setAttribute("panier",panier);*/
+            RequestDispatcher rd = request.getRequestDispatcher("panier");
             rd.forward(request, response);
         }
     }
