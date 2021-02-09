@@ -59,7 +59,6 @@
                             for(HashMap.Entry <Article,Integer> map: panier.entrySet()){
                                 prixTotal = prixTotal + map.getKey().getPrixVente().getPrix()*map.getValue();
                             }
-
                             out.println("<span id='prixPanier'>"+prixTotal+"&euro;</span>");
                         }else{
                             out.println(0);
