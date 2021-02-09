@@ -23,7 +23,7 @@ import javax.persistence.ManyToOne;
 public class EAN {
     @Id
     private long EAN;
-    private String Description;
+    private String DescriptionEAN;
     
     @ManyToMany
     @JoinTable(name = "AvoirDate",
@@ -40,7 +40,7 @@ public class EAN {
     public EAN() {}
     public EAN(long EAN, String Description, Article article) {
         this.EAN = EAN;
-        this.Description = Description;
+        this.DescriptionEAN = Description;
         this.article = article;
     }
     
@@ -49,8 +49,8 @@ public class EAN {
     public void setArticle(Article article) {this.article = article;}
     public long getEAN() {return EAN;}
     public void setEAN(long EAN) {this.EAN = EAN;}
-    public String getDescription() {return Description;}
-    public void setDescription(String Description) {this.Description = Description;}
+    public String getDescriptionEAN() {return DescriptionEAN;}
+    public void setDescriptionEAN(String Description) {this.DescriptionEAN = Description;}
     public Set<Calendrier> getCalendriers() {return calendriers;}
     public void setCalendriers(Set<Calendrier> calendriers) {this.calendriers = calendriers;}
     

@@ -7,25 +7,21 @@ package miage.ctrl;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import miage.bd.ClassArticle;
+import miage.bd.HibernateUtil;
+import miage.bd.TestHibernate;
 import miage.metier.Article;
-import miage.metier.EnumStockage;
-import miage.metier.MarqueA;
-import miage.metier.Nutriscore;
-import miage.metier.PrixVente;
-import miage.metier.SousFamille;
 
 /**
  *
- * @author 21606937
+ * @author Ismail
  */
-public class NewServlet extends HttpServlet {
+public class CtrlPageArticle extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,24 +32,19 @@ public class NewServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    //create new session
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */ 
-            HttpSession session=request.getSession(true);
-            HashMap<Article,Integer> panier= new HashMap<Article,Integer>();
-            MarqueA marquea = new MarqueA(10, "m_test");
-            SousFamille sf=new SousFamille("sf_test");
-            PrixVente prix = new PrixVente(1.2f);
-            Nutriscore nu= new Nutriscore(14, "nutriscore", "description");
-            Article a = new Article(2, "Biscuits bio aux céréales", 0, "g", "kg", EnumStockage.normal, 0, "france", "composition", "Carrefour", sf, marquea, prix, nu);
-            panier.put(a,2);
-            session.setAttribute("panier",panier);
-            RequestDispatcher rd = request.getRequestDispatcher("gotopaniertemp");
-            rd.forward(request, response);
+        try{
+        int id;
+        id = Integer.parseInt(request.getParameter("article"));
+        request.setAttribute("objetArticle",ClassArticle.getArticle(id) );
+        RequestDispatcher rd= request.getRequestDispatcher("pagearticle");
+        rd.forward(request, response);
         }
+         catch(Exception e){
+                System.out.println("");
+                   }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -83,6 +74,7 @@ public class NewServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+
     }
 
     /**

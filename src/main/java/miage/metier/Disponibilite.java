@@ -21,7 +21,7 @@ import javax.persistence.OneToMany;
 public class Disponibilite implements  Serializable{
     @EmbeddedId
     private DisponibiliteId id;
-    private int qte;
+    private int qteDispo;
     
     @ManyToOne
     @JoinColumn(name = "codeA", insertable = false, updatable = false)
@@ -35,7 +35,7 @@ public class Disponibilite implements  Serializable{
     public Disponibilite() {}
     public Disponibilite(DisponibiliteId id, int qte, Article article, Magasin idMagasin) {
         this.id = id;
-        this.qte = qte;
+        this.qteDispo = qte;
         this.article = article;
         this.magasin = idMagasin;
     }
@@ -43,8 +43,8 @@ public class Disponibilite implements  Serializable{
     //Getter et setter
     public DisponibiliteId getId() {return id;}
     public void setId(DisponibiliteId id) {this.id = id;}
-    public int getQte() {return qte;}
-    public void setQte(int qte) {this.qte = qte;}
+    public int getQteDispo() {return qteDispo;}
+    public void setQteDispo(int qte) {this.qteDispo = qte;}
     public Article getArticle() {return article;}
     public void setArticle(Article article) {this.article = article;}
     public Magasin getIdMagasin() {return magasin;}

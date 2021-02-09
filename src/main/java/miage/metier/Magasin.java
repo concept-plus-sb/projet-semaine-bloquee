@@ -42,6 +42,9 @@ public class Magasin implements Serializable {
     @OneToMany(mappedBy = "magasin", cascade = CascadeType.ALL)
     Set<Creneau> creneaux =  new HashSet<>();
     
+    @OneToMany(mappedBy = "magasin", cascade = CascadeType.ALL)
+    Set<Client> clients =  new HashSet<>();
+    
     //Constructeur
     public Magasin() {}
     public Magasin(int idMagasin, String libelleMagasin) {

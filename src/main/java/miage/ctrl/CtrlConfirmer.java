@@ -8,24 +8,23 @@ package miage.ctrl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import miage.bd.ConfirmerCommande;
+import miage.bd.HibernateUtil;
 import miage.metier.Article;
-import miage.metier.EnumStockage;
-import miage.metier.MarqueA;
-import miage.metier.Nutriscore;
-import miage.metier.PrixVente;
-import miage.metier.SousFamille;
+import miage.metier.Creneau;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
- * @author 21606937
+ * @author estel
  */
-public class NewServlet extends HttpServlet {
+public class CtrlConfirmer extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,23 +35,22 @@ public class NewServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    //create new session
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */ 
-            HttpSession session=request.getSession(true);
-            HashMap<Article,Integer> panier= new HashMap<Article,Integer>();
-            MarqueA marquea = new MarqueA(10, "m_test");
-            SousFamille sf=new SousFamille("sf_test");
-            PrixVente prix = new PrixVente(1.2f);
-            Nutriscore nu= new Nutriscore(14, "nutriscore", "description");
-            Article a = new Article(2, "Biscuits bio aux céréales", 0, "g", "kg", EnumStockage.normal, 0, "france", "composition", "Carrefour", sf, marquea, prix, nu);
-            panier.put(a,2);
-            session.setAttribute("panier",panier);
-            RequestDispatcher rd = request.getRequestDispatcher("gotopaniertemp");
-            rd.forward(request, response);
+            /* TODO output your page here. You may use following sample code. */
+            int id = Integer.parseInt(request.getParameter("idCre"));
+            
+            //ConfirmerCommande.ajoutPlaceOccupee(id);
+            
+            HashMap<Article, Integer> paniertemp = new HashMap<Article, Integer>();
+            HttpSession session = request.getSession(true);
+            paniertemp = (HashMap<Article, Integer>)session.getAttribute("panier");
+                
+                
+            
+            
         }
     }
 
