@@ -34,10 +34,7 @@
          </div> <%} %>
      </div>
      <!-- Product Pricing -->
-    <div class="product-price">
-        <% out.print("<span> Prix :"+a.getPrixVente().getPrix()+"</span>"); %>
-      <a href="#" class="cart-btn">Ajouter au panier</a>
-    </div>
+    
   </div>
   <!-- Right Column -->
   <div class="right-column">
@@ -53,9 +50,7 @@
          <% out.print("<p>"+a.getComposition() +"</p>");
          %>       
     </div>
-
- 
-      </div>
+      
       <!-- label Configuration -->
       <div class="label-config">
         <span>Type stockage</span>
@@ -84,14 +79,21 @@
                    <img data-image="black" src="img/NutriscoreC.png" alt="" height="31" weight="51">
                  <%break;
              case "D":%>
-                   <img data-image="black" src="img/NutriscoreD.png" alt="" height="31" weight="51">
+                  <img data-image="black" src="img/NutriscoreD.png" alt="" height="31" weight="51">
                  <%break;
              case "E":%>
                    <img data-image="black" src="img/NutriscoreE.png" alt="" height="31" weight="51">
                  <%break;
           }
           %>
+          </div>
         </div> 
+          <div class="product-price">
+        <% out.print("<span> Prix :"+a.getPrixVente().getPrix()+"€</span>");
+        out.print("<span> Prix :"+((a.getPrixVente().getPrix())/a.getContenance())*1000+" €/"+a.getUniteL() + "</span>"); %>
+
+      <a href="#" class="cart-btn">Ajouter au panier</a>
+    </div>
       </div>
     </div>
     
