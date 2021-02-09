@@ -11,9 +11,12 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -34,6 +37,10 @@ public class Client implements Serializable{
     
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     Set<Commande> commandes =  new HashSet<>();
+    
+    @ManyToOne(fetch = FetchType.EAGER) 
+    @JoinColumn(name="idMagasin")
+    Magasin magasin;
 
     //Constructeurs.
     public Client() {}

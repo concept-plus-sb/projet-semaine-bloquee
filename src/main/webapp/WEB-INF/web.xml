@@ -64,6 +64,10 @@
         <servlet-name>ServletCreneau</servlet-name>
         <servlet-class>miage.ctrl.ServletCreneau</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TestAjout</servlet-name>
+        <jsp-file>/jsp/TestAjout.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>viewPanier</servlet-name>
         <url-pattern>/viewPanier</url-pattern>
@@ -127,6 +131,10 @@
     <servlet-mapping>
         <servlet-name>ServletCreneau</servlet-name>
         <url-pattern>/ServletCreneau</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TestAjout</servlet-name>
+        <url-pattern>/TestAjout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
