@@ -41,42 +41,12 @@ public class ServletCreneau extends HttpServlet {
        
         String id = request.getParameter("idM"); // A récupérer comment? 
         
-//        try ( PrintWriter out = response.getWriter()) {
-//            /*----- Ecriture de la page XML -----*/
-//			out.println("<?xml version=\"1.0\"?>");
-//			out.println("<liste_creneaux>");
-//
-//			/*----- Récupération des paramètres -----*/
-//			String id = request.getParameter("idM");
-//                       
-//			try {
-//                            ArrayList<String> creneaux = Bd.afficherCreneau(Integer.parseInt(id));
-//                            
-//                            for (String m: creneaux){
-//                                out.println("<creneau><![CDATA[" + m + "]]></creneau>");
-//                            }
-//                        }
-//			catch (ClassNotFoundException | SQLException ex)
-//				{
-//                                    out.println("<creneau>Erreur - " + ex.getMessage() + "</creneau>");
-//				}
-//
-//			out.println("</liste_creneaux>");
-//        }
+
         try
             {
                 
-//                List<Creneau> l = Bd.afficherCreneau(Integer.parseInt(id));
-//                 for(Creneau c: l){
-//                                System.out.println(c.getHeureCreneau());
-//                            }
-                // affichage
-                //request.setAttribute("liste",Bd.afficherCreneau(1));
-//                System.out.println("Je suis ici !");
-//                for(Creneau c : Bd.afficherCreneau(1))
-//                    System.out.println("--> " + c.getHeureCreneau()+" le "+c.getJourSemaine());
-//                request.setAttribute("liste", "Ceci est un test !");
-               // Il faudrait déclarer une array list de msg d'or et faire un bd.lire mais la on va directement le mettre dans la variable
+
+                request.setAttribute("liste",Bd.afficherCreneau(1));
 
                 RequestDispatcher rd = request.getRequestDispatcher("creneau");
                 rd.forward(request, response);
