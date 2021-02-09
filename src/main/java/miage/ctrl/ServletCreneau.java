@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import miage.bd.Bd;
 import miage.metier.Client;
 import miage.metier.Creneau;
+import miage.metier.Magasin;
 
 /**
  *
@@ -38,15 +39,13 @@ public class ServletCreneau extends HttpServlet {
         HttpSession session = request.getSession(true);
         Client c = (Client)session.getAttribute("client");
         
-       
-        String id = request.getParameter("idM"); // A récupérer comment? 
+        Magasin m = c.getMagasin();
+        String id = request.getParameter(Integer.toString(m.getIdMagasin()));
         
 
         try
             {
-                
-
-                request.setAttribute("liste",Bd.afficherCreneau(1));
+                request.setAttribute("liste",Bd.afficherCreneau(Integer.parseInt(id)));
 
                 RequestDispatcher rd = request.getRequestDispatcher("creneau");
                 rd.forward(request, response);

@@ -44,12 +44,15 @@ public class Client implements Serializable{
 
     //Constructeurs.
     public Client() {}
-    public Client(String email, String motDePasse) {
+    public Client(String email, String motDePasse, Magasin magasin) {
         this.email = email;
         this.motDePasse = motDePasse;
+        this.magasin = magasin;
     }
     
     //Setter et Getter.
+    public Magasin getMagasin() {return magasin;}
+    public void setMagasin(Magasin magasin) {this.magasin = magasin;}
     public Set<Commande> getCommandes() {return commandes;}
     public void setCommandes(Set<Commande> commandes) {this.commandes = commandes;}
     public int getCodeCli() {return codeCli;}

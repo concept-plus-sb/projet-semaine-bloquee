@@ -38,9 +38,7 @@ public class ConfirmerCommande {
             
             Transaction t=session.beginTransaction();
             
-              
-                //c.setNbPlaceOccupee(c.getNbPlaceOccupee()+1);
-                
+            
                 session.save(c);
                 
                  
