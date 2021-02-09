@@ -1,0 +1,116 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 9 févr. 2021, 11:45:43
+    Author     : arsla
+*/
+@import url('https://fonts.googleapis.com/css?family=Poppins:20');
+body{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    background-attachment: fixed;
+}
+header
+{
+    position: relative;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 10px;
+    background: rgb(153, 237, 240);
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}
+.logo
+{
+    color: #069370;
+    font-size: 36px;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 20px;
+    background: #ccc;
+    text-align: center;
+    box-sizing: border-box;
+    float: left;
+    font-weight: 70px;
+    text-decoration: none;
+}
+nav{
+    float: right;
+}
+.clearfix
+{
+    clear: both;
+}
+nav ul{
+    margin: 0px;
+    padding: 0;
+    display: flex;
+}
+nav ul li{
+    list-style: none;
+}
+nav ul li a{
+    display: block;
+    margin: 10px;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #262626;
+}
+nav ul li a.active,
+nav ul li a:hover
+{
+    background: #069370;
+    color: #fff;
+    transition: .5s;
+}
+@media (max-width:1200px)
+{
+    header{
+        margin:20px;
+    }
+}
+
+@media (max-width:800px)
+{
+    .menu-toggle{
+        display: block;
+        width: 40px;
+        height: 40px;
+        margin: 10px;
+        background: #ccc;
+        float: right;
+        cursor: pointer;
+        text-align: center;
+        font-size: 30px;
+        color:#069370
+    }
+    .menu-toggle::before
+    {
+        content: '\f0c9';
+        font-family:fontAwesome;
+        line-height: 40px;
+    }
+    .menu-toggle.active::before
+    {
+        content: '\f00d';
+    }
+    nav{
+        display: none;
+    }
+    nav.active{
+        display: block;
+        width: 100%;
+    }
+    nav.active ul {
+        display: block;
+    }
+    nav.active ul li a{
+        margin: 0;
+    }
+}
