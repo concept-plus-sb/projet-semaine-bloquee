@@ -59,6 +59,16 @@ public class Client implements Serializable{
     public String getMotDePasse() {return motDePasse;}
     public void setMotDePasse(String motDePasse) {this.motDePasse = motDePasse;}
 
+    public Magasin getMagasin() {
+        return magasin;
+    }
+
+    public void setMagasin(Magasin magasin) {
+        this.magasin = magasin;
+    }
+    
+    
+
     //HashCode et Equals.
     @Override
     public int hashCode() {

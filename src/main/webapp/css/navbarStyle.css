@@ -110,7 +110,4 @@ nav ul li a:hover
     nav.active ul {
         display: block;
     }
-    nav.active ul li a{
-        margin: 0;
-    }
 }

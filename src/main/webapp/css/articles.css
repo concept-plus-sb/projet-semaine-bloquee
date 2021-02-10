@@ -7,8 +7,6 @@ and open the template in the editor.
     Created on : 9 févr. 2021, 16:22:28
     Author     : arsla
 */
-
-@import url('https://fonts.googleapis.com/css?family=Ubuntu:400,500?700');
 body{
     margin:0;
     padding:3%;
@@ -24,7 +22,7 @@ body{
     width: auto;
     height: auto;
     margin:0 auto;
-    display: grid;
+    /*display: grid;*/
     /*grid-template-columns: repeat(auto-fit, minmax(300px,1fr));*/
     grid-template-columns: 20% 20% 20% 20% 20%;
     grid-gap: 10px;
@@ -83,12 +81,6 @@ img {
     height: auto;
   }
 
-.container .box .prix{
-    float:right;
-    border: solid;
-    padding: 10px;
-}
-
 .basket
 {
     content: '\f291';
@@ -100,65 +92,10 @@ img {
 {
     display: flex;
     justify-content:space-between;  
-    margin: 20px;
+    margin: 0 20px;
 }
 
-
-/*btn panier*/
-form {
-    width: 300px;
-    margin: 0 auto;
-    text-align: center;
-    padding-top: 50px;
-  }
-  
-  .value-button {
-    display: inline-block;
-    border: 1px solid #ddd;
-    width: 20px;
-    text-align: center;
-    vertical-align: middle;
-    padding: 11px 0;
-    background: #eee;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  
-  .value-button:hover {
-    cursor: pointer;
-  }
-  
-  form #decrease {
-    margin-right: -4px;
-    border-radius: 8px 0 0 8px;
-  }
-  
-  form #increase {
-    margin-left: -4px;
-    border-radius: 0 8px 8px 0;
-  }
-  
-  form #input-wrap {
-    margin: 0px;
-    padding: 0px;
-  }
-  
-  input#number {
-    text-align: center;
-    border: none;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    margin: 0px;
-    width: 40px;
-    height: 40px;
-  }
-  
-  input[type=number]::-webkit-inner-spin-button,
-  input[type=number]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-  }
+.addToCart input{
+    width: 30%;
+    height: 30px;
+}

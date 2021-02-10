@@ -106,7 +106,7 @@
       <!--<a href="CtrlAjouterArt" class="cart-btn">-->
           Ajouter au panier</a>
           
-          <a href="articles"> Retour </a> 
+          <a href="newArticles"> Retour </a> 
     </div>
       </div>
     </div>
