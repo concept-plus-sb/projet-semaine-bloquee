@@ -5,10 +5,6 @@
         <servlet-class>miage.ctrl.viewPanier</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>gotopaniertemp</servlet-name>
-        <jsp-file>/jsp/GoToPanierTemp.jsp</jsp-file>
-    </servlet>
-    <servlet>
         <servlet-name>panier</servlet-name>
         <jsp-file>/jsp/panier.jsp</jsp-file>
     </servlet>
@@ -83,10 +79,6 @@
     <servlet-mapping>
         <servlet-name>viewPanier</servlet-name>
         <url-pattern>/viewPanier</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>gotopaniertemp</servlet-name>
-        <url-pattern>/gotopaniertemp</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>panier</servlet-name>

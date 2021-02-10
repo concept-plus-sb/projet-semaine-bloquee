@@ -41,7 +41,8 @@
                     </ul>
                 </div>
                 <div class="d-flex">
-                    <a class="navbar-brand" href="jsp/GoToPanierTemp.jsp">
+                    <a class="navbar-brand" href="http://localhost:8080/projet-semaine-bloquee/panier">
+                        <!-- href="jsp/GoToPanierTemp.jsp" -->
                         <img src="img/126083.png" alt="" width="40" height="34">
                     </a>
                     <%//si la session existe, calcule le prix total
@@ -55,7 +56,7 @@
                             }
                             out.println("<span id='prixPanier'>"+prixTotal+"&euro;</span>");
                         }else{//sinon affiche 0
-                            out.println(0);
+                            out.println("<span>0&euro;</span>");
                         }
                     %>
                 </div>
