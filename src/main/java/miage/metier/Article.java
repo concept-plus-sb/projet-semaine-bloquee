@@ -57,9 +57,9 @@ public class Article implements Serializable {
     @JoinColumn(name="IdSousFamille")
     SousFamille sousfamille;
     
-    @ManyToOne
-    @JoinColumn(name = "IdMarque")
-    private MarqueA marqueProprietaire; 
+//    @ManyToOne
+//    @JoinColumn(name = "IdMarque")
+//    private MarqueA marqueProprietaire; 
     
     @ManyToMany(mappedBy = "articles",fetch = FetchType.EAGER)
     private Set<LabelQualite> label = new HashSet(0);
@@ -97,7 +97,7 @@ public class Article implements Serializable {
         this.composition = composition;
         this.marqueP = marqueP;
         this.sousfamille = sousfamille;
-        this.marqueProprietaire = marqueProprietaire;
+//        this.marqueProprietaire = marqueProprietaire;
         this.prixVente = prixVente;
         this.nutriscore = nutriscore;
     }
@@ -124,8 +124,8 @@ public class Article implements Serializable {
     public void setComposition(String composition) {this.composition = composition;}
     public String getMarqueP() {return marqueP;}
     public void setMarqueP(String marqueP) {this.marqueP = marqueP;}
-    public MarqueA getMarqueProprietaire() {return marqueProprietaire;}
-    public void setMarqueProprietaire(MarqueA marqueProprietaire) {this.marqueProprietaire = marqueProprietaire;}
+//    public MarqueA getMarqueProprietaire() {return marqueProprietaire;}
+//    public void setMarqueProprietaire(MarqueA marqueProprietaire) {this.marqueProprietaire = marqueProprietaire;}
     public Set<LabelQualite> getLabel() {return label;}
     public void setLabel(Set<LabelQualite> label) {this.label = label;}
     public PrixVente getPrixVente() {return prixVente;}

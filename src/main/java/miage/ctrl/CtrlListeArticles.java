@@ -12,7 +12,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import miage.bd.ListeArticles;
+import miage.metier.Client;
 
 /**
  *
@@ -32,15 +34,17 @@ public class CtrlListeArticles extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession(true);
+        Client c = (Client)session.getAttribute("client");
         try {
-            request.setAttribute("liste", ListeArticles.listeArticlesByMagasin(1));
+            request.setAttribute("liste", ListeArticles.listeArticlesByMagasin(c.getMagasin().getIdMagasin()));
             
-            RequestDispatcher rd = request.getRequestDispatcher("articles");
+            RequestDispatcher rd = request.getRequestDispatcher("newArticles");
             
             rd.forward(request, response);
         }catch(Exception e){
             request.setAttribute("msg_erreur", e.getMessage());
-            RequestDispatcher rd = request.getRequestDispatcher("articles");
+            RequestDispatcher rd = request.getRequestDispatcher("newArticles");
             rd.forward(request, response);
             
         }
