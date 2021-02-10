@@ -18,7 +18,6 @@ import miage.metier.Article;
 import miage.metier.EnumStockage;
 import miage.metier.MarqueA;
 import miage.metier.Nutriscore;
-import miage.metier.PrixVente;
 import miage.metier.SousFamille;
 
 /**

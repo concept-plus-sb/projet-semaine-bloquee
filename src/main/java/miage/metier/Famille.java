@@ -28,7 +28,7 @@ public class Famille implements Serializable{
     //relations
     //ajouter colonne étrangère dans Demande.
     //pas besoin de préciser le type du colonne. il va chercher.
-    @ManyToOne(fetch = FetchType.LAZY) //ou @ManyToOne(fetch = FetchType.EAGER) => une seule requete pour charger l'objet et l (this is question8)
+    @ManyToOne(fetch = FetchType.EAGER) //ou @ManyToOne(fetch = FetchType.EAGER) => une seule requete pour charger l'objet et l (this is question8)
     @JoinColumn(name="IdRayon")
     Rayon rayon;
     

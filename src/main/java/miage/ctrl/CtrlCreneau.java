@@ -6,6 +6,8 @@
 package miage.ctrl;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.RequestDispatcher;
@@ -42,6 +44,9 @@ public class CtrlCreneau extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        DateFormat formatDate = new SimpleDateFormat("dd/mm/yyyy");
+        DateFormat formatHeure = new SimpleDateFormat("HH:mm");
         
         String action = request.getParameter("action");
         HttpSession session = request.getSession(true);
@@ -88,14 +93,15 @@ public class CtrlCreneau extends HttpServlet {
                 
                 
                     if(idradio == null){
-                        request.setAttribute("liste",AfficherCreneau.afficherCreneau(1));
-                        request.setAttribute("listeIndispo",AfficherCreneau.afficherCreneauINDISPO(1));
+                        request.setAttribute("liste",AfficherCreneau.afficherCreneau(id));
+                        request.setAttribute("listeIndispo",AfficherCreneau.afficherCreneauINDISPO(id));
                         RequestDispatcher rd1 = request.getRequestDispatcher("creneau");
                         rd1.forward(request, response);  
                     }else{
                         session1.beginTransaction();
                         Creneau cr= session1.get(Creneau.class, Integer.parseInt(idradio));
-                        session.setAttribute("radio", cr.getJourSemaine()+" à "+cr.getHeureCreneau());
+                        //DATEHEURE-modifs
+                        session.setAttribute("radio", formatDate.format(cr.getDateHeureCreneau())+" à "+formatDate.format(cr.getDateHeureCreneau()));
                         RequestDispatcher rd1 = request.getRequestDispatcher("conf");//PB
                         rd1.forward(request, response);  
                     }

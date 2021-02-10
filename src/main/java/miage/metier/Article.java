@@ -43,6 +43,7 @@ public class Article implements Serializable {
     private String origine;
     private String composition; 
     private String marqueP;
+    private float prixVente;
     
     //Références et relations.
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
@@ -57,16 +58,12 @@ public class Article implements Serializable {
     @JoinColumn(name="IdSousFamille")
     SousFamille sousfamille;
     
-//    @ManyToOne
-//    @JoinColumn(name = "IdMarque")
-//    private MarqueA marqueProprietaire; 
+    @ManyToOne
+    @JoinColumn(name = "IdMarque")
+    private MarqueA marqueProprietaire; 
     
     @ManyToMany(mappedBy = "articles",fetch = FetchType.EAGER)
     private Set<LabelQualite> label = new HashSet(0);
-    
-    @ManyToOne
-    @JoinColumn(name = "prixV")
-    private PrixVente prixVente;
     
     @ManyToOne
     @JoinColumn(name = "idN")
@@ -75,17 +72,16 @@ public class Article implements Serializable {
     @OneToMany(mappedBy = "article", fetch = FetchType.EAGER)
     private Set<Photo> photos = new HashSet(0);
 
-    @OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "article", fetch = FetchType.EAGER)
     private Set<EAN> eans = new HashSet(0);
-
-    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
-    @MapKeyJoinColumn(name = "CodePromo")
-    private Map<Promotion, QuantitePromo> qtePromo = new HashMap<>();
     
+    @ManyToOne
+    @JoinColumn(name = "codePromo")
+    private Promotion promotion;
     
     //Constructeur
     public Article() {}
-    public Article(int codeA, String libelleA, float contenance, String uniteM, String uniteL, EnumStockage typeStockage, int nbDose, String origine, String composition, String marqueP, SousFamille sousfamille, MarqueA marqueProprietaire, PrixVente prixVente, Nutriscore nutriscore) {
+    public Article(int codeA, String libelleA, float contenance, String uniteM, String uniteL, EnumStockage typeStockage, int nbDose, String origine, String composition, String marqueP, SousFamille sousfamille, MarqueA marqueProprietaire, float prixVente, Nutriscore nutriscore) {
         this.codeA = codeA;
         this.libelleA = libelleA;
         this.contenance = contenance;
@@ -97,7 +93,7 @@ public class Article implements Serializable {
         this.composition = composition;
         this.marqueP = marqueP;
         this.sousfamille = sousfamille;
-//        this.marqueProprietaire = marqueProprietaire;
+        this.marqueProprietaire = marqueProprietaire;
         this.prixVente = prixVente;
         this.nutriscore = nutriscore;
     }
@@ -127,24 +123,24 @@ public class Article implements Serializable {
     public void setComposition(String composition) {this.composition = composition;}
     public String getMarqueP() {return marqueP;}
     public void setMarqueP(String marqueP) {this.marqueP = marqueP;}
-//    public MarqueA getMarqueProprietaire() {return marqueProprietaire;}
-//    public void setMarqueProprietaire(MarqueA marqueProprietaire) {this.marqueProprietaire = marqueProprietaire;}
+    public MarqueA getMarqueProprietaire() {return marqueProprietaire;}
+    public void setMarqueProprietaire(MarqueA marqueProprietaire) {this.marqueProprietaire = marqueProprietaire;}
     public Set<LabelQualite> getLabel() {return label;}
     public void setLabel(Set<LabelQualite> label) {this.label = label;}
-    public PrixVente getPrixVente() {return prixVente;}
-    public void setPrixVente(PrixVente prixVente) {this.prixVente = prixVente;}
+    public float getPrixVente() {return prixVente;}
+    public void setPrixVente(float prixVente) {this.prixVente = prixVente;}
     public Nutriscore getNutriscore() {return nutriscore;}
     public void setNutriscore(Nutriscore nutriscore) {this.nutriscore = nutriscore;}
     public Set<Photo> getPhotos() {return photos;}
     public void setPhotos(Set<Photo> photos) {this.photos = photos;}
     public Set<EAN> getEans() {return eans;}
     public void setEans(Set<EAN> eans) {this.eans = eans;}
-    public Map<Promotion, QuantitePromo> getQtePromo() {return qtePromo;}
-    public void setQtePromo(Map<Promotion, QuantitePromo> qtePromo) {this.qtePromo = qtePromo;}
     public Map<Commande, QteArticle> getQteArticles() {return qteArticles;}
     public void setQteArticles(Map<Commande, QteArticle> qteArticles) {this.qteArticles = qteArticles;}
     public SousFamille getSousfamille() {return sousfamille;}
     public void setSousfamille(SousFamille sousfamille) {this.sousfamille = sousfamille;}
+    public Promotion getPromotion() {return promotion;}
+    public void setPromotion(Promotion promotion) {this.promotion = promotion;}
     
     
     //HashCode et Equals

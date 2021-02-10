@@ -25,11 +25,6 @@ public class EAN {
     private long EAN;
     private String DescriptionEAN;
     
-    @ManyToMany
-    @JoinTable(name = "AvoirDate",
-            joinColumns = @JoinColumn(name="EAN"), 
-            inverseJoinColumns = @JoinColumn(name = "dateDebut"))
-    private Set<Calendrier> calendriers = new HashSet(0);
     
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="codeA")
@@ -51,8 +46,6 @@ public class EAN {
     public void setEAN(long EAN) {this.EAN = EAN;}
     public String getDescriptionEAN() {return DescriptionEAN;}
     public void setDescriptionEAN(String Description) {this.DescriptionEAN = Description;}
-    public Set<Calendrier> getCalendriers() {return calendriers;}
-    public void setCalendriers(Set<Calendrier> calendriers) {this.calendriers = calendriers;}
     
 
     //hashCode & equals 

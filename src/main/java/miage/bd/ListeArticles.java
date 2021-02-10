@@ -43,7 +43,7 @@ public class ListeArticles {
                 ArticleDto articleDto = new ArticleDto();
                 articleDto.setCodeArticle(a.getCodeA());
                 articleDto.setLibelle(a.getLibelleA());
-                articleDto.setPrixUnitaire(a.getPrixVente().getPrix());
+                articleDto.setPrixUnitaire(a.getPrixVente());
                 for(Photo p : a.getPhotos()){
                     if(p.isImgPrincipal()){
                         articleDto.setPhoto(p.getLien());

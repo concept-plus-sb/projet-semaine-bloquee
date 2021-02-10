@@ -35,7 +35,7 @@ public class Client implements Serializable{
     private int codeCli;
     private String email, motDePasse;
     
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
     Set<Commande> commandes =  new HashSet<>();
     
     @ManyToOne(fetch = FetchType.EAGER) 

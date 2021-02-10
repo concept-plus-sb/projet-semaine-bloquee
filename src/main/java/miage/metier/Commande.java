@@ -34,18 +34,25 @@ public class Commande implements Serializable {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="codecom")
     private int CodeCom;
+    private EnumEtatCom etatCom;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="codeCli")
     private Client client;
     
     @OneToMany(mappedBy = "commande", cascade = CascadeType.ALL)
     @MapKeyJoinColumn(name = "codeA")
     private Map<Article, QteArticle> qteArticles = new HashMap<>();
-
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="idCreneau")
+    private Creneau creneau;
+    
     //Constructeurs.
     public Commande() {}
-    public Commande(Client client) {this.client = client;}
+    //public Commande(Client client) {this.client = client;}
+    public Commande(EnumEtatCom etatCom, Client client) {this.etatCom = etatCom;this.client = client;}
+    
     
     //Setter et Getter.
     public int getCodeCom() {return CodeCom;}
@@ -54,6 +61,10 @@ public class Commande implements Serializable {
     public void setClient(Client client) {this.client = client;}
     public Map<Article, QteArticle> getQteArticles() {return qteArticles;}
     public void setQteArticles(Map<Article, QteArticle> qteArticles) {this.qteArticles = qteArticles;}
+    public EnumEtatCom getEtatCom() {return etatCom;}
+    public void setEtatCom(EnumEtatCom etatCom) {this.etatCom = etatCom;}
+    public Creneau getCreneau() {return creneau;}
+    public void setCreneau(Creneau creneau) {this.creneau = creneau;}
     
     //HashCode et Equals.
     @Override
