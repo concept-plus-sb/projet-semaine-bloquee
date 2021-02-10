@@ -55,6 +55,7 @@ public class TestHibernate
                                     System.out.println(a.getCodeArticle());
                                     System.out.println(a.getLibelle());
                                     System.out.println(a.getPhoto());
+                                    System.out.println(a.getQteDisponible());
                                 }
                             }catch(Exception e){
                                 System.out.println(e.getMessage());

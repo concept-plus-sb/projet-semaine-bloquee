@@ -94,12 +94,15 @@
                         out.println("<a href='CtrlPageArticle?article="+a.getCodeArticle()+"'>");
                         out.print("<img src='"+a.getPhoto()+"' alt='' class='img-fluid'>");
                         out.println("</a>");
-                            out.print("<div class='ajouter'>");
-                                                               
-                                out.print("<input Style='width: 30%;height: 30px;' type='number' name='' id='' min='0'>");
+                            out.print("<div class='row ajouter'>");            
+                                if(a.getQteDisponible() <= 0){
+                                    out.print("<h7 class='card-title'>Article bientôt disponible</h7>");                                      
+                                }else{
+                                    out.print("<input Style='width: 30%;height: 30px;' type='number' name='' id='' min='0'>");
+                                    out.print("<a href='CtrlAjouterArt?idA="+a.getCodeArticle()+"' class='btn btn-primary'><i class='bi bi-basket'></i></a>");
+                                }
                             out.print("</div>");
-                            out.print("<a href='CtrlAjouterArt?idA="+a.getCodeArticle()+"' class='btn btn-primary'><i class='bi bi-basket'></i></a>"); 
-                            out.print("<div class='prix'>");
+                            out.print("<div class='row prix'>");
                                 out.print("<h6 class='card-title'>"+a.getPrixUnitaire()+"<span> €</span></h6>"); 
                             out.print("</div>");
 

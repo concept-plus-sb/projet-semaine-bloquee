@@ -18,6 +18,7 @@ public class ArticleDto implements Serializable {
     //point = contenance + unité de mesure
     private String point;
     private float prixUnitaire, prixAuKilo;
+    private int qteDisponible;
 
     public ArticleDto() {
     }    
@@ -77,6 +78,15 @@ public class ArticleDto implements Serializable {
     public void setPrixAuKilo(float prixAuKilo) {
         this.prixAuKilo = prixAuKilo;
     }
+
+    public int getQteDisponible() {
+        return qteDisponible;
+    }
+
+    public void setQteDisponible(int qteDisponible) {
+        this.qteDisponible = qteDisponible;
+    }    
+    
 
     @Override
     public int hashCode() {

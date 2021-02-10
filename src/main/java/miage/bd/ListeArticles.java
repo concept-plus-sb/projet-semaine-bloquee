@@ -40,6 +40,7 @@ public class ListeArticles {
             
             for(HashMap.Entry<Article, Disponibilite> map: maliste.entrySet()){
                 Article a = map.getKey();
+                Disponibilite disponibilite = map.getValue();
                 ArticleDto articleDto = new ArticleDto();
                 articleDto.setCodeArticle(a.getCodeA());
                 articleDto.setLibelle(a.getLibelleA());
