@@ -80,6 +80,10 @@
         <servlet-name>conf</servlet-name>
         <jsp-file>/jsp/Confirmer.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>CtrlListeArticlesAccueil</servlet-name>
+        <servlet-class>miage.ctrl.CtrlListeArticlesAccueil</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>viewPanier</servlet-name>
         <url-pattern>/viewPanier</url-pattern>
@@ -159,6 +163,10 @@
     <servlet-mapping>
         <servlet-name>conf</servlet-name>
         <url-pattern>/conf</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlListeArticlesAccueil</servlet-name>
+        <url-pattern>/CtrlListeArticlesAccueil</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

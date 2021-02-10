@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.persistence.Query;
 import miage.bd.HibernateUtil;
 import miage.dto.ArticleDto;
+import miage.dto.ArticlePromoDto;
 import miage.metier.Article;
 import miage.metier.Disponibilite;
 import miage.metier.Magasin;
@@ -57,6 +58,14 @@ public class ListeArticles {
 
             return articleDtos;
         }
+    }
+    
+    public static List<ArticlePromoDto> ListeArticlesPromoByMagasin(int id){
+        
+        ArrayList<ArticlePromoDto> articlePromoDtos = new ArrayList<>();
+        
+        return articlePromoDtos;
+        
     }
 
 
