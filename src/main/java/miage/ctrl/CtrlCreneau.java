@@ -83,13 +83,16 @@ public class CtrlCreneau extends HttpServlet {
             case "valider": 
                 String idradio = request.getParameter("btnradio");
                 System.out.println(idradio);
+                session.setAttribute("radiot", Integer.parseInt(idradio));
+                
+                System.out.println(idradio);
                 try (Session session1 = HibernateUtil.getSessionFactory().getCurrentSession())
                 {
                 
                 
                     if(idradio == null){
-                        request.setAttribute("liste",AfficherCreneau.afficherCreneau(1));
-                        request.setAttribute("listeIndispo",AfficherCreneau.afficherCreneauINDISPO(1));
+                        request.setAttribute("liste",AfficherCreneau.afficherCreneau(Integer.parseInt(idradio)));
+                        request.setAttribute("listeIndispo",AfficherCreneau.afficherCreneauINDISPO(Integer.parseInt(idradio)));
                         RequestDispatcher rd1 = request.getRequestDispatcher("creneau");
                         rd1.forward(request, response);  
                     }else{
@@ -127,13 +130,13 @@ public class CtrlCreneau extends HttpServlet {
             case "confirmer": 
                  try
                 {   
-                    System.out.println("TEST");
-                    int idcre = (int)session.getAttribute("radio");
+                    session = request.getSession(true);
+                    int idcre = (int)session.getAttribute("radiot");
                     System.out.println(idcre);
                     ConfirmerCommande.ajoutPlaceOccupee(idcre);
-                    System.out.println("TEST2");
                     
                     HashMap<Article,Integer> p = (HashMap<Article,Integer>)session.getAttribute("panier");
+                    
                     System.out.println(p);
                     ConfirmerCommande.creerCommande(p, c);
                     System.out.println("TEST3");

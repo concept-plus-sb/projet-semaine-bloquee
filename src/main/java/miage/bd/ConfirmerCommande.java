@@ -66,22 +66,28 @@ public class ConfirmerCommande {
             //Je crée la commande 
             Commande c = new Commande(cli);
             session.save(c);
+            System.out.println("Le magasin");
+            System.out.println(m.getIdMagasin());
 
-
-            //Je crée la hashmap de la commande
+            //Je récupère la hashmap de la commande que j'ai crée et qui est vide
             Map<Article, QteArticle> cmd = c.getQteArticles();
             
             //Je parcours la hashmap du panier pour récupérer l'article et la quantité. 
             for(HashMap.Entry <Article, Integer> map: panier.entrySet()){
                 Article a = map.getKey();
+                System.out.println(a.getCodeA());
                 int qte = map.getValue();
-                
+                System.out.println("coucou2");
                 // Je récupère la disponbilité de l'article et je la décrémente
+                
+                
                 a.getDispo().get(m).decQteDispo(qte);
                 
+                System.out.println("testtest");
                 session.save(a);
                 // Je crée la class QteArticle pour une commande
                 QteArticle q = new QteArticle(qte, a, c);
+                System.out.println(q.getArticle().getCodeA());
                 //J'alimente la hashmap de la commande avec pour chaque article sa quantité
                 cmd.put(a, q);
             }

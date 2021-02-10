@@ -56,6 +56,7 @@ public class TestHibernate
                                     System.out.println(a.getLibelle());
                                     System.out.println(a.getPhoto());
                                 }
+//                            ConfirmerCommande.creerCommande();
                             }catch(Exception e){
                                 System.out.println(e.getMessage());
                             }
