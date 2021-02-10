@@ -74,7 +74,7 @@
                         Map.Entry<Article, Integer> entry = lst.previous();  
                         Set<Photo> photos=entry.getKey().getPhotos();
                         out.println("<div>");
-                        out.println("<form methode='get' action='ctrlSupprimer'>");
+                        out.println("<form methode='post' action='ServletCreneau'>");
                         out.println("<table>");
                         out.println("<tr><td rowspan='4'><img data-image='' src='"+photos.iterator().next().getLien()+"' alt=''></td><td colspan='2'>"+entry.getKey().getLibelleA()+"</td><td></td></tr>");
                         //out.println("<tr><td rowspan='4'><img src='img/biscuits_1.jpg' alt='img-biscuits' width='200'/></td><td colspan='2'>"+entry.getKey().getLibelleA()+"</td><td></td></tr>");
@@ -87,14 +87,15 @@
                                 + "<button type='submit' formaction='ctrlOperationArticlePanier' name = 'articlePanierBtn' id='btn_substract'>-</button>"
                                 + "<span id='"+i+"'> "+map.getValue()+" </span>"
                                 + "<button type='submit' formaction='ctrlOperationArticlePanier' name = 'articlePanierBtn' id='btn_add'>+</button></td></tr>");*/
-                        out.println("</table></form></div><br/>");
+                        out.println("</table></div><br/>");
                         prixTotal = prixTotal + entry.getKey().getPrixVente().getPrix()*entry.getValue();
                         i++;
                     }
                     out.println("<div id='footer'><div id='price_total'>Prix total: "+prixTotal+"&euro;</div>");
                     /*<input type="button" value="Valider mon panier" id="btn_submit" />*/
                     out.println("</div></div></div>");
-                    out.println("<input type='button' onclick='window.location.href='http://localhost:8080/projet-semaine-bloquee/ServletCreneau';' value='valider'/>");
+                    out.println("<button type='submit' name ='action' value='afficher'>Confirmer</button>");
+                    out.println("</form>");
                 }
             %>
         <input type="button" onclick="window.location.href='http://localhost:8080/projet-semaine-bloquee/newservlet';" value="retour"/>
