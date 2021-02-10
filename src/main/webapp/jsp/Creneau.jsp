@@ -61,16 +61,19 @@
             for(Creneau c: l)
             out.println("<tr><td><input type='radio' value="+c.getIdCreneau()+" name='btnradio'><label></td><td>"+c.getJourSemaine()+" à "+c.getHeureCreneau()+"</td></tr></label>");
             out.println("</table></div>");
-            
+        %>
+        
+        <input type="submit" class="btnvalider" value="Valider"> 
+        </form>
+        
+        <%
             List<Creneau> indispo = (List<Creneau>)request.getAttribute("listeIndispo");
                out.println("<div class='indispo'><p>Créneaux  indisponibles</p><table>");
             for(Creneau c: indispo)
             out.println("<tr><td>"+c.getJourSemaine()+" à "+c.getHeureCreneau()+"</td></tr>");
             out.println("</table></div>");
         %>
-
-        <input type="submit" class="btnvalider" value="Valider"> 
         </div>
-        </form>
+
     </body>
 </html>
