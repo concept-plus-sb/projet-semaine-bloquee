@@ -2,9 +2,12 @@ package miage.bd;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.Query;
 import miage.bd.HibernateUtil;
+import miage.dto.ArticleDto;
 import miage.metier.Article;
 import miage.metier.Disponibilite;
 import miage.metier.Magasin;
@@ -22,9 +25,10 @@ import org.hibernate.Session;
  */
 public class ListeArticles {
 
-    public static List<Article> listeArticlesByMagasin(int id){
+    public static List<ArticleDto> listeArticlesByMagasin(int id){
         
-        ArrayList<Article> articles = new ArrayList<>();
+        ArrayList<ArticleDto> articleDtos = new ArrayList<>();
+        
         
         /*----- Ouverture de la session -----*/
         try ( Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
@@ -32,31 +36,26 @@ public class ListeArticles {
             
             Magasin m = session.get(Magasin.class, id);
             
-            Query q = session.createQuery("from Disponibilite d where d.magasin = \""+m.getIdMagasin()+"\" and d.qte>0");
+            Map<Article, Disponibilite> maliste = m.getDispo();
             
-            List<Disponibilite> ldisponibilite = (List<Disponibilite>)q.getResultList();
-            
-            for(Disponibilite d : ldisponibilite){
-                articles.add(d.getArticle());
+            for(HashMap.Entry<Article, Disponibilite> map: maliste.entrySet()){
+                Article a = map.getKey();
+                ArticleDto articleDto = new ArticleDto();
+                articleDto.setCodeArticle(a.getCodeA());
+                articleDto.setLibelle(a.getLibelleA());
+                articleDto.setPrixUnitaire(a.getPrixVente().getPrix());
+                for(Photo p : a.getPhotos()){
+                    if(p.isImgPrincipal()){
+                        articleDto.setPhoto(p.getLien());
+                    }                    
+                }
+                articleDtos.add(articleDto);
+                
             }
 
-            return articles;
+            return articleDtos;
         }
     }
 
-        public static void PhotobyArticle(int codeA){
-        /*----- Ouverture de la session -----*/
-        try ( Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
-            session.beginTransaction();
-            
-            Article a = session.get(Article.class, codeA);
-            
-            Photo p = session.get(Photo.class, a.getCodeA());
-            
-//            for(Disponibilite d : ldisponibilite){
-//                System.out.println(d.getArticle().getLibelleA());
-//            }
 
-        }
-        }
 }

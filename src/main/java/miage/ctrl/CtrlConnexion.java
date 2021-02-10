@@ -81,7 +81,7 @@ public class CtrlConnexion extends HttpServlet {
                         session.setAttribute("client", p_c_client);
                     
                         //Rediriger vers la page articles
-                        RequestDispatcher rd = request.getRequestDispatcher("articles");
+                        RequestDispatcher rd = request.getRequestDispatcher("CtrlListeArticles");
                         rd.forward(request, response);
                 
                     //Si mpp et email non valide.

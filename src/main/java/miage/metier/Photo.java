@@ -23,6 +23,7 @@ public class Photo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPhoto;
     private String lien;
+    private Boolean imgPrincipal;
     
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="codeA")
@@ -43,6 +44,15 @@ public class Photo {
     public void setLien(String lien) {this.lien = lien;}
     public Article getArticle() {return article;}
     public void setArticle(Article article) {this.article = article;}
+    
+    public Boolean isImgPrincipal() {
+        return imgPrincipal;
+    }
+
+    public void setImgPrincipal(Boolean imgPrincipal) {
+        this.imgPrincipal = imgPrincipal;
+    }
+    
     
     //Equals et HashCode.
     @Override

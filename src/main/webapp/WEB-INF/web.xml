@@ -5,10 +5,6 @@
         <servlet-class>miage.ctrl.viewPanier</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>gotopaniertemp</servlet-name>
-        <jsp-file>/jsp/GoToPanierTemp.jsp</jsp-file>
-    </servlet>
-    <servlet>
         <servlet-name>panier</servlet-name>
         <jsp-file>/jsp/panier.jsp</jsp-file>
     </servlet>
@@ -77,16 +73,12 @@
         <jsp-file>/jsp/PageArticle.jsp</jsp-file>
     </servlet>
     <servlet>
-        <servlet-name>conf</servlet-name>
-        <jsp-file>/jsp/Confirmer.jsp</jsp-file>
+        <servlet-name>newArticles</servlet-name>
+        <jsp-file>/jsp/newArticles.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>viewPanier</servlet-name>
         <url-pattern>/viewPanier</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>gotopaniertemp</servlet-name>
-        <url-pattern>/gotopaniertemp</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>panier</servlet-name>
@@ -157,8 +149,8 @@
         <url-pattern>/pagearticle</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>conf</servlet-name>
-        <url-pattern>/conf</url-pattern>
+        <servlet-name>newArticles</servlet-name>
+        <url-pattern>/newArticles</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

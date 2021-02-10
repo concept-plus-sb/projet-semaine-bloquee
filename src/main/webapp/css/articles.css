@@ -22,7 +22,7 @@ body{
     width: auto;
     height: auto;
     margin:0 auto;
-    display: grid;
+    /*display: grid;*/
     /*grid-template-columns: repeat(auto-fit, minmax(300px,1fr));*/
     grid-template-columns: 20% 20% 20% 20% 20%;
     grid-gap: 10px;
