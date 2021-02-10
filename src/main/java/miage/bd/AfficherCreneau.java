@@ -22,7 +22,7 @@ private static Connection cx = null;
 /**
  * Les créneaux disponibles
  * @param id
- * @return List<Creneau> 
+ * @return
  */
 
     public static List<Creneau> afficherCreneau(int id){
@@ -51,7 +51,7 @@ private static Connection cx = null;
     /**
      * Les créneaux indisponibles
      * @param id
-     * @return List<Creneau> 
+     * @return List 
      */
         public static List<Creneau> afficherCreneauINDISPO(int id){
         
