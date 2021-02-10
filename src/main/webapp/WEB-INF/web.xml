@@ -76,6 +76,10 @@
         <servlet-name>PageArticle</servlet-name>
         <jsp-file>/jsp/PageArticle.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>conf</servlet-name>
+        <jsp-file>/jsp/Confirmer.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>viewPanier</servlet-name>
         <url-pattern>/viewPanier</url-pattern>
@@ -151,6 +155,10 @@
     <servlet-mapping>
         <servlet-name>PageArticle</servlet-name>
         <url-pattern>/pagearticle</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>conf</servlet-name>
+        <url-pattern>/conf</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -85,18 +85,26 @@ public class CtrlCreneau extends HttpServlet {
                 System.out.println(idradio);
                 try (Session session1 = HibernateUtil.getSessionFactory().getCurrentSession())
                 {
-                session1.beginTransaction();
                 
-                Creneau cr= session1.get(Creneau.class, Integer.parseInt(idradio));
-                System.out.println(cr.getIdCreneau());
                 
-                session.setAttribute("radio", cr.getJourSemaine()+" à "+cr.getHeureCreneau());
-                RequestDispatcher rd1 = request.getRequestDispatcher("conf");//PB
-                rd1.forward(request, response);
+                    if(idradio == null){
+                        request.setAttribute("liste",AfficherCreneau.afficherCreneau(1));
+                        request.setAttribute("listeIndispo",AfficherCreneau.afficherCreneauINDISPO(1));
+                        RequestDispatcher rd1 = request.getRequestDispatcher("creneau");
+                        rd1.forward(request, response);  
+                    }else{
+                        session1.beginTransaction();
+                        Creneau cr= session1.get(Creneau.class, Integer.parseInt(idradio));
+                        session.setAttribute("radio", cr.getJourSemaine()+" à "+cr.getHeureCreneau());
+                        RequestDispatcher rd1 = request.getRequestDispatcher("conf");//PB
+                        rd1.forward(request, response);  
+                    }
                 }
                 catch(Exception e){
                     
                     request.setAttribute("msg_erreur", e.getMessage());
+                    request.setAttribute("liste",AfficherCreneau.afficherCreneau(1));
+                    request.setAttribute("listeIndispo",AfficherCreneau.afficherCreneauINDISPO(1));
                     RequestDispatcher rd = request.getRequestDispatcher("creneau");
                     rd.forward(request, response);
                 }
@@ -107,7 +115,7 @@ public class CtrlCreneau extends HttpServlet {
 //             On retourne dans la page créneau pour faire un autre choix.
             case "annuler":
                 request.setAttribute("liste",AfficherCreneau.afficherCreneau(1));
-                    request.setAttribute("listeIndispo",AfficherCreneau.afficherCreneauINDISPO(1));
+                request.setAttribute("listeIndispo",AfficherCreneau.afficherCreneauINDISPO(1));
 
                 RequestDispatcher rd2 = request.getRequestDispatcher("creneau");
                 rd2.forward(request, response);
@@ -131,14 +139,14 @@ public class CtrlCreneau extends HttpServlet {
                 catch(Exception e)
                 {
                     request.setAttribute("msg_erreur", e.getMessage());
-                    RequestDispatcher rd = request.getRequestDispatcher("Conf");
+                    RequestDispatcher rd = request.getRequestDispatcher("conf");
                     rd.forward(request, response);
                 }
                 
             break;
         }
 
-           }
+    }
    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
