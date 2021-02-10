@@ -13,6 +13,7 @@ import miage.metier.Client;
 import miage.metier.Commande;
 import miage.metier.Creneau;
 import miage.metier.Disponibilite;
+import miage.metier.EnumEtatCom;
 import miage.metier.Magasin;
 import miage.metier.QteArticle;
 import miage.metier.QteArticleID;
@@ -64,7 +65,7 @@ public class ConfirmerCommande {
             //Je récupère le magasin du client
             Magasin m = cli.getMagasin();
             //Je crée la commande 
-            Commande c = new Commande(cli);
+            Commande c = new Commande(EnumEtatCom.encours, cli);
             session.save(c);
 
 

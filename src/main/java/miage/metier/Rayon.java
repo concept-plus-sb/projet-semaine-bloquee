@@ -20,7 +20,7 @@ public class Rayon implements Serializable{
     private String libelleR;
     
     //Références
-    @OneToMany(mappedBy = "rayon", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "rayon", fetch = FetchType.EAGER)
     Set<Famille> familles = new HashSet<>(0);
     
     //constructor

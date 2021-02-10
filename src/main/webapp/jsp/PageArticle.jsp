@@ -97,8 +97,8 @@
           </div>
         </div> 
           <div class="product-price">
-        <% out.print("<span> Prix :"+a.getPrixVente().getPrix()+"€</span>");
-        out.print("<span> Prix :"+((a.getPrixVente().getPrix())/a.getContenance())*1000+" €/"+a.getUniteL() + "</span>"); %>
+        <% out.print("<span> Prix :"+a.getPrixVente()+"€</span>");
+        out.print("<span> Prix :"+((a.getPrixVente())/a.getContenance())*1000+" €/"+a.getUniteL() + "</span>"); %>
         
         <%
             out.println("<a href=\"CtrlAjouterArt?idA="+a.getCodeA()+"\" class=\"cart-btn\">");
@@ -107,6 +107,8 @@
           Ajouter au panier</a>
           
           <a href="CtrlListeArticles"> Retour </a> 
+          <a href="CtrlPageChoixMagasin"> Magasin </a> 
+
     </div>
       </div>
     </div>

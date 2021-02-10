@@ -33,7 +33,7 @@ public class MarqueA implements Serializable {
     
     //References
 //    @OneToMany
-//     @JoinColumn(name="CodeA")
+//    @JoinColumn(name="CodeA")
 //    Set<Article> articles= new HashSet<>(0);
     
     //Constructeurs

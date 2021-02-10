@@ -81,8 +81,12 @@
         <jsp-file>/jsp/Confirmer.jsp</jsp-file>
     </servlet>
     <servlet>
-        <servlet-name>CtrlListeArticlesAccueil</servlet-name>
-        <servlet-class>miage.ctrl.CtrlListeArticlesAccueil</servlet-class>
+        <servlet-name>CtrlPageChoixMagasin</servlet-name>
+        <servlet-class>miage.ctrl.CtrlPageChoixMagasin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChoixMagasin</servlet-name>
+        <jsp-file>/jsp/ChoixMagasin.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>viewPanier</servlet-name>
@@ -165,8 +169,12 @@
         <url-pattern>/conf</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CtrlListeArticlesAccueil</servlet-name>
-        <url-pattern>/CtrlListeArticlesAccueil</url-pattern>
+        <servlet-name>CtrlPageChoixMagasin</servlet-name>
+        <url-pattern>/CtrlPageChoixMagasin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChoixMagasin</servlet-name>
+        <url-pattern>/choixmagasin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

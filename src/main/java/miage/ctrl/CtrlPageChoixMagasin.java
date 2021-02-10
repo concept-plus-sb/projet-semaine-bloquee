@@ -7,24 +7,19 @@ package miage.ctrl;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import miage.metier.Article;
-import miage.metier.EnumStockage;
-import miage.metier.MarqueA;
-import miage.metier.Nutriscore;
-import miage.metier.SousFamille;
+import miage.bd.ClassArticle;
+import miage.bd.ListeMagasins;
 
 /**
  *
- * @author 21606937
+ * @author Ismail
  */
-public class NewServlet extends HttpServlet {
+public class CtrlPageChoixMagasin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,30 +30,17 @@ public class NewServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    //create new session
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            HttpSession session=request.getSession(true);
-            HashMap<Article,Integer> panier= new HashMap<Article,Integer>();
-            /*MarqueA marquea = new MarqueA(10, "mark 1");
-            MarqueA marqueb = new MarqueA(11, "mark 2");
-            SousFamille sf1=new SousFamille("sous famille 1");
-            SousFamille sf2=new SousFamille("sous famille 2");
-            PrixVente prix1 = new PrixVente(1.2f);
-            PrixVente prix2 = new PrixVente(1.63f);
-            Nutriscore nu1= new Nutriscore(14, "nutriscore 1", "description 1");
-            Nutriscore nu2= new Nutriscore(15, "nutriscore 2", "description 2");
-            Article a1 = new Article(2, "Biscuits bio aux céréales", 0, "g", "kg", EnumStockage.normal, 0, 
-                    "france", "composition", "Carrefour", sf1, marquea, prix1, nu1);
-            Article a2 = new Article(3, "Sauce Pesto Rosso", 200, "g", "kg", EnumStockage.normal, 0, 
-                    "france", "composition", "Barilla", sf2, marqueb, prix2, nu2);
-            panier.put(a1,2);
-            panier.put(a2,1);
-            session.setAttribute("panier",panier);*/
-            RequestDispatcher rd = request.getRequestDispatcher("panier");
-            rd.forward(request, response);
+        try (PrintWriter out = response.getWriter()) {
+        System.out.println("test 1");
+        request.setAttribute("liste",ListeMagasins.listeMagasins() );
+        RequestDispatcher rd= request.getRequestDispatcher("choixmagasin");
+                    System.out.println("test 2");
+
+        rd.forward(request, response);
+
         }
     }
 

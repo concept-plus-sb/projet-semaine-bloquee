@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +27,7 @@ public class SousFamille implements Serializable{
     @ManyToMany(mappedBy = "sousfamilles")
     Set<Famille> familles = new HashSet<>(0);
     
-   @OneToMany(mappedBy = "sousfamille", cascade = CascadeType.ALL)
+   @OneToMany(mappedBy = "sousfamille", fetch = FetchType.EAGER)
     Set<Article> articles = new HashSet<>(0);
     
     //constructor
