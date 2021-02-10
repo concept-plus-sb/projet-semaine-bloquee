@@ -40,10 +40,12 @@ public class ListeArticles {
             
             for(HashMap.Entry<Article, Disponibilite> map: maliste.entrySet()){
                 Article a = map.getKey();
+                Disponibilite disponibilite = map.getValue();
                 ArticleDto articleDto = new ArticleDto();
                 articleDto.setCodeArticle(a.getCodeA());
                 articleDto.setLibelle(a.getLibelleA());
                 articleDto.setPrixUnitaire(a.getPrixVente().getPrix());
+                articleDto.setQteDisponible(disponibilite.getQteDispo());
                 for(Photo p : a.getPhotos()){
                     if(p.isImgPrincipal()){
                         articleDto.setPhoto(p.getLien());

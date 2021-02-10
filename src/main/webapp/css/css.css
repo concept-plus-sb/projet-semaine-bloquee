@@ -10,11 +10,11 @@ and open the template in the editor.
 
 
 .ajouter{
-    float: left;
+    float: right;
 }
 
 .prix{
-    float: right;
+    float: left;
 }
 
 .prixPanier{
@@ -29,4 +29,13 @@ and open the template in the editor.
     width: 30%;
     height: 30px;
 }
+
+h7{
+    font-weight: bold;
+    font-style: oblique;
+}
+
+
+
+
 
