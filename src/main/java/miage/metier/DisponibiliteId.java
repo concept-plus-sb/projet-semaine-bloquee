@@ -18,6 +18,10 @@ public class DisponibiliteId implements Serializable {
     
     //Constructeur
     public DisponibiliteId(){};
+    public DisponibiliteId(int codeA, int idMagasin) {
+        this.codeA = codeA;
+        this.idMagasin = idMagasin;
+    }
     
     //getters et setters
     public int getCodeA() {return codeA;}

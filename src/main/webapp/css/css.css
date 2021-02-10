@@ -21,6 +21,10 @@ and open the template in the editor.
     color:white;
 }
 
+.dispo{
+    float: left; 
+    width: 500px;
+}
 .quantite{
     width: 30%;
     height: 30px;

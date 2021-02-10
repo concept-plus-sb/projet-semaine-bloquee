@@ -6,18 +6,29 @@
 package miage.bd;
 
 import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.http.HttpSession;
 import miage.metier.Article;
 import miage.metier.Client;
+import miage.metier.Commande;
 import miage.metier.Creneau;
+import miage.metier.Disponibilite;
+import miage.metier.Magasin;
+import miage.metier.QteArticle;
+import miage.metier.QteArticleID;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 /**
  *
- * @author estel
+ * @author Afaf
  */
 public class ConfirmerCommande {
+    
+    /**
+     * On incrémente le nombre de place occuppée du créneau
+     * @param idCre 
+     */
     public static void ajoutPlaceOccupee(int idCre){
         try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()){
             
@@ -28,26 +39,58 @@ public class ConfirmerCommande {
                 
                 session.save(c);
                 t.commit();
-                
-                
         }
     }
     
-    public static void creerCommande(HashMap<Article,Integer> panier, Client c){
+ 
+    /**
+     * On crée la commande en BD
+     * @param panier
+     * @param cli 
+     */
+    public static void creerCommande(HashMap<Article,Integer> panier, Client cli){
         try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()){
             
-            Transaction t=session.beginTransaction();
             
-              
-                //c.setNbPlaceOccupee(c.getNbPlaceOccupee()+1);
+            Transaction t=session.beginTransaction();
+//            // POUR TESTER JE CREER UN PANIER FICTIF
+//            HashMap<Article,Integer> panier= new HashMap<Article,Integer>();
+//            Client cli = session.get(Client.class, 1);
+//            
+//            
+//            Article a1 = session.get(Article.class, 1);
+//            panier.put(a1,3);
+                    
+            //Je récupère le magasin du client
+            Magasin m = cli.getMagasin();
+            //Je crée la commande 
+            Commande c = new Commande(cli);
+            session.save(c);
+
+
+            //Je crée la hashmap de la commande
+            Map<Article, QteArticle> cmd = c.getQteArticles();
+            
+            //Je parcours la hashmap du panier pour récupérer l'article et la quantité. 
+            for(HashMap.Entry <Article, Integer> map: panier.entrySet()){
+                Article a = map.getKey();
+                int qte = map.getValue();
                 
-                session.save(c);
+                // Je récupère la disponbilité de l'article et je la décrémente
+                a.getDispo().get(m).decQteDispo(qte);
                 
-                 
-                
-                t.commit();
-                
-                
+                session.save(a);
+                // Je crée la class QteArticle pour une commande
+                QteArticle q = new QteArticle(qte, a, c);
+                //J'alimente la hashmap de la commande avec pour chaque article sa quantité
+                cmd.put(a, q);
+            }
+            
+            //J'ajoute la hahsmap de la commande dans la commande du client. 
+
+            t.commit();
         }
     }
+    
+    
 }

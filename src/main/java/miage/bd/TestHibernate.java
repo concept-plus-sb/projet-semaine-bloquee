@@ -1,24 +1,14 @@
 package miage.bd;
 
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import miage.dto.ArticleDto;
-import miage.metier.Creneau;
 import miage.metier.Article;
 import miage.metier.Photo;
 import miage.metier.SousFamille;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.query.Query;
-
 
 /**
  * Hibernate.
@@ -34,23 +24,7 @@ public class TestHibernate
 //            t.commit();
 //            }
     }
-//    public static void afficherCreneau(int id){
-//        
-//        /*----- Ouverture de la session -----*/
-//		try (Session session = HibernateUtil.getSessionFactory().getCurrentSession())
-//			{
-//                            session.beginTransaction();
-//                            
-//                            Creneau c = session.get(Creneau.class, id);
-//                            
-//                            if(c.getNbPlaceOccupee()<c.getNbPlaceTotal()){
-//                            System.out.println("Créneau : "+ id + " Heure : "+ c.getHeureCreneau() + " Jour : "+c.getJourSemaine());
-//                            }
-//                            
-//                            
-//                        }
-//        
-//    }
+
     
    /* public static ArrayList<QteArticle> showPanierArticles(HashMap<Article,Integer> panier){
         try (Session session = HibernateUtil.getSessionFactory().getCurrentSession())
@@ -72,7 +46,6 @@ public class TestHibernate
 		try (Session session = HibernateUtil.getSessionFactory().getCurrentSession())
 			{
 			/*----- enregistrement des employés -----*/
-                          //enregistrerSousFamille();
                             
                         /*----- liste articles -----*/
                             try{
@@ -86,34 +59,6 @@ public class TestHibernate
                             }catch(Exception e){
                                 System.out.println(e.getMessage());
                             }
-                            
-                        
-                          //enregistrerSousFamille();
-//                          try{
-//                            //Bd.afficherCreneau(1);
-//                          }catch(Exception e){
-//                              System.out.println("Erreur"+e.getMessage());
-//                          }
-                            
-                        /*----- information des employés -----*/
-                            //infoEmploye(1);
-                            
-                        /*----- enregistrer des demandes -----*/
-                            //enregDemande();   
-                            
-                        /*----- enregistrer des demandes -----*/    
-                            //enregistrerServices();
-                            
-                            
-                        /*----- enregistrer des demandes -----*/
-                            //infoDemandes(1);
-                            //infoDemandes(2);
-                        
-			/**
-			 * ...
-			 */
-                        
-                        //System.out.println("Bonjour !");
 			}
 
 		/*----- Exit -----*/

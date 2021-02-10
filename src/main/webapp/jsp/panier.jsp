@@ -87,17 +87,18 @@
                                 + "<button type='submit' formaction='ctrlOperationArticlePanier' name = 'articlePanierBtn' id='btn_substract'>-</button>"
                                 + "<span id='"+i+"'> "+map.getValue()+" </span>"
                                 + "<button type='submit' formaction='ctrlOperationArticlePanier' name = 'articlePanierBtn' id='btn_add'>+</button></td></tr>");*/
-                        out.println("</table></div><br/>");
+                        out.println("</table><form></div><br/>");
                         prixTotal = prixTotal + entry.getKey().getPrixVente().getPrix()*entry.getValue();
                         i++;
                     }
                     out.println("<div id='footer'><div id='price_total'>Prix total: "+prixTotal+"&euro;</div>");
                     /*<input type="button" value="Valider mon panier" id="btn_submit" />*/
-                    out.println("</form>");
                     out.println("</div></div></div>");
-                    out.println("<button type='submit' name='action' value='afficher'>Confirmer</button>");
+                    out.println("<form method='post' action='ServletCreneau'>");
+                    out.println("<button type='submit' name='action' value='afficher'>Confirmer</button></form>");
                 }
             %>
-        <input type="button" onclick="window.location.href='http://localhost:8080/projet-semaine-bloquee/articles.jsp';" value="retour"/>
+        <input type="button" onclick="window.location.href='http://localhost:8080/projet-semaine-bloquee/newservlet';" value="retour"/>
+        <input type="button" onclick="window.location.href='http://localhost:8080/projet-semaine-bloquee/ServletCreneau?action=afficher';" value="valider"/>
     </body>
 </html>

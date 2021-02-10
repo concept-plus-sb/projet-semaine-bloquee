@@ -32,7 +32,7 @@
             
             /*out.print("<h2>");
             for(ArticleDto a : articleDtos){
-                out.print(a.getCodeArticle());
+                out.print(a.getPhoto());
             }
             out.print("</h2>");*/
 
@@ -91,8 +91,9 @@
                 out.print("<div class='card'>");
                     out.print("<div class='card-body'>");
                         out.print("<h5 class='card-title'>"+a.getLibelle()+"</h5>");
-                        out.print("<a href='CtrlPageArticle?article="+a.getCodeArticle()+"'>");
-                        out.print("<img src='"+a.getPhoto()+"' alt='' class='img-fluid'> </a>");
+                        out.println("<a href='CtrlPageArticle?article="+a.getCodeArticle()+"'>");
+                        out.print("<img src='"+a.getPhoto()+"' alt='' class='img-fluid'>");
+                        out.println("</a>");
                             out.print("<div class='ajouter'>");
                                                                
                                 out.print("<input Style='width: 30%;height: 30px;' type='number' name='' id='' min='0'>");
