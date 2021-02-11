@@ -24,12 +24,9 @@ import org.hibernate.query.Query;
 public class ListeMagasins {
         public static List<Magasin> listeMagasins(){
                 try ( Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
-                    System.out.println("test 3");
                  session.beginTransaction();
                  Query q=session.createQuery("from Magasin m", Magasin.class);
-                 System.out.println("test 4");
                  List<Magasin> magasins=q.getResultList();
-                                     System.out.println("test 5");
 
                  return magasins;
         }

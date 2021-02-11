@@ -43,6 +43,10 @@ header
 nav{
     float: right;
 }
+
+.nav item:hover{
+    text-decoration: underline;
+}
 .clearfix
 {
     clear: both;

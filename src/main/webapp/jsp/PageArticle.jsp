@@ -4,6 +4,7 @@
     Author     : Ismail
 --%>
 
+<%@page import="java.util.HashMap"%>
 <%@page import="miage.metier.EnumStockage"%>
 <%@page import="miage.metier.Client"%>
 <%@page import="miage.metier.Magasin"%>
@@ -18,11 +19,54 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
         <link rel="stylesheet" href="css/articleStyle.css"/>
         <title>Page article</title>
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="img/E.png" alt="" width="60" height="54">
+                </a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="CtrlListeArticlesAccueil">% Promotions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="CtrlListeArticles">Tous les articles</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="d-flex">
+                    <a class="navbar-brand" href="Deconnexion">
+                        <img src="img/deco.png" alt="" width="40" height="34">
+                    </a>
+                    <a class="navbar-brand" href="panier">
+                        <img src="img/126083.png" alt="" width="40" height="34">
+                    </a>
+                    <%//si la session existe, calcule le prix total
+                        session = request.getSession(true);
+                        if (session.getAttribute("panier")!=null){
+                            HashMap<Article, Integer> panier = new HashMap<>();
+                            panier = (HashMap<Article, Integer>)session.getAttribute("panier");
+                            float prixTotal = 0;
+                            for(HashMap.Entry <Article,Integer> map: panier.entrySet()){
+                                prixTotal = prixTotal + map.getKey().getPrixVente()*map.getValue();
+                            }
+                            out.println("<span id='prixPanier'>"+Math.round(((float)prixTotal)*100.)/100.+"&euro;</span>");
+                        }else{//sinon affiche 0
+                            out.println(0);
+                        }
+                    %>
+                </div>
+                <div>      
+                </div>
+            </div>
+        </nav>
         
   <main class="container">
     <%
@@ -139,7 +183,7 @@
           
             out.print("<span> Prix : "+a.getPrixVente()+"€</span>");
             java.text.DecimalFormat df = new java.text.DecimalFormat("0.##");
-            out.print("<span> Prix au kilo :"+df.format((float)((a.getPrixVente())/a.getContenance())*1000)+" €/"+a.getUniteL() + "</span>"); %>
+            out.print("<span> Prix au kilo :"+Math.pow((float)((a.getPrixVente())/a.getContenance())*1000,2)+" €/"+a.getUniteL() + "</span>"); %>
         
         
         

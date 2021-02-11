@@ -15,7 +15,8 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class QteArticleID implements Serializable {
     //Propriétes
-    private int codeCom, codeA;
+    private int codeCom; 
+    private int codeA;
 
     //Constructeurs.
     public QteArticleID() { }

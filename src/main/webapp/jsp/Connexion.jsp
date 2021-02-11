@@ -24,7 +24,7 @@
                 </a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
+                        <!--<li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Accueil</a>
                         </li>
                         <li class="nav-item dropdown">
@@ -37,7 +37,7 @@
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
-                        </li>
+                        </li>-->
                     </ul>
                 </div>
                 <div class="d-flex">

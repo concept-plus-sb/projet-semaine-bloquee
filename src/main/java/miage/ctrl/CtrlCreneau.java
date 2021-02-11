@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
-import java.util.Map;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,13 +18,10 @@ import javax.servlet.http.HttpSession;
 import miage.bd.AfficherCreneau;
 import miage.bd.ConfirmerCommande;
 import miage.bd.HibernateUtil;
-import miage.bd.ListeArticles;
 import miage.metier.Article;
 import miage.metier.Client;
 import miage.metier.Creneau;
-import miage.metier.Magasin;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 /**
  *
@@ -46,27 +42,26 @@ public class CtrlCreneau extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        DateFormat formatDate = new SimpleDateFormat("dd/mm/yyyy");
+        DateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
         DateFormat formatHeure = new SimpleDateFormat("HH:mm");
         
         String action = request.getParameter("action");
         HttpSession session = request.getSession(true);
         
         Client c = (Client)session.getAttribute("client");
-        Magasin m = c.getMagasin();
-        int id = c.getMagasin().getIdMagasin();
+        int id = (int)session.getAttribute("idmagasin");
+        System.out.println(id);
        
         
         switch (action)
                 {
             
-            //Je viens de la page Panier et je vais vers la page Créneau
+            //Je viens de la page choixMagasin et je vais vers la page Créneau
             // Je fais appel à la méthode qui m'affiche la liste des créneaux disponibles et indisponibles.
             case "afficher":
 
                 try
                 {
-                    
                     request.setAttribute("liste",AfficherCreneau.afficherCreneau(id));
                     request.setAttribute("listeIndispo",AfficherCreneau.afficherCreneauINDISPO(id));
 
@@ -76,44 +71,41 @@ public class CtrlCreneau extends HttpServlet {
                 catch(Exception e)
                 {
                     request.setAttribute("msg_erreur", e.getMessage());
-                    RequestDispatcher rd = request.getRequestDispatcher("creneau");
+                    RequestDispatcher rd = request.getRequestDispatcher("CtrlListeArticles");
                     rd.forward(request, response);
                 }
             break; 
-            
             
             // Lorsqu'on valide le choix du créneau, on récupère le creneau et on passe 
             // dans la page confirmation
             case "valider": 
                 String idradio = request.getParameter("btnradio");
-                System.out.println(idradio);
-                session.setAttribute("radiot", Integer.parseInt(idradio));
-                
-                System.out.println(idradio);
+               
                 try (Session session1 = HibernateUtil.getSessionFactory().getCurrentSession())
                 {
-                
-                
-                    if(idradio == null){
-                        request.setAttribute("liste",AfficherCreneau.afficherCreneau(id));
-                        request.setAttribute("listeIndispo",AfficherCreneau.afficherCreneauINDISPO(id));
-                        RequestDispatcher rd1 = request.getRequestDispatcher("creneau");
+                    if(idradio == null)
+                    {
+                        request.setAttribute("msg_erreur", " Vous devez selectionner un créneau !");
+                        RequestDispatcher rd1 = request.getRequestDispatcher("ServletCreneau?action=afficher");
                         rd1.forward(request, response);  
-                    }else{
+                    }
+                    else
+                    {
                         session1.beginTransaction();
+                        
                         Creneau cr= session1.get(Creneau.class, Integer.parseInt(idradio));
-                        //DATEHEURE-modifs
+                        //Je met le créneau en session pour pouvoir l'utiliser lors de la création de commande.
+                        session.setAttribute("creneau", cr);
+                        
                         session.setAttribute("radio", formatDate.format(cr.getDateHeureCreneau())+" à "+formatHeure.format(cr.getDateHeureCreneau()));
-                        RequestDispatcher rd1 = request.getRequestDispatcher("conf");//PB
+                        RequestDispatcher rd1 = request.getRequestDispatcher("conf");
                         rd1.forward(request, response);  
                     }
                 }
                 catch(Exception e){
                     
                     request.setAttribute("msg_erreur", e.getMessage());
-                    request.setAttribute("liste",AfficherCreneau.afficherCreneau(1));
-                    request.setAttribute("listeIndispo",AfficherCreneau.afficherCreneauINDISPO(1));
-                    RequestDispatcher rd = request.getRequestDispatcher("creneau");
+                    RequestDispatcher rd = request.getRequestDispatcher("ServletCreneau?action=afficher");
                     rd.forward(request, response);
                 }
                 
@@ -122,12 +114,16 @@ public class CtrlCreneau extends HttpServlet {
 //            Lorsqu'on annule le choix du créneau dans la page confirmation
 //             On retourne dans la page créneau pour faire un autre choix.
             case "annuler":
-                request.setAttribute("liste",AfficherCreneau.afficherCreneau(1));
-                request.setAttribute("listeIndispo",AfficherCreneau.afficherCreneauINDISPO(1));
-
-                RequestDispatcher rd2 = request.getRequestDispatcher("creneau");
+                RequestDispatcher rd2 = request.getRequestDispatcher("ServletCreneau?action=afficher");
                 rd2.forward(request, response);
             break;
+            
+            //Lorsqu'on est dans la créneau et qu'on souhaite retourner sur le panier
+            case "retour":
+                RequestDispatcher rd3 = request.getRequestDispatcher("CtrlPageChoixMagasin");
+                rd3.forward(request, response);
+            break;
+               
             
 //            Lorsqu'on confirme le créneau, on incrémente son nb de place occuppée
 //             On crée la commande en BD
@@ -136,12 +132,13 @@ public class CtrlCreneau extends HttpServlet {
                  try
                 {   
                     session = request.getSession(true);
-                    int idcre = (int)session.getAttribute("radiot");
-                    ConfirmerCommande.ajoutPlaceOccupee(idcre);
+                    Creneau idcre = (Creneau)session.getAttribute("creneau");
+                    
+                    ConfirmerCommande.ajoutPlaceOccupee(idcre.getIdCreneau());
                     
                     HashMap<Article,Integer> p = (HashMap<Article,Integer>)session.getAttribute("panier");
                     
-                    ConfirmerCommande.creerCommande(p, c);
+                    ConfirmerCommande.creerCommande(p, c, idcre);
                     
                     session.removeAttribute("panier");
                     response.sendRedirect("CtrlListeArticles");
