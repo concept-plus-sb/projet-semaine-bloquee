@@ -34,7 +34,7 @@ public class ListeCommandes {
         try ( Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
             session.beginTransaction();
            
-            Query q=session.createQuery("SELECT c.CodeCom from Commande c, Creneau r where r.idCreneau=c.creneau and r.magasin= \""+id+"\"");
+            Query q=session.createQuery("SELECT c.CodeCom from Commande c, Creneau r where r.idCreneau=c.creneau and r.magasin= \""+id+"\" ORDER BY r.DateHeureCreneau");
   
             liste=(List<Integer>)q.getResultList();
             System.out.println("Voila voila");
