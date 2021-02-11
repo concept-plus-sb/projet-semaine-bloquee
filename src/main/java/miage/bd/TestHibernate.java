@@ -56,8 +56,10 @@ public class TestHibernate
 //                                    System.out.println(a.getLibelle());
 //                                    System.out.println(a.getPhoto());
 //                                    System.out.println(a.getQteDisponible());
+
 //                                }
                            // ConfirmerCommande.creerCommande();
+                                //System.out.println(AjouterArticle.Disponible(3,2));
                             }catch(Exception e){
                                 System.out.println(e.getMessage());
                             }
