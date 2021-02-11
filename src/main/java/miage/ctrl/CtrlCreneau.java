@@ -63,7 +63,6 @@ public class CtrlCreneau extends HttpServlet {
 
                 try
                 {
-                    
                     request.setAttribute("liste",AfficherCreneau.afficherCreneau(id));
                     request.setAttribute("listeIndispo",AfficherCreneau.afficherCreneauINDISPO(id));
 
@@ -78,7 +77,6 @@ public class CtrlCreneau extends HttpServlet {
                 }
             break; 
             
-            
             // Lorsqu'on valide le choix du créneau, on récupère le creneau et on passe 
             // dans la page confirmation
             case "valider": 
@@ -86,12 +84,16 @@ public class CtrlCreneau extends HttpServlet {
                
                 try (Session session1 = HibernateUtil.getSessionFactory().getCurrentSession())
                 {
-                    if(idradio == null){
+                    if(idradio == null)
+                    {
                         request.setAttribute("msg_erreur", " Vous devez selectionner un créneau !");
                         RequestDispatcher rd1 = request.getRequestDispatcher("ServletCreneau?action=afficher");
                         rd1.forward(request, response);  
-                    }else{
+                    }
+                    else
+                    {
                         session1.beginTransaction();
+                        
                         Creneau cr= session1.get(Creneau.class, Integer.parseInt(idradio));
                         //Je met le créneau en session pour pouvoir l'utiliser lors de la création de commande.
                         session.setAttribute("creneau", cr);

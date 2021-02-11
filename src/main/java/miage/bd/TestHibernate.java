@@ -49,15 +49,15 @@ public class TestHibernate
                             
                         /*----- liste articles -----*/
                             try{
-                                List<ArticleDto> articleDtos = ListeArticles.listeArticlesByMagasin(1);
-                                
-                                for(ArticleDto a : articleDtos){
-                                    System.out.println(a.getCodeArticle());
-                                    System.out.println(a.getLibelle());
-                                    System.out.println(a.getPhoto());
-                                    System.out.println(a.getQteDisponible());
-                                }
-                           // ConfirmerCommande.creerCommande();
+//                                List<ArticleDto> articleDtos = ListeArticles.listeArticlesByMagasin(1);
+//                                
+//                                for(ArticleDto a : articleDtos){
+//                                    System.out.println(a.getCodeArticle());
+//                                    System.out.println(a.getLibelle());
+//                                    System.out.println(a.getPhoto());
+//                                    System.out.println(a.getQteDisponible());
+//                                }
+                            //ConfirmerCommande.creerCommande();
                             }catch(Exception e){
                                 System.out.println(e.getMessage());
                             }
