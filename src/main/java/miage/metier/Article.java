@@ -45,7 +45,7 @@ public class Article implements Serializable {
     private float prixVente;
     
     //Références et relations.
-    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL, fetch = FetchType.EAGER )
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @MapKeyJoinColumn(name = "idMagasin")
     private Map<Magasin, Disponibilite> dispo = new HashMap<>();
     
@@ -55,11 +55,11 @@ public class Article implements Serializable {
     
     @ManyToOne(fetch = FetchType.EAGER) //ou @ManyToOne(fetch = FetchType.EAGER) => une seule requete pour charger l'objet et l (this is question8)
     @JoinColumn(name="IdSousFamille")
-    SousFamille sousfamille;
+    private SousFamille sousfamille;
     
-//    @ManyToOne
-//    @JoinColumn(name = "IdMarque")
-//    private MarqueA marqueProprietaire; 
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name = "IdMarque")
+    private MarqueA marqueA;
     
     @ManyToMany(mappedBy = "articles",fetch = FetchType.EAGER)
     private Set<LabelQualite> label = new HashSet(0);
@@ -80,7 +80,7 @@ public class Article implements Serializable {
     
     //Constructeur
     public Article() {}
-    public Article(int codeA, String libelleA, float contenance, String uniteM, String uniteL, EnumStockage typeStockage, int nbDose, String origine, String composition, String marqueP, SousFamille sousfamille, MarqueA marqueProprietaire, float prixVente, Nutriscore nutriscore) {
+    public Article(int codeA, String libelleA, float contenance, String uniteM, String uniteL, EnumStockage typeStockage, int nbDose, String origine, String composition, String marqueP, SousFamille sousfamille, MarqueA marqueA, float prixVente, Nutriscore nutriscore) {
         this.codeA = codeA;
         this.libelleA = libelleA;
         this.contenance = contenance;
@@ -92,7 +92,7 @@ public class Article implements Serializable {
         this.composition = composition;
         this.marqueP = marqueP;
         this.sousfamille = sousfamille;
-//        this.marqueProprietaire = marqueProprietaire;
+        this.marqueA = marqueA;
         this.prixVente = prixVente;
         this.nutriscore = nutriscore;
     }
@@ -122,8 +122,8 @@ public class Article implements Serializable {
     public void setComposition(String composition) {this.composition = composition;}
     public String getMarqueP() {return marqueP;}
     public void setMarqueP(String marqueP) {this.marqueP = marqueP;}
-//    public MarqueA getMarqueProprietaire() {return marqueProprietaire;}
-//    public void setMarqueProprietaire(MarqueA marqueProprietaire) {this.marqueProprietaire = marqueProprietaire;}
+    public MarqueA getMarqueProprietaire() {return marqueA;}
+    public void setMarqueProprietaire(MarqueA marqueProprietaire) {this.marqueA = marqueProprietaire;}
     public Set<LabelQualite> getLabel() {return label;}
     public void setLabel(Set<LabelQualite> label) {this.label = label;}
     public float getPrixVente() {return prixVente;}
