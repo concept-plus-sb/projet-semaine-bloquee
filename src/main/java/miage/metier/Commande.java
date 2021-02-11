@@ -51,6 +51,12 @@ public class Commande implements Serializable {
     //Constructeurs.
     public Commande() {}
     //public Commande(Client client) {this.client = client;}
+    public Commande(EnumEtatCom etatCom, Client client, Creneau creneau) {
+        this.etatCom = etatCom;
+        this.client = client;
+        this.creneau = creneau;
+    }
+    
     public Commande(EnumEtatCom etatCom, Client client) {this.etatCom = etatCom;this.client = client;}
     
     

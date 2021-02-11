@@ -29,7 +29,7 @@ public class QteArticle implements  Serializable{
     private Article article;
     
     @ManyToOne
-    @JoinColumn(name = "codeCom", insertable = false, updatable = false)
+    @JoinColumn(name = "CodeCom", insertable = false, updatable = false)
     private Commande commande;
 
     //Constructeurs.
