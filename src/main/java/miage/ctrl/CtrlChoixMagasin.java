@@ -34,14 +34,14 @@ public class CtrlChoixMagasin extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String p_i_idMagasin = (String)request.getParameter("idmagasin");
-            System.out.println(p_i_idMagasin); 
+//            System.out.println(p_i_idMagasin); 
             
             //Création session.
             HttpSession session = request.getSession(true);
-            session.setAttribute("idmagasin", p_i_idMagasin);
+            session.setAttribute("idmagasin", Integer.parseInt(p_i_idMagasin));
             
-            //Rediriger vers la page articles
-            RequestDispatcher rd = request.getRequestDispatcher("");
+            //Rediriger vers la page créneau
+            RequestDispatcher rd = request.getRequestDispatcher("ServletCreneau?action=afficher");
             rd.forward(request, response);
             
             

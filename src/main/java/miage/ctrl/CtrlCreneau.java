@@ -50,14 +50,14 @@ public class CtrlCreneau extends HttpServlet {
         HttpSession session = request.getSession(true);
         
         Client c = (Client)session.getAttribute("client");
-        Magasin m = c.getMagasin();
-        int id = c.getMagasin().getIdMagasin();
+        int id = (int)session.getAttribute("idmagasin");
+        System.out.println(id);
        
         
         switch (action)
                 {
             
-            //Je viens de la page Panier et je vais vers la page Créneau
+            //Je viens de la page choixMagasin et je vais vers la page Créneau
             // Je fais appel à la méthode qui m'affiche la liste des créneaux disponibles et indisponibles.
             case "afficher":
 

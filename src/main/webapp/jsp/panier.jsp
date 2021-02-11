@@ -74,7 +74,7 @@
                         Map.Entry<Article, Integer> entry = lst.previous();  
                         Set<Photo> photos=entry.getKey().getPhotos();
                         out.println("<div>");
-                        out.println("<form methode='get' action='ServletCreneau'>");
+                        out.println("<form methode='get' action='CtrlPageChoixMagasin'>");
                         out.println("<table>");
                         out.println("<tr><td rowspan='4'><img data-image='' src='"+photos.iterator().next().getLien()+"' alt=''></td><td colspan='2'>"+entry.getKey().getLibelleA()+"</td><td></td></tr>");
                         //out.println("<tr><td rowspan='4'><img src='img/biscuits_1.jpg' alt='img-biscuits' width='200'/></td><td colspan='2'>"+entry.getKey().getLibelleA()+"</td><td></td></tr>");
@@ -95,7 +95,7 @@
                     /*<input type="button" value="Valider mon panier" id="btn_submit" />*/
                     out.println("</div></div></div>");
                     out.println("<form method='post' action='ServletCreneau'>");
-                    out.println("<button type='submit' name='action' value='afficher'>Confirmer</button></form>");
+                    out.println("<button type='submit'>Confirmer</button></form>");
                 }
             %>
         <input type="button" onclick="window.location.href='http://localhost:8080/projet-semaine-bloquee/CtrlListeArticles';" value="retour"/>

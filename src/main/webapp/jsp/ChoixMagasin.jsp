@@ -37,7 +37,7 @@
             out.print("</select>");
            
         %> 
-           <input type="submit" value="Connexion"> 
+           <input type="submit" value="Confirmer"> 
         </form>
         
     </body>
