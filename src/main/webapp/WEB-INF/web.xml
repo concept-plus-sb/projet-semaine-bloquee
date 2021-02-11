@@ -92,6 +92,22 @@
         <servlet-name>CtrlChoixMagasin</servlet-name>
         <servlet-class>miage.ctrl.CtrlChoixMagasin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CtrlConnexionPrepa</servlet-name>
+        <servlet-class>miage.ctrl.CtrlConnexionPrepa</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConnexionPrepa</servlet-name>
+        <jsp-file>/jsp/ConnexionPrepa.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlListeCommandesPrepa</servlet-name>
+        <servlet-class>miage.ctrl.CtrlListeCommandesPrepa</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListeCommandesPrepa</servlet-name>
+        <jsp-file>/jsp/ListeCommandePrepa.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>viewPanier</servlet-name>
         <url-pattern>/viewPanier</url-pattern>
@@ -183,6 +199,22 @@
     <servlet-mapping>
         <servlet-name>CtrlChoixMagasin</servlet-name>
         <url-pattern>/CtrlChoixMagasin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlConnexionPrepa</servlet-name>
+        <url-pattern>/CtrlConnexionPrepa</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConnexionPrepa</servlet-name>
+        <url-pattern>/ConnexionPrepa</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlListeCommandesPrepa</servlet-name>
+        <url-pattern>/CtrlListeCommandesPrepa</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListeCommandesPrepa</servlet-name>
+        <url-pattern>/ListeCommandesPrepa</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
