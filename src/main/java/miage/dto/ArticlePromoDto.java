@@ -11,17 +11,18 @@ import java.io.Serializable;
  *
  * @author mamad
  */
-public class ArticleDto implements Serializable {
+public class ArticlePromoDto implements Serializable {
     
     private int CodeArticle;
-    private String photo, nutriscore, libelle;
+    private String photo, nutriscore, libelle, libellePromo;
     //point = contenance + unité de mesure
     private String point;
     private float prixUnitaire, prixAuKilo;
     private int qteDisponible;
+    private int pourcentage, rang;
 
-    public ArticleDto() {
-    }    
+    public ArticlePromoDto() {
+    }
 
     public int getCodeArticle() {
         return CodeArticle;
@@ -55,6 +56,14 @@ public class ArticleDto implements Serializable {
         this.libelle = libelle;
     }
 
+    public String getLibellePromo() {
+        return libellePromo;
+    }
+
+    public void setLibellePromo(String libellePromo) {
+        this.libellePromo = libellePromo;
+    }
+
     public String getPoint() {
         return point;
     }
@@ -85,13 +94,28 @@ public class ArticleDto implements Serializable {
 
     public void setQteDisponible(int qteDisponible) {
         this.qteDisponible = qteDisponible;
-    }    
-    
+    }
+
+    public int getPourcentage() {
+        return pourcentage;
+    }
+
+    public void setPourcentage(int pourcentage) {
+        this.pourcentage = pourcentage;
+    }
+
+    public int getRang() {
+        return rang;
+    }
+
+    public void setRang(int rang) {
+        this.rang = rang;
+    }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 29 * hash + this.CodeArticle;
+        int hash = 5;
+        hash = 67 * hash + this.CodeArticle;
         return hash;
     }
 
@@ -106,12 +130,13 @@ public class ArticleDto implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final ArticleDto other = (ArticleDto) obj;
+        final ArticlePromoDto other = (ArticlePromoDto) obj;
         if (this.CodeArticle != other.CodeArticle) {
             return false;
         }
         return true;
     }
+    
     
     
     

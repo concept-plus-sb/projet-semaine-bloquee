@@ -13,6 +13,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -39,11 +40,14 @@ public class Magasin implements Serializable {
     @MapKeyJoinColumn(name = "codeA")
     private Map<Article, Disponibilite> dispo = new HashMap<>();
     
-    @OneToMany(mappedBy = "magasin", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "magasin", fetch = FetchType.EAGER)
     Set<Creneau> creneaux =  new HashSet<>();
     
-    @OneToMany(mappedBy = "magasin", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "magasin", fetch = FetchType.EAGER)
     Set<Client> clients =  new HashSet<>();
+    
+    @OneToMany(mappedBy = "magasin", fetch = FetchType.EAGER)
+    Set<Preparateur> preparateurs =  new HashSet<>();
     
     //Constructeur
     public Magasin() {}
@@ -55,27 +59,18 @@ public class Magasin implements Serializable {
 
 
     //Getters et setters
-        public Map<Article, Disponibilite> getDispo() {return dispo;}
-
-    public void setDispo(Map<Article, Disponibilite> dispo) {
-        this.dispo = dispo;
-    }
-
-    public Set<Client> getClients() {
-        return clients;
-    }
-    public void setClients(Set<Client> clients) {
-        this.clients = clients;
-    }
-
-    public Set<Creneau> getCreneaux() {
-        return creneaux;
-    }
+    public Map<Article, Disponibilite> getDispo() {return dispo;}
+    public void setDispo(Map<Article, Disponibilite> dispo) {this.dispo = dispo;}
+    public Set<Client> getClients() {return clients;}
+    public void setClients(Set<Client> clients) {this.clients = clients;}
+    public Set<Creneau> getCreneaux() {return creneaux;}
     public void setCreneaux(Set<Creneau> creneaux) {this.creneaux = creneaux;}
     public int getIdMagasin() {return idMagasin;}
     public String getLibelleMagasin() {return libelleMagasin;}
     public void setIdMagasin(int idMagasin) {this.idMagasin = idMagasin;}
     public void setLibelleMagasin(String libelleMagasin) {this.libelleMagasin = libelleMagasin;}
+    public Set<Preparateur> getPreparateurs() {return preparateurs;}
+    public void setPreparateurs(Set<Preparateur> preparateurs) {this.preparateurs = preparateurs;}
     
     //HashCode et Equals
     @Override

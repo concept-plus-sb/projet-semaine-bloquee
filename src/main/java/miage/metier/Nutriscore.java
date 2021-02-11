@@ -41,7 +41,7 @@ public class Nutriscore implements Serializable {
     
     
     //Références et relations. 
-    @OneToMany(mappedBy = "nutriscore", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "nutriscore", fetch = FetchType.EAGER)
     private Set<Article> articles = new HashSet(0);
     
     //Getter et Setter.

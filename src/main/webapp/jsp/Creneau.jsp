@@ -4,6 +4,8 @@
     Author     : Afaf
 --%>
 
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="miage.metier.Creneau"%>
@@ -56,11 +58,14 @@
                     <form action="ServletCreneau?action=valider" method="post">
 
                     <%
+                        DateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
+                        DateFormat formatHeure = new SimpleDateFormat("HH:mm");
                         // Méthode getAttribute retourne un objet, or on souhaite une arrayList donc il faut le caster
                         List<Creneau> l = (List<Creneau>)request.getAttribute("liste");
                            out.println("<div class='dispo'><p>Créneaux disponibles</p><table>");
                         for(Creneau c: l)
-                        out.println("<tr><td><input type='radio' value="+c.getIdCreneau()+" name='btnradio'><label></td><td>"+c.getJourSemaine()+" à "+c.getHeureCreneau()+"</td></tr></label>");
+                        
+                        out.println("<tr><td><input type='radio' value="+c.getIdCreneau()+" name='btnradio'><label></td><td>"+formatDate.format(c.getDateHeureCreneau())+" à "+formatHeure.format(c.getDateHeureCreneau())+"</td><td class='nbplaces'>"+c.getNbPlaceOccupee()+"/"+c.getNbPlaceTotal()+" places occupées</td></tr></label>");
                         out.println("</table>");
                     %>
 
@@ -72,7 +77,7 @@
                         List<Creneau> indispo = (List<Creneau>)request.getAttribute("listeIndispo");
                            out.println("<div class='indispo'><p>Créneaux  indisponibles</p><table>");
                         for(Creneau c: indispo)
-                        out.println("<tr><td>"+c.getJourSemaine()+" à "+c.getHeureCreneau()+"</td></tr>");
+                        out.println("<tr><td>"+formatDate.format(c.getDateHeureCreneau())+" à "+formatHeure.format(c.getDateHeureCreneau())+"</td></tr>");
                         out.println("</table></div>");
                     %>
         </div>

@@ -82,13 +82,13 @@
                                 + "<button type='submit' formaction='ctrlOperationArticlePanier' name = 'articlePanierBtn' id='btn_del'>supprimer</button></td></tr>");*/
                         out.println("<tr><td colspan='2'>"+entry.getKey().getMarqueP()+"</td></tr>");
                         out.println("<tr><td colspan='2'>contenance: "+entry.getKey().getContenance()+"</td></tr>");
-                        out.println("<tr><td>prix unitaire: "+entry.getKey().getPrixVente().getPrix()+"&euro;</td><td><span id='"+i+"'> quantité: "+entry.getValue()+" </span></td></tr>");
+                        out.println("<tr><td>prix unitaire: "+entry.getKey().getPrixVente()+"&euro;</td><td><span id='"+i+"'> quantité: "+entry.getValue()+" </span></td></tr>");
                         /*out.println("<tr><td>prix unitaire: "+map.getKey().getPrixVente().getPrix()+"&euro;</td><td>"
                                 + "<button type='submit' formaction='ctrlOperationArticlePanier' name = 'articlePanierBtn' id='btn_substract'>-</button>"
                                 + "<span id='"+i+"'> "+map.getValue()+" </span>"
                                 + "<button type='submit' formaction='ctrlOperationArticlePanier' name = 'articlePanierBtn' id='btn_add'>+</button></td></tr>");*/
                         out.println("</table><form></div><br/>");
-                        prixTotal = prixTotal + entry.getKey().getPrixVente().getPrix()*entry.getValue();
+                        prixTotal = prixTotal + entry.getKey().getPrixVente()*entry.getValue();
                         i++;
                     }
                     out.println("<div id='footer'><div id='price_total'>Prix total: "+prixTotal+"&euro;</div>");

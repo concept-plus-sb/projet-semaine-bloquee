@@ -6,6 +6,9 @@
 package miage.metier;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,7 +17,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -30,39 +35,44 @@ public class Creneau implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idCreneau")
     private int idCreneau;
-    private String heureCreneau;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date DateHeureCreneau;
     private int nbPlaceTotal;
-    private EnumJourSemaine jourSemaine;
     private int nbPlaceOccupee;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="idMagasin")
     private Magasin magasin;
+    
+    @OneToMany(mappedBy = "creneau", fetch = FetchType.EAGER)
+    private Set<Commande> commandes = new HashSet(0);
+
 
     //Constructeur
     public Creneau() {}    
-    public Creneau(int idCreneau, String heureCreneau, int nbPlaceTotal, EnumJourSemaine jourSemaine, int nbPlaceOccupee, Magasin magasin) {
-        this.idCreneau = idCreneau;
-        this.heureCreneau = heureCreneau;
+
+    public Creneau(Date DateHeureCreneau, int nbPlaceTotal, int nbPlaceOccupee, Magasin magasin) {
+        this.DateHeureCreneau = DateHeureCreneau;
         this.nbPlaceTotal = nbPlaceTotal;
-        this.jourSemaine = jourSemaine;
         this.nbPlaceOccupee = nbPlaceOccupee;
         this.magasin = magasin;
     }
+    
 
     //Getter et setter
     public Magasin getMagasin() {return magasin;}
     public void setMagasin(Magasin magasin) {this.magasin = magasin;}
     public int getIdCreneau() {return idCreneau;}
-    public String getHeureCreneau() {return heureCreneau;}
     public int getNbPlaceTotal() {return nbPlaceTotal;}
-    public EnumJourSemaine getJourSemaine() {return jourSemaine;}
     public int getNbPlaceOccupee() {return nbPlaceOccupee;}
     public void setIdCreneau(int idCreneau) {this.idCreneau = idCreneau;}
-    public void setHeureCreneau(String heureCreneau) {this.heureCreneau = heureCreneau;}
     public void setNbPlaceTotal(int nbPlaceTotal) {this.nbPlaceTotal = nbPlaceTotal;}
-    public void setJourSemaine(EnumJourSemaine jourSemaine) {this.jourSemaine = jourSemaine;}
     public void setNbPlaceOccupee(int nbPlaceOccupee) {this.nbPlaceOccupee = nbPlaceOccupee;}
+    public Set<Commande> getCommandes() {return commandes;}
+    public void setCommandes(Set<Commande> commandes) {this.commandes = commandes;}
+    public Date getDateHeureCreneau() {return DateHeureCreneau;}
+    public void setDateHeureCreneau(Date DateHeureCreneau) {this.DateHeureCreneau = DateHeureCreneau;}
+    
 
     //HashCode et Equals
     @Override
