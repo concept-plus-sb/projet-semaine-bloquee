@@ -52,7 +52,6 @@ public class CtrlCreneau extends HttpServlet {
         Client c = (Client)session.getAttribute("client");
         Magasin m = c.getMagasin();
         int id = c.getMagasin().getIdMagasin();
-        System.out.println(action);
        
         
         switch (action)
@@ -85,14 +84,9 @@ public class CtrlCreneau extends HttpServlet {
             case "valider": 
                 String idradio = request.getParameter("btnradio");
                
-                
                 try (Session session1 = HibernateUtil.getSessionFactory().getCurrentSession())
                 {
-                
-                
                     if(idradio == null){
-//                        request.setAttribute("liste",AfficherCreneau.afficherCreneau(id));
-//                        request.setAttribute("listeIndispo",AfficherCreneau.afficherCreneauINDISPO(id));
                         request.setAttribute("msg_erreur", " Vous devez selectionner un créneau !");
                         RequestDispatcher rd1 = request.getRequestDispatcher("ServletCreneau?action=afficher");
                         rd1.forward(request, response);  
@@ -119,13 +113,11 @@ public class CtrlCreneau extends HttpServlet {
 //            Lorsqu'on annule le choix du créneau dans la page confirmation
 //             On retourne dans la page créneau pour faire un autre choix.
             case "annuler":
-//                request.setAttribute("liste",AfficherCreneau.afficherCreneau(1));
-//                request.setAttribute("listeIndispo",AfficherCreneau.afficherCreneauINDISPO(1));
-
                 RequestDispatcher rd2 = request.getRequestDispatcher("ServletCreneau?action=afficher");
                 rd2.forward(request, response);
             break;
             
+            //Lorsqu'on est dans la créneau et qu'on souhaite retourner sur le panier
             case "retour":
                 RequestDispatcher rd3 = request.getRequestDispatcher("panier");
                 rd3.forward(request, response);
