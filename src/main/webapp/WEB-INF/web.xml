@@ -108,6 +108,22 @@
         <servlet-name>ListeCommandesPrepa</servlet-name>
         <jsp-file>/jsp/ListeCommandePrepa.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>CtrlCmdEncours</servlet-name>
+        <servlet-class>miage.ctrl.CtrlCmdEncours</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CommandeEncours</servlet-name>
+        <jsp-file>/jsp/CommandeEncours.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlDispoPanier</servlet-name>
+        <servlet-class>miage.ctrl.CtrlDispoPanier</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DispoPanier</servlet-name>
+        <jsp-file>/jsp/DispoPanier.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>viewPanier</servlet-name>
         <url-pattern>/viewPanier</url-pattern>
@@ -215,6 +231,22 @@
     <servlet-mapping>
         <servlet-name>ListeCommandesPrepa</servlet-name>
         <url-pattern>/ListeCommandesPrepa</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlCmdEncours</servlet-name>
+        <url-pattern>/CtrlCmdEncours</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CommandeEncours</servlet-name>
+        <url-pattern>/CommandeEnCours</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlDispoPanier</servlet-name>
+        <url-pattern>/CtrlDispoPanier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DispoPanier</servlet-name>
+        <url-pattern>/DispoPanier</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
