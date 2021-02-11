@@ -101,7 +101,7 @@
         out.print("<span> Prix :"+((a.getPrixVente())/a.getContenance())*1000+" €/"+a.getUniteL() + "</span>"); %>
         
         <%
-            out.println("<a href=\"CtrlAjouterArt?idA="+a.getCodeA()+"\" class=\"cart-btn\">");
+            out.println("<a href=\"CtrlAjouterArt?idA="+a.getCodeA()+"&page=art\" class=\"cart-btn\">");
             %>
       <!--<a href="CtrlAjouterArt" class="cart-btn">-->
           Ajouter au panier</a>

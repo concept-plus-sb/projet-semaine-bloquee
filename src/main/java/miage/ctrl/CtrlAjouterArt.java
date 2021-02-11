@@ -38,6 +38,7 @@ public class CtrlAjouterArt extends HttpServlet {
         try ( PrintWriter out = response.getWriter()) {
             Article a=null;
             int idA = Integer.parseInt(request.getParameter("idA"));
+            String page = request.getParameter("page");
             HashMap<Article, Integer> paniertemp = new HashMap<>();
             
             a=AjouterArticle.recupArt(idA);
@@ -57,8 +58,14 @@ public class CtrlAjouterArt extends HttpServlet {
             //Renvoie du HashMap à la session.
             session.setAttribute("panier", paniertemp);
             
-            RequestDispatcher rd = request.getRequestDispatcher("CtrlPageArticle?article="+idA);
-            rd.forward(request, response);  
+            if (page.equals("art")){
+                RequestDispatcher rd = request.getRequestDispatcher("CtrlPageArticle?article="+idA);
+                rd.forward(request, response);
+            } else {
+                RequestDispatcher rd = request.getRequestDispatcher("CtrlListeArticles");
+                rd.forward(request, response);
+            }
+              
         }
     }
 
