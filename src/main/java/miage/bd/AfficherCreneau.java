@@ -6,6 +6,11 @@
 package miage.bd;
 
 import java.sql.Connection;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import miage.metier.Creneau;
 import miage.metier.Magasin;
@@ -31,19 +36,23 @@ private static Connection cx = null;
 		try (Session session = HibernateUtil.getSessionFactory().getCurrentSession())
 			{
                             session.beginTransaction();
-                            
+                            DateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                            Date date = new Date();
                             Magasin m = session.get(Magasin.class, id);
                             System.out.println(m.getLibelleMagasin());
                             
                             Query q= session.createQuery("from Creneau c where c.magasin =\""+m.getIdMagasin()+"\" and c.nbPlaceOccupee<c.nbPlaceTotal");
                             
                             List<Creneau> l = (List<Creneau>)q.getResultList();
-//                            System.out.println(l.size());
-//                            for(Creneau c: l){
-//                                System.out.println(c.getHeureCreneau()+" le "+c.getJourSemaine());
-//                            }
+                            List<Creneau> list = new ArrayList<Creneau>();
                             
-                            return l; 
+                            for(Creneau c: l){
+                                if(c.getDateHeureCreneau().compareTo(date) >0){
+                                    list.add(c);
+                                }
+                            }
+                            
+                            return list; 
                         }
         
     }
@@ -61,17 +70,23 @@ private static Connection cx = null;
                             session.beginTransaction();
                             
                             Magasin m = session.get(Magasin.class, id);
-                            System.out.println(m.getLibelleMagasin());
-                            
+                            DateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                            Date date = new Date();       
+                            System.out.println(format.format(date));
                             Query q= session.createQuery("from Creneau c where c.magasin =\""+m.getIdMagasin()+"\" and c.nbPlaceOccupee=c.nbPlaceTotal");
                             
+                            // Je récupère tout les créneaux
                             List<Creneau> l = (List<Creneau>)q.getResultList();
-//                            System.out.println(l.size());
-//                            for(Creneau c: l){
-//                                System.out.println(c.getHeureCreneau()+" le "+c.getJourSemaine());
-//                            }
                             
-                            return l;
+                            //Je crée une liste qui va stocker les créneaux supérieur à la date courante. 
+                            List<Creneau> list = new ArrayList<Creneau>();
+                            for(Creneau c: l){
+                                if(c.getDateHeureCreneau().compareTo(date) >0){
+                                    list.add(c);
+                                }
+                            }
+                            
+                            return list; 
                         }
     }
 }

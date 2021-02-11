@@ -47,7 +47,7 @@ public class ConfirmerCommande {
      * @param panier
      * @param cli 
      */
-    public static void creerCommande(HashMap<Article,Integer> panier, Client cli){
+    public static void creerCommande(HashMap<Article,Integer> panier, Client cli, Creneau idcre){
         try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()){
             
             
@@ -63,7 +63,7 @@ public class ConfirmerCommande {
             //Je récupère le magasin du client
             Magasin m = cli.getMagasin();
             //Je crée la commande 
-            Commande c = new Commande(EnumEtatCom.encours, cli);
+            Commande c = new Commande(EnumEtatCom.encours, cli, idcre);
             session.save(c);
 
             //Je récupère la hashmap de la commande que j'ai crée (qui est vide)
@@ -79,7 +79,7 @@ public class ConfirmerCommande {
                 session.save(a);
                 
                 // Je crée la class QteArticle pour une commande
-                QteArticle q = new QteArticle(qte, a, c);
+                QteArticle q = new QteArticle();
                
                 //J'alimente la hashmap de la commande avec pour chaque article du panier et sa quantité
                 cmd.put(a, q);

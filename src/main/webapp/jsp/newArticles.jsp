@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="css/css.css">
     </head>
     <body>
-        
+        <div>${msg_erreur}</div>
         
         
         <% 

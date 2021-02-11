@@ -54,8 +54,8 @@
             <div  class="creneaux">
             <h1>Les creneaux</h1>
 
-                <div>${msg_erreur}</div>
-                    <form action="ServletCreneau?action=valider" method="post">
+                
+                    <form action="ServletCreneau" method="post">
 
                     <%
                         DateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
@@ -69,8 +69,11 @@
                         out.println("</table>");
                     %>
 
-                    <input type="submit" class="btnvalider" value="Valider"> 
+                    <input type="submit" class="btnvalider" name="action" value="valider">
+                    <input type="submit" name="action" value="retour">
                     </form>
+                    <div>${msg_erreur}</div>
+                    
                 </div>
 
                     <%
