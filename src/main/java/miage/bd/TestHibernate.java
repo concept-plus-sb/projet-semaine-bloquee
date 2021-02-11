@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.List;
 import miage.dto.ArticleDto;
+import miage.dto.ArticlePromoDto;
 import miage.metier.Article;
 import miage.metier.Photo;
 import miage.metier.SousFamille;
@@ -49,14 +50,18 @@ public class TestHibernate
                             
                         /*----- liste articles -----*/
                             try{
-//                                List<ArticleDto> articleDtos = ListeArticles.listeArticlesByMagasin(3);
-//                                
-//                                for(ArticleDto a : articleDtos){
-//                                    System.out.println(a.getCodeArticle());
-//                                    System.out.println(a.getLibelle());
-//                                    System.out.println(a.getPhoto());
-//                                    System.out.println(a.getQteDisponible());
-//                                }
+                                List<ArticlePromoDto> articlePromoDtos = ListeArticles.ListeArticlesPromoByMagasin(3);
+                                
+                                    System.out.println(articlePromoDtos);
+                                for(ArticlePromoDto a : articlePromoDtos){
+                                    System.out.println(a.getCodeArticle());
+                                    System.out.println(a.getLibelle());
+                                    System.out.println(a.getPhoto());
+                                    System.out.println(a.getQteDisponible());
+                                    System.out.println(a.getLibellePromo());
+                                                            
+                        System.out.println("eeeeeeeeeeeee : "+a.getPrixUnitairePromo());
+                                }
                            // ConfirmerCommande.creerCommande();
                             }catch(Exception e){
                                 System.out.println(e.getMessage());

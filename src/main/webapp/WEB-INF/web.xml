@@ -92,6 +92,14 @@
         <servlet-name>CtrlChoixMagasin</servlet-name>
         <servlet-class>miage.ctrl.CtrlChoixMagasin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>accueil</servlet-name>
+        <jsp-file>/jsp/Accueil.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlListeArticlesAccueil</servlet-name>
+        <servlet-class>miage.ctrl.CtrlListeArticlesAccueil</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>viewPanier</servlet-name>
         <url-pattern>/viewPanier</url-pattern>
@@ -183,6 +191,14 @@
     <servlet-mapping>
         <servlet-name>CtrlChoixMagasin</servlet-name>
         <url-pattern>/CtrlChoixMagasin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>accueil</servlet-name>
+        <url-pattern>/accueil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlListeArticlesAccueil</servlet-name>
+        <url-pattern>/CtrlListeArticlesAccueil</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
