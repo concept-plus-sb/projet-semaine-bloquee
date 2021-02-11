@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 import miage.bd.AfficherCreneau;
 import miage.bd.ConfirmerCommande;
 import miage.bd.HibernateUtil;
+import miage.bd.ListeArticles;
 import miage.metier.Article;
 import miage.metier.Client;
 import miage.metier.Creneau;
@@ -50,8 +51,6 @@ public class CtrlCreneau extends HttpServlet {
         
         String action = request.getParameter("action");
         HttpSession session = request.getSession(true);
-        
-        System.out.println("----> Coucou "+ action);
         
         Client c = (Client)session.getAttribute("client");
         Magasin m = c.getMagasin();
@@ -88,6 +87,9 @@ public class CtrlCreneau extends HttpServlet {
             case "valider": 
                 String idradio = request.getParameter("btnradio");
                 System.out.println(idradio);
+                session.setAttribute("radiot", Integer.parseInt(idradio));
+                
+                System.out.println(idradio);
                 try (Session session1 = HibernateUtil.getSessionFactory().getCurrentSession())
                 {
                 
@@ -101,7 +103,7 @@ public class CtrlCreneau extends HttpServlet {
                         session1.beginTransaction();
                         Creneau cr= session1.get(Creneau.class, Integer.parseInt(idradio));
                         //DATEHEURE-modifs
-                        session.setAttribute("radio", formatDate.format(cr.getDateHeureCreneau())+" à "+formatDate.format(cr.getDateHeureCreneau()));
+                        session.setAttribute("radio", formatDate.format(cr.getDateHeureCreneau())+" à "+formatHeure.format(cr.getDateHeureCreneau()));
                         RequestDispatcher rd1 = request.getRequestDispatcher("conf");//PB
                         rd1.forward(request, response);  
                     }
@@ -133,17 +135,16 @@ public class CtrlCreneau extends HttpServlet {
             case "confirmer": 
                  try
                 {   
-                    System.out.println("TEST");
-                    int idcre = (int)session.getAttribute("radio");
-                    System.out.println(idcre);
+                    session = request.getSession(true);
+                    int idcre = (int)session.getAttribute("radiot");
                     ConfirmerCommande.ajoutPlaceOccupee(idcre);
-                    System.out.println("TEST2");
                     
                     HashMap<Article,Integer> p = (HashMap<Article,Integer>)session.getAttribute("panier");
-                    System.out.println(p);
+                    
                     ConfirmerCommande.creerCommande(p, c);
-                    System.out.println("TEST3");
-                    response.sendRedirect("newArticles");
+                    
+                    session.removeAttribute("panier");
+                    response.sendRedirect("CtrlListeArticles");
                 }
                 catch(Exception e)
                 {

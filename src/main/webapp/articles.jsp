@@ -52,7 +52,7 @@
                             panier = (HashMap<Article, Integer>)session.getAttribute("panier");
                             float prixTotal = 0;
                             for(HashMap.Entry <Article,Integer> map: panier.entrySet()){
-                                prixTotal = prixTotal + map.getKey().getPrixVente().getPrix()*map.getValue();
+                                prixTotal = prixTotal + map.getKey().getPrixVente()*map.getValue();
                             }
                             out.println("<span id='prixPanier'>"+prixTotal+"&euro;</span>");
                         }else{//sinon affiche 0

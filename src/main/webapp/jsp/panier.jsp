@@ -98,7 +98,6 @@
                     out.println("<button type='submit' name='action' value='afficher'>Confirmer</button></form>");
                 }
             %>
-        <input type="button" onclick="window.location.href='http://localhost:8080/projet-semaine-bloquee/newservlet';" value="retour"/>
-        <input type="button" onclick="window.location.href='http://localhost:8080/projet-semaine-bloquee/ServletCreneau?action=afficher';" value="valider"/>
+        <input type="button" onclick="window.location.href='http://localhost:8080/projet-semaine-bloquee/CtrlListeArticles';" value="retour"/>
     </body>
 </html>

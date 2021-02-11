@@ -45,7 +45,7 @@ public class Article implements Serializable {
     private float prixVente;
     
     //Références et relations.
-    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL, fetch = FetchType.EAGER )
     @MapKeyJoinColumn(name = "idMagasin")
     private Map<Magasin, Disponibilite> dispo = new HashMap<>();
     

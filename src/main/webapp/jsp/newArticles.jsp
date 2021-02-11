@@ -99,7 +99,7 @@
                                     out.print("<h7 class='card-title'>Article bientôt disponible</h7>");                                      
                                 }else{
                                     out.print("<input Style='width: 30%;height: 30px;' type='number' name='' id='' min='0'>");
-                                    out.print("<a href='CtrlAjouterArt?idA="+a.getCodeArticle()+"' class='btn btn-primary'><i class='bi bi-basket'></i></a>");
+                                    out.print("<a href='CtrlAjouterArt?idA="+a.getCodeArticle()+"&page=pageListe' class='btn btn-primary'><i class='bi bi-basket'></i></a>");
                                 }
                             out.print("</div>");
                             out.print("<div class='row prix'>");
