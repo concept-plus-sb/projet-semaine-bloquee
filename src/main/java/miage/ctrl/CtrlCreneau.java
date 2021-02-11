@@ -21,7 +21,6 @@ import miage.bd.HibernateUtil;
 import miage.metier.Article;
 import miage.metier.Client;
 import miage.metier.Creneau;
-import miage.metier.Magasin;
 import org.hibernate.Session;
 
 /**
@@ -121,7 +120,7 @@ public class CtrlCreneau extends HttpServlet {
             
             //Lorsqu'on est dans la créneau et qu'on souhaite retourner sur le panier
             case "retour":
-                RequestDispatcher rd3 = request.getRequestDispatcher("panier");
+                RequestDispatcher rd3 = request.getRequestDispatcher("CtrlPageChoixMagasin");
                 rd3.forward(request, response);
             break;
                
