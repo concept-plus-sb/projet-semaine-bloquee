@@ -12,11 +12,9 @@ import miage.metier.Article;
 import miage.metier.Client;
 import miage.metier.Commande;
 import miage.metier.Creneau;
-import miage.metier.Disponibilite;
 import miage.metier.EnumEtatCom;
 import miage.metier.Magasin;
 import miage.metier.QteArticle;
-import miage.metier.QteArticleID;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -76,17 +74,12 @@ public class ConfirmerCommande {
                 Article a = map.getKey();
                 int qte = map.getValue();
                 
-                System.out.println("coucou2");
-                System.out.println(a.getDispo());
                 // Je récupère la disponbilité de l'article et je la décrémente
                 a.getDispo().get(m).decQteDispo(qte);
-                
-                System.out.println("testtest");
                 session.save(a);
                 
                 // Je crée la class QteArticle pour une commande
                 QteArticle q = new QteArticle(qte, a, c);
-                System.out.println(q.getArticle().getCodeA());
                
                 //J'alimente la hashmap de la commande avec pour chaque article du panier et sa quantité
                 cmd.put(a, q);

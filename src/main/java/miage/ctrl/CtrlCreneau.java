@@ -52,8 +52,6 @@ public class CtrlCreneau extends HttpServlet {
         String action = request.getParameter("action");
         HttpSession session = request.getSession(true);
         
-        System.out.println("----> Coucou "+ action);
-        
         Client c = (Client)session.getAttribute("client");
         Magasin m = c.getMagasin();
         int id = c.getMagasin().getIdMagasin();
@@ -139,15 +137,14 @@ public class CtrlCreneau extends HttpServlet {
                 {   
                     session = request.getSession(true);
                     int idcre = (int)session.getAttribute("radiot");
-                    System.out.println(idcre);
                     ConfirmerCommande.ajoutPlaceOccupee(idcre);
                     
                     HashMap<Article,Integer> p = (HashMap<Article,Integer>)session.getAttribute("panier");
                     
-                    System.out.println(p);
                     ConfirmerCommande.creerCommande(p, c);
-                    request.setAttribute("liste", ListeArticles.listeArticlesByMagasin(c.getMagasin().getIdMagasin()));
-                    response.sendRedirect("newArticles");
+                    
+                    session.removeAttribute("panier");
+                    response.sendRedirect("CtrlListeArticles");
                 }
                 catch(Exception e)
                 {
