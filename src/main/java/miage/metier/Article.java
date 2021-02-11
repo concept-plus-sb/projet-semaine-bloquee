@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -76,7 +75,7 @@ public class Article implements Serializable {
     private Set<EAN> eans = new HashSet(0);
     
     @ManyToOne
-    @JoinColumn(name = "codePromo")
+    @JoinColumn(name = "codePromo", nullable = true)
     private Promotion promotion;
     
     //Constructeur
