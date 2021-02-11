@@ -49,7 +49,7 @@ public class TestHibernate
                             
                         /*----- liste articles -----*/
                             try{
-//                                List<ArticleDto> articleDtos = ListeArticles.listeArticlesByMagasin(1);
+//                                List<ArticleDto> articleDtos = ListeArticles.listeArticlesByMagasin(3);
 //                                
 //                                for(ArticleDto a : articleDtos){
 //                                    System.out.println(a.getCodeArticle());
