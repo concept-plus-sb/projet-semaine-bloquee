@@ -32,10 +32,10 @@ public class MarqueA implements Serializable {
     private String Marque;
     
     //References
-//    @OneToMany
-//    @JoinColumn(name="CodeA")
-//    Set<Article> articles= new HashSet<>(0);
+    @OneToMany(mappedBy= "marqueA", fetch = FetchType.EAGER)
+    Set<Article> articles= new HashSet<>(0);
     
+
     //Constructeurs
     public MarqueA(){}
     public MarqueA(int IdMarque, String Marque) {
@@ -48,8 +48,8 @@ public class MarqueA implements Serializable {
     public void setIdMarque(int IdMarque) {this.IdMarque = IdMarque;}
     public String getMarque() {return Marque;}
     public void setMarque(String Marque) {this.Marque = Marque;}
-//    public Set<Article> getArticles() {return articles;}
-//    public void setArticles(Set<Article> articles) {this.articles = articles;}
+    public Set<Article> getArticles() {return articles;}
+    public void setArticles(Set<Article> articles) {this.articles = articles;}
     
     //Hashcode et Equals
     @Override
