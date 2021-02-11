@@ -88,6 +88,10 @@
         <servlet-name>ChoixMagasin</servlet-name>
         <jsp-file>/jsp/ChoixMagasin.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>CtrlChoixMagasin</servlet-name>
+        <servlet-class>miage.ctrl.CtrlChoixMagasin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>viewPanier</servlet-name>
         <url-pattern>/viewPanier</url-pattern>
@@ -175,6 +179,10 @@
     <servlet-mapping>
         <servlet-name>ChoixMagasin</servlet-name>
         <url-pattern>/choixmagasin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlChoixMagasin</servlet-name>
+        <url-pattern>/CtrlChoixMagasin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
