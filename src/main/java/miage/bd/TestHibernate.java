@@ -16,14 +16,14 @@ import org.hibernate.Session;
 public class TestHibernate
 {
     public static SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-    public static void enregistrerSousFamille(){
+//    public static void enregistrerSousFamille(){
 //        try (Session session = HibernateUtil.getSessionFactory().getCurrentSession())
 //            {
 //            Transaction t = session.beginTransaction();
 //            session.save(new SousFamille("ssf test 01"));
 //            t.commit();
 //            }
-    }
+//    }
 
     
    /* public static ArrayList<QteArticle> showPanierArticles(HashMap<Article,Integer> panier){

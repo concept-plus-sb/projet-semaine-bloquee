@@ -38,6 +38,7 @@ public class CtrlPageArticle extends HttpServlet {
         try{
         int id;
         id = Integer.parseInt(request.getParameter("article"));
+        System.out.println(id);
         request.setAttribute("objetArticle",ClassArticle.getArticle(id) );
         RequestDispatcher rd= request.getRequestDispatcher("pagearticle");
         rd.forward(request, response);

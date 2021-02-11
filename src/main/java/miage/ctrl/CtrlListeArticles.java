@@ -36,9 +36,12 @@ public class CtrlListeArticles extends HttpServlet {
         //response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession(true);
         Client c = (Client)session.getAttribute("client");
+        System.err.println("TEST1");
         try {
+            
             request.setAttribute("liste", ListeArticles.listeArticlesByMagasin(c.getMagasin().getIdMagasin()));
             
+        System.err.println("TEST2");
             RequestDispatcher rd = request.getRequestDispatcher("newArticles");
             
             rd.forward(request, response);

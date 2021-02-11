@@ -34,7 +34,6 @@ public class HibernateUtil
 			 */
 			//configuration.addAnnotatedClass(miage.metier.Employe.class);
                         
-                        configuration.addAnnotatedClass(miage.metier.EAN.class);
                         configuration.addAnnotatedClass(miage.metier.Photo.class);
                         configuration.addAnnotatedClass(miage.metier.Article.class);
                         configuration.addAnnotatedClass(miage.metier.EnumStockage.class);
