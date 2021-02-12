@@ -136,6 +136,14 @@
         <servlet-name>DispoPanier</servlet-name>
         <jsp-file>/jsp/DispoPanier.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>PageCommande</servlet-name>
+        <jsp-file>/jsp/PageCommande.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlPageCommande</servlet-name>
+        <servlet-class>miage.ctrl.CtrlPageCommande</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>viewPanier</servlet-name>
         <url-pattern>/viewPanier</url-pattern>
@@ -271,6 +279,14 @@
     <servlet-mapping>
         <servlet-name>DispoPanier</servlet-name>
         <url-pattern>/DispoPanier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PageCommande</servlet-name>
+        <url-pattern>/pagecommande</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlPageCommande</servlet-name>
+        <url-pattern>/CtrlPageCommande</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

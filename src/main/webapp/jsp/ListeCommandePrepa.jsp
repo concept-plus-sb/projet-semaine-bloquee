@@ -4,6 +4,9 @@
     Author     : Ismail
 --%>
 
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="miage.metier.Commande"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -25,12 +28,14 @@
         <th>Client</th>
         </tr>
       <% for(Commande c:commandes){
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            Date date = new Date();
+            if(c.getCreneau().getDateHeureCreneau().compareTo(date) >0){
             out.print("<tr>");
-            out.print("<td><a>"+c.getCodeCom()+"</a></td>");
+            out.print("<td><a href=\"CtrlPageCommande?id="+c.getCodeCom()+"\">"+c.getCodeCom()+"</a></td>");
             out.print("<td>"+c.getCreneau().getDateHeureCreneau()+"</td>");
             out.print("<td>"+c.getClient().getEmail()+"</td>");
-            out.print("</tr>");
-
+            out.print("</tr>");}
         }
             out.print("</table>");
         %>
