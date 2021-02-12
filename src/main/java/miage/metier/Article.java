@@ -43,6 +43,7 @@ public class Article implements Serializable {
     private String composition; 
     private String marqueP;
     private float prixVente;
+    private long ean;
     
     //Références et relations.
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -70,9 +71,6 @@ public class Article implements Serializable {
     
     @OneToMany(mappedBy = "article", fetch = FetchType.EAGER)
     private Set<Photo> photos = new HashSet(0);
-
-    @OneToMany(mappedBy = "article", fetch = FetchType.EAGER)
-    private Set<EAN> eans = new HashSet(0);
     
     @ManyToOne
     @JoinColumn(name = "codePromo", nullable = true)
@@ -80,8 +78,8 @@ public class Article implements Serializable {
     
     //Constructeur
     public Article() {}
-    public Article(int codeA, String libelleA, float contenance, String uniteM, String uniteL, EnumStockage typeStockage, int nbDose, String origine, String composition, String marqueP, SousFamille sousfamille, MarqueA marqueA, float prixVente, Nutriscore nutriscore) {
-        this.codeA = codeA;
+
+    public Article(String libelleA, float contenance, String uniteM, String uniteL, EnumStockage typeStockage, int nbDose, String origine, String composition, String marqueP, float prixVente, long ean, SousFamille sousfamille, MarqueA marqueA, Nutriscore nutriscore, Promotion promotion) {
         this.libelleA = libelleA;
         this.contenance = contenance;
         this.uniteM = uniteM;
@@ -91,11 +89,15 @@ public class Article implements Serializable {
         this.origine = origine;
         this.composition = composition;
         this.marqueP = marqueP;
+        this.prixVente = prixVente;
+        this.ean = ean;
         this.sousfamille = sousfamille;
         this.marqueA = marqueA;
-        this.prixVente = prixVente;
         this.nutriscore = nutriscore;
+        this.promotion = promotion;
     }
+    
+    
     
         
 
@@ -132,14 +134,16 @@ public class Article implements Serializable {
     public void setNutriscore(Nutriscore nutriscore) {this.nutriscore = nutriscore;}
     public Set<Photo> getPhotos() {return photos;}
     public void setPhotos(Set<Photo> photos) {this.photos = photos;}
-    public Set<EAN> getEans() {return eans;}
-    public void setEans(Set<EAN> eans) {this.eans = eans;}
     public Map<Commande, QteArticle> getQteArticles() {return qteArticles;}
     public void setQteArticles(Map<Commande, QteArticle> qteArticles) {this.qteArticles = qteArticles;}
     public SousFamille getSousfamille() {return sousfamille;}
     public void setSousfamille(SousFamille sousfamille) {this.sousfamille = sousfamille;}
     public Promotion getPromotion() {return promotion;}
     public void setPromotion(Promotion promotion) {this.promotion = promotion;}
+    public long getEan() {return ean;}
+    public void setEan(long ean) {this.ean = ean;}
+    public MarqueA getMarqueA() {return marqueA;}
+    public void setMarqueA(MarqueA marqueA) {this.marqueA = marqueA;}
     
     
     //HashCode et Equals

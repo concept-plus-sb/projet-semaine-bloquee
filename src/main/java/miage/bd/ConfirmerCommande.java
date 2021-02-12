@@ -7,7 +7,6 @@ package miage.bd;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.servlet.http.HttpSession;
 import miage.metier.Article;
 import miage.metier.Client;
 import miage.metier.Commande;

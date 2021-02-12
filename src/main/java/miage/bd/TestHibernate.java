@@ -2,12 +2,17 @@ package miage.bd;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import miage.dto.ArticleDto;
 import miage.dto.ArticlePromoDto;
 import miage.metier.Article;
+import miage.metier.Client;
+import miage.metier.Commande;
 import miage.metier.Photo;
+import miage.metier.QteArticle;
 import miage.metier.SousFamille;
 import org.hibernate.Session;
 
@@ -17,14 +22,14 @@ import org.hibernate.Session;
 public class TestHibernate
 {
     public static SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-    public static void enregistrerSousFamille(){
+//    public static void enregistrerSousFamille(){
 //        try (Session session = HibernateUtil.getSessionFactory().getCurrentSession())
 //            {
 //            Transaction t = session.beginTransaction();
 //            session.save(new SousFamille("ssf test 01"));
 //            t.commit();
 //            }
-    }
+//    }
 
     
    /* public static ArrayList<QteArticle> showPanierArticles(HashMap<Article,Integer> panier){
@@ -61,7 +66,12 @@ public class TestHibernate
 //                                    System.out.println(a.getPrixAuKilo());
 //                                    System.out.println(a.getUniteL());
 //                                }
+                           // ConfirmerCommande.creerCommande();
+                                //System.out.println(AjouterArticle.Disponible(3,2));
                             //ConfirmerCommande.creerCommande();
+                            
+                         
+                                
                             }catch(Exception e){
                                 System.out.println(e.getMessage());
                             }

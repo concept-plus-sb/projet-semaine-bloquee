@@ -109,12 +109,24 @@
         <jsp-file>/jsp/ListeCommandePrepa.jsp</jsp-file>
     </servlet>
     <servlet>
-        <servlet-name>accueil</servlet-name>
-        <jsp-file>/jsp/Accueil.jsp</jsp-file>
+        <servlet-name>Deconnexion</servlet-name>
+        <servlet-class>miage.ctrl.Deconnexion</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CtrlListeArticlesAccueil</servlet-name>
         <servlet-class>miage.ctrl.CtrlListeArticlesAccueil</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>accueil</servlet-name>
+        <jsp-file>/jsp/Accueil.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlCmdEncours</servlet-name>
+        <servlet-class>miage.ctrl.CtrlCmdEncours</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CommandeEncours</servlet-name>
+        <jsp-file>/jsp/CommandeEncours.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>viewPanier</servlet-name>
@@ -225,12 +237,24 @@
         <url-pattern>/ListeCommandesPrepa</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>accueil</servlet-name>
-        <url-pattern>/accueil</url-pattern>
+        <servlet-name>Deconnexion</servlet-name>
+        <url-pattern>/Deconnexion</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CtrlListeArticlesAccueil</servlet-name>
         <url-pattern>/CtrlListeArticlesAccueil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>accueil</servlet-name>
+        <url-pattern>/accueil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlCmdEncours</servlet-name>
+        <url-pattern>/CtrlCmdEncours</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CommandeEncours</servlet-name>
+        <url-pattern>/CommandeEncours</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

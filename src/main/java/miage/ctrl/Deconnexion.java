@@ -12,16 +12,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import miage.bd.ClassArticle;
-import miage.bd.HibernateUtil;
-import miage.bd.TestHibernate;
-import miage.metier.Article;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Ismail
+ * @author estel
  */
-public class CtrlPageArticle extends HttpServlet {
+public class Deconnexion extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,17 +32,14 @@ public class CtrlPageArticle extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try{
-        int id;
-        id = Integer.parseInt(request.getParameter("article"));
-        System.out.println(id);
-        request.setAttribute("objetArticle",ClassArticle.getArticle(id) );
-        RequestDispatcher rd= request.getRequestDispatcher("pagearticle");
-        rd.forward(request, response);
+        try ( PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            HttpSession session = request.getSession(true);
+            session.removeAttribute("client");
+            
+            RequestDispatcher rd = request.getRequestDispatcher("Connexion");
+            rd.forward(request, response);
         }
-         catch(Exception e){
-                System.out.println("");
-                   }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -75,7 +69,6 @@ public class CtrlPageArticle extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-
     }
 
     /**

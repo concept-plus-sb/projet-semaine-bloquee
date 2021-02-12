@@ -6,6 +6,7 @@
 package miage.bd;
 
 import miage.metier.Article;
+import miage.metier.Magasin;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -32,5 +33,14 @@ public class AjouterArticle {
         }
         return a;
     
+    }
+
+    
+    public static boolean Disponible(Magasin m, Article a){   
+        if(a.getDispo().get(m).getQteDispo()>0){
+            return true;
+        }else {
+            return false;
+        }   
     }
 }

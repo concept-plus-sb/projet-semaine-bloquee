@@ -12,16 +12,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import miage.bd.ClassArticle;
+import javax.servlet.http.HttpSession;
+import miage.bd.AfficherCommande;
 import miage.bd.HibernateUtil;
-import miage.bd.TestHibernate;
-import miage.metier.Article;
+import miage.metier.Client;
+import org.hibernate.Session;
 
 /**
  *
- * @author Ismail
+ * @author 21606937
  */
-public class CtrlPageArticle extends HttpServlet {
+public class CtrlCmdEncours extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,17 +36,25 @@ public class CtrlPageArticle extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try{
-        int id;
-        id = Integer.parseInt(request.getParameter("article"));
-        System.out.println(id);
-        request.setAttribute("objetArticle",ClassArticle.getArticle(id) );
-        RequestDispatcher rd= request.getRequestDispatcher("pagearticle");
-        rd.forward(request, response);
+        try ( PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            
+            
+            try (Session session = HibernateUtil.getSessionFactory().getCurrentSession())
+                {
+                    session.beginTransaction();
+                    Client cli = session.get(Client.class, 1);
+                    request.setAttribute("commandes",AfficherCommande.mesCommandes(cli));
+
+                    RequestDispatcher rd = request.getRequestDispatcher("CommandeEnCours");
+                    rd.forward(request, response);
+                }catch(Exception e){
+                    System.out.println(e.getMessage());
+                }
+                    
+            
+           
         }
-         catch(Exception e){
-                System.out.println("");
-                   }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -75,7 +84,6 @@ public class CtrlPageArticle extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-
     }
 
     /**
