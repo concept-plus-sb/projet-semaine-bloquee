@@ -25,7 +25,7 @@
         Commande c= (Commande)request.getAttribute("objetCommande");
         System.out.println(c.getClient());
         Map<Article, QteArticle> articles=c.getQteArticles();
-         System.out.println(articles);
+         System.out.println(c.getQteArticles());
          Map<Article, QteArticle> frais= new HashMap<>();
          Map<Article, QteArticle> congele= new HashMap<>();
          Map<Article, QteArticle> normal= new HashMap<>();

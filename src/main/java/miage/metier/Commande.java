@@ -40,7 +40,7 @@ public class Commande implements Serializable {
     @JoinColumn(name="codeCli")
     private Client client;
     
-    @OneToMany(mappedBy = "commande", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "commande", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @MapKeyJoinColumn(name = "codeA")
     private Map<Article, QteArticle> qteArticles = new HashMap<>();
     
