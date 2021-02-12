@@ -4,9 +4,9 @@
     Author     : arsla
 --%>
 
+<%@page import="miage.dto.ArticlePromoDto"%>
 <%@page import="miage.metier.Article"%>
 <%@page import="java.util.HashMap"%>
-<%@page import="miage.dto.ArticleDto"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -22,13 +22,13 @@
         <link rel="stylesheet" href="css/css.css">
     </head>
     <body>
-        <div>${msg_erreur}</div>
+        
         
         
         <% 
             
             
-            ArrayList<ArticleDto> articleDtos = (ArrayList<ArticleDto>)request.getAttribute("liste");
+            ArrayList<ArticlePromoDto> articlePromoDtos = (ArrayList<ArticlePromoDto>)request.getAttribute("liste");
             
             /*out.print("<h2>");
             for(ArticleDto a : articleDtos){
@@ -38,7 +38,7 @@
 
         %>
         
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
                     <img src="img/E.png" alt="" width="60" height="54">
@@ -46,20 +46,22 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="CtrlListeArticlesAccueil">% Promotions</a>
+                            <a class="nav-link active" aria-current="page" href="#">Accueil</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" >Tous les articles</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="CtrlCmdEncours">Mes commandes</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Rayons
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
                 <div class="d-flex">
-                    <a class="navbar-brand" href="Deconnexion">
-                        <img src="img/deco.png" alt="" width="40" height="34">
-                    </a>
                     <a class="navbar-brand" href="panier">
                         <img src="img/126083.png" alt="" width="40" height="34">
                     </a>
@@ -69,18 +71,14 @@
                             HashMap<Article, Integer> panier = new HashMap<Article, Integer>();
                             panier = (HashMap<Article, Integer>)session.getAttribute("panier");
                             float prixTotal = 0;
-                            
                             for(HashMap.Entry <Article,Integer> map: panier.entrySet()){
                                 prixTotal = prixTotal + map.getKey().getPrixVente()*map.getValue();
                             }
-                            out.println("<span id='prixPanier'>"+Math.round(((float)prixTotal)*100.)/100.+"&euro;</span>");
+                            out.println("<span id='prixPanier'>"+prixTotal+"&euro;</span>");
                         }else{//sinon affiche 0
                             out.println(0);
                         }
                     %>
-                </div>
-                <div> 
-                    
                 </div>
             </div>
         </nav>
@@ -88,11 +86,12 @@
         
         <div class="container-fluid">
             <div class="row">
-        <%for(ArticleDto a : articleDtos){
+        <%for(ArticlePromoDto a : articlePromoDtos){
             out.print("<div class='col-sm-2'>");
                 out.print("<div class='card'>");
                     out.print("<div class='card-body'>");
-                        out.print("<h7 class='card-title'>"+a.getLibelle()+"</h7><br>");
+                        out.print("<h7 class='card-title' style='background-color: red;'>"+a.getLibellePromo()+"</h7>");
+                        out.print("<h5 class='card-title'>"+a.getLibelle()+"</h5>");
                         out.print("<span>"+a.getPrixAuKilo()+"€/"+a.getUniteL()+"<span>");
                         out.println("<a href='CtrlPageArticle?article="+a.getCodeArticle()+"'>");
                         out.print("<img src='"+a.getPhoto()+"' alt='' class='img-fluid'>");
@@ -107,7 +106,12 @@
                                 }
                             out.print("</div>");
                             out.print("<div class='row prix'>");
-                                out.print("<h6 class='card-title'>"+a.getPrixUnitaire()+"<span> €</span></h6>"); 
+                                if(a.getPrixUnitairePromo() == 0){
+                                    out.print("<h6 class='card-title'>"+a.getPrixUnitaire()+"<span> €</span></h6>");                                     
+                                }else{
+                                    out.print("<h6 class='card-title' style='text-decoration:line-through'>"+a.getPrixUnitaire()+"<span> €</span></h6>");                                 
+                                    out.print("<h6 class='card-title'>"+a.getPrixUnitairePromo()+"<span> €</span></h6>");                                     
+                                } 
                             out.print("</div>");
 
                     out.print("</div>");

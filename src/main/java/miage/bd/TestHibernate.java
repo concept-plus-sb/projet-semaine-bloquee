@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import miage.dto.ArticleDto;
+import miage.dto.ArticlePromoDto;
 import miage.metier.Article;
 import miage.metier.Client;
 import miage.metier.Commande;
@@ -54,14 +55,16 @@ public class TestHibernate
                             
                         /*----- liste articles -----*/
                             try{
-//                                List<ArticleDto> articleDtos = ListeArticles.listeArticlesByMagasin(1);
-//                                
+                                List<ArticleDto> articleDtos = ListeArticles.listeArticlesByMagasin(1);
+                                
 //                                for(ArticleDto a : articleDtos){
 //                                    System.out.println(a.getCodeArticle());
 //                                    System.out.println(a.getLibelle());
 //                                    System.out.println(a.getPhoto());
 //                                    System.out.println(a.getQteDisponible());
-
+//                                    System.out.println(a.getNutriscore());
+//                                    System.out.println(a.getPrixAuKilo());
+//                                    System.out.println(a.getUniteL());
 //                                }
                            // ConfirmerCommande.creerCommande();
                                 //System.out.println(AjouterArticle.Disponible(3,2));

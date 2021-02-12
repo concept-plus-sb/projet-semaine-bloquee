@@ -73,7 +73,7 @@ public class Article implements Serializable {
     private Set<Photo> photos = new HashSet(0);
     
     @ManyToOne
-    @JoinColumn(name = "codePromo")
+    @JoinColumn(name = "codePromo", nullable = true)
     private Promotion promotion;
     
     //Constructeur

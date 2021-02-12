@@ -35,13 +35,20 @@ public class CtrlListeArticles extends HttpServlet {
             throws ServletException, IOException {
         //response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession(true);
-        Client c = (Client) session.getAttribute("client");
+        Client c = (Client)session.getAttribute("client");
+        
+        if(session.getAttribute("idmagasin") == null){
+        session.setAttribute("idmagasin", c.getMagasin().getIdMagasin());
+        }
+        
+        
         System.out.println("TEST1");
         try {
-
-            request.setAttribute("liste", ListeArticles.listeArticlesByMagasin(c.getMagasin().getIdMagasin()));
-
-            System.out.println("TEST2");
+            //System.out.println(c.getMagasin().getIdMagasin());
+            request.setAttribute("liste", ListeArticles.listeArticlesByMagasin((int)session.getAttribute("idmagasin")));
+            System.out.println(c.getMagasin().getIdMagasin());
+            
+        System.out.println("TEST2");
             RequestDispatcher rd = request.getRequestDispatcher("newArticles");
 
             rd.forward(request, response);

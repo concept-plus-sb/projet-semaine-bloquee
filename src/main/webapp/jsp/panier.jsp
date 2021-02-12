@@ -49,9 +49,11 @@
                         <img src="img/126083.png" alt="" width="40" height="34">
                     </a>
                     <%//si la session existe, calcule le prix total
+                        System.out.println(session);
                         if (session.getAttribute("panier")!=null){
-                            session = request.getSession(false);
-                            HashMap<Article, Integer> panier = new HashMap<>();
+                            session = request.getSession(true);
+                            //System.out.println(session);
+                            HashMap<Article, Integer> panier = new HashMap();
                             panier = (HashMap<Article, Integer>)session.getAttribute("panier");
                             float prixTotal = 0;
                             for(HashMap.Entry <Article,Integer> map: panier.entrySet()){
@@ -75,7 +77,7 @@
       
             <%
                 session = request.getSession(false);
-                HashMap<Article, Integer> panier = new HashMap<>();
+                HashMap<Article, Integer> panier = new HashMap();
                 panier = (HashMap<Article, Integer>)session.getAttribute("panier");
                 if(panier.isEmpty()){
                     out.println("<div> Mon panier est vide.</div>"); 

@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class ArticleDto implements Serializable {
     
     private int CodeArticle;
-    private String photo, nutriscore, libelle;
+    private String photo, nutriscore, libelle, uniteL;
     //point = contenance + unité de mesure
     private String point;
     private float prixUnitaire, prixAuKilo;
@@ -85,6 +85,14 @@ public class ArticleDto implements Serializable {
 
     public void setQteDisponible(int qteDisponible) {
         this.qteDisponible = qteDisponible;
+    }   
+
+    public String getUniteL() {
+        return uniteL;
+    }
+
+    public void setUniteL(String uniteL) {
+        this.uniteL = uniteL;
     }    
     
 

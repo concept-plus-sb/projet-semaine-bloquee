@@ -36,6 +36,7 @@ public class Deconnexion extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             HttpSession session = request.getSession(true);
             session.removeAttribute("client");
+            session.removeAttribute("panier");
             
             RequestDispatcher rd = request.getRequestDispatcher("Connexion");
             rd.forward(request, response);
