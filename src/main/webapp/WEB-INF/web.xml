@@ -112,6 +112,14 @@
         <servlet-name>Deconnexion</servlet-name>
         <servlet-class>miage.ctrl.Deconnexion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CtrlCmdEncours</servlet-name>
+        <servlet-class>miage.ctrl.CtrlCmdEncours</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CommandeEnCours</servlet-name>
+        <jsp-file>/jsp/CommandeEncours.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>viewPanier</servlet-name>
         <url-pattern>/viewPanier</url-pattern>
@@ -223,6 +231,14 @@
     <servlet-mapping>
         <servlet-name>Deconnexion</servlet-name>
         <url-pattern>/Deconnexion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlCmdEncours</servlet-name>
+        <url-pattern>/CtrlCmdEncours</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CommandeEnCours</servlet-name>
+        <url-pattern>/CommandeEnCours</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
