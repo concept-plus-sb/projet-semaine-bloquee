@@ -7,7 +7,6 @@ package miage.bd;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import javax.servlet.http.HttpSession;
 import miage.metier.Article;
 import miage.metier.Magasin;
 import org.hibernate.Session;
@@ -29,13 +28,16 @@ public class DispoPanier {
                    
                     for(HashMap.Entry <Article, Integer> map: panier.entrySet()){
                         Article a = map.getKey();
-                        
+                        int qteCom = map.getValue();
                         int qte = a.getDispo().get(m).getQteDispo();
                         
-                        if(qte <= 0){
+                        //Si la quantité commandé est inférieur à la quantité en stock
+                        if(qteCom > qte){
                             indispo.add(a);
-                            panier.remove(a);
                         }
+                    }
+                    for(Article l: indispo){
+                        panier.remove(l);
                     }
                     return indispo;
                 }

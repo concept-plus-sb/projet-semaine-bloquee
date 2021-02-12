@@ -6,7 +6,6 @@
 package miage.bd;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 import miage.metier.Client;
 import miage.metier.Commande;

@@ -50,12 +50,13 @@ public class CtrlDispoPanier extends HttpServlet {
                 
                 try{
                     HashMap<Article,Integer> p = (HashMap<Article,Integer>)session.getAttribute("panier");
-                    System.out.println(p);
+                    
                     int id = (int)session.getAttribute("idmagasin");
-                    
+                    System.out.println(id);
                     ArrayList<Article> dispo = DispoPanier.afficherIndispo(id, p);
+                    System.out.println(dispo);
                     
-                    if(dispo.isEmpty() || dispo == null){
+                    if(dispo.isEmpty()){
                         Creneau idcre = (Creneau)session.getAttribute("creneau");
 
                         ConfirmerCommande.ajoutPlaceOccupee(idcre.getIdCreneau());
@@ -74,7 +75,7 @@ public class CtrlDispoPanier extends HttpServlet {
                 }catch(Exception e){
                     System.out.println(e.getMessage());
                 }
-        }
+    }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
