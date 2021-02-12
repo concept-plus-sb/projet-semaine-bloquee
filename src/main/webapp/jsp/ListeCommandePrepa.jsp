@@ -11,14 +11,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="css/css.css">
         <title>Commandes à préparer</title>
+    </head>
     <h1> La liste des commandes à préparer </h1>
         <%  ArrayList<Commande> commandes = (ArrayList<Commande>)request.getAttribute("commandes");
         out.print("<table border=6 cellspacing=12 cellpadding=20>");%>
         <tr>
-        <td>n° Commande</td>
-        <td>Créneau de récupération</td>
-        <td>Client</td>
+        <th>n° Commande</th>
+        <th>Créneau de récupération</th>
+        <th>Client</th>
         </tr>
       <% for(Commande c:commandes){
             out.print("<tr>");
@@ -30,7 +34,7 @@
         }
             out.print("</table>");
         %>
-    </head>
+    
     <body>
     </body>
 </html>

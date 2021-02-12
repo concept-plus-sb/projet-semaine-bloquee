@@ -47,8 +47,8 @@ public class CtrlCreneau extends HttpServlet {
         
         String action = request.getParameter("action");
         HttpSession session = request.getSession(true);
+        System.out.println(action);
         
-        Client c = (Client)session.getAttribute("client");
         int id = (int)session.getAttribute("idmagasin");
         System.out.println(id);
        
@@ -131,20 +131,13 @@ public class CtrlCreneau extends HttpServlet {
             case "confirmer": 
                  try
                 {   
-                    session = request.getSession(true);
-                    Creneau idcre = (Creneau)session.getAttribute("creneau");
-                    
-                    ConfirmerCommande.ajoutPlaceOccupee(idcre.getIdCreneau());
-                    
-                    HashMap<Article,Integer> p = (HashMap<Article,Integer>)session.getAttribute("panier");
-                    
-                    ConfirmerCommande.creerCommande(p, c, idcre);
-                    
-                    session.removeAttribute("panier");
-                    response.sendRedirect("CtrlListeArticles");
+                    System.out.println("COUCOU");
+                    RequestDispatcher rd = request.getRequestDispatcher("CtrlDispoPanier");
+                    rd.forward(request, response);
                 }
                 catch(Exception e)
                 {
+                    System.out.println("COUCOU EREUR---->"+e.getMessage());
                     request.setAttribute("msg_erreur", e.getMessage());
                     RequestDispatcher rd = request.getRequestDispatcher("conf");
                     rd.forward(request, response);

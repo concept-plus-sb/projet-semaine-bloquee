@@ -88,7 +88,7 @@
                     <input type="submit" class="btnvalider" name="action" value="valider">
                     <input type="submit" name="action" value="retour">
                     </form>
-                    <div>${msg_erreur}</div>
+                    
                     
                 </div>
 
@@ -100,6 +100,8 @@
                         out.println("</table></div>");
                     %>
         </div>
+        <div>${msg_erreur}</div>
+        
 
     </body>
 </html>
