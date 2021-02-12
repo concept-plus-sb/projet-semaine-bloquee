@@ -32,7 +32,7 @@ public class Famille implements Serializable{
     @JoinColumn(name="IdRayon")
     Rayon rayon;
     
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="Dependre",
             joinColumns = @JoinColumn(name = "CodeFamille"),
             inverseJoinColumns = @JoinColumn(name = "CodeSouFamille"))

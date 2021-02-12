@@ -24,7 +24,7 @@ public class SousFamille implements Serializable{
     private int idSF;
     private String libelleSF;
     
-    @ManyToMany(mappedBy = "sousfamilles")
+    @ManyToMany(mappedBy = "sousfamilles",fetch = FetchType.EAGER)
     Set<Famille> familles = new HashSet<>(0);
     
    @OneToMany(mappedBy = "sousfamille", fetch = FetchType.EAGER)

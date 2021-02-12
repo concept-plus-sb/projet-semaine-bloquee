@@ -46,39 +46,62 @@
          out.print("<h2>Rayon normal:</h2>");
           out.print("<table border=6 cellspacing=12 cellpadding=20>");%>
 
-         <tr><td>Article</td>
+         <tr>
+        <td>-</td>
+        <td>Article</td>
         <td>Quantité </td>
         <td>EAN</td>
         <td>Rayon</td></tr>
         <% 
           for (Map.Entry mapentry : normal.entrySet()) {
-              out.print("<tr><td>"+((Article)mapentry.getKey()).getLibelleA()+"</td>");
+              out.print("<tr><td><input type='checkbox' name='check'/></td>");
+              out.print("<td>"+((Article)mapentry.getKey()).getLibelleA()+"</td>");
               out.print("<td>"+((QteArticle)mapentry.getValue()).getNombreArticle()+"</td>");
-              out.print("<td>"+((Article)mapentry.getKey()).getEan()+"</td></tr>");          }
-          out.print("</table>");
+              out.print("<td>"+((Article)mapentry.getKey()).getEan()+"</td>"); 
+              Set<Famille> hset=((Article)mapentry.getKey()).getSousfamille().getFamilles();
+              String rayon="";
+              for(Famille s : hset){
+                 rayon =s.getRayon().getLibelleR();
+                 System.out.println(s);
+              }
+          out.print("<td>"+rayon+"</td></tr>");}
+            out.print("</table>");
          out.print("<h2>Rayon frais:</h2>");
          out.print("<table border=6 cellspacing=12 cellpadding=20>");%>
          
-        <tr><td>Article</td>
+        <tr>
+            <td>-</td>
+        <td>Article</td>
         <td>Quantité </td>
         <td>EAN</td>
         <td>Rayon</td></tr>
 
        <%   for (Map.Entry mapentry : frais.entrySet()) {
-              out.print("<tr><td>"+((Article)mapentry.getKey()).getLibelleA()+"</td>");
+              out.print("<tr><td><input type='checkbox' name='check'/></td>");
+              out.print("<td>"+((Article)mapentry.getKey()).getLibelleA()+"</td>");
               out.print("<td>"+((QteArticle)mapentry.getValue()).getNombreArticle()+"</td>");
-              out.print("<td>"+((Article)mapentry.getKey()).getEan()+"</td></tr>");
+              out.print("<td>"+((Article)mapentry.getKey()).getEan()+"</td>");
+              Set<Famille> hset=((Article)mapentry.getKey()).getSousfamille().getFamilles();
+              String rayon="";
+              for(Famille s : hset){
+                 rayon =s.getRayon().getLibelleR();
+                 System.out.println(s);
+              }
+              out.print("<td>"+rayon+"</td></tr>");
            } 
           out.print("</table>");
           out.print("<h2>Rayon surgelé: </h2>");
           out.print("<table border=6 cellspacing=12 cellpadding=20>");%>
-          <tr><td>Article</td>
+          <tr>
+              <td>-</td>
+              <td>Article</td>
            <td>Quantité </td>
            <td>EAN</td>
           <td>Rayon</td></tr>
 
           <% for (Map.Entry mapentry : congele.entrySet()) {
-              out.print("<tr><td>"+((Article)mapentry.getKey()).getLibelleA()+"</td>");
+              out.print("<tr><td><input type='checkbox' name='check'/></td>");
+              out.print("<td>"+((Article)mapentry.getKey()).getLibelleA()+"</td>");
               out.print("<td>"+((QteArticle)mapentry.getValue()).getNombreArticle()+"</td>");
               out.print("<td>"+((Article)mapentry.getKey()).getEan()+"</td>");  
               Set<Famille> hset=((Article)mapentry.getKey()).getSousfamille().getFamilles();
@@ -89,7 +112,7 @@
               }
               out.print("<td>"+rayon+"</td></tr>");}
           out.print("</table>");
-
+          out.print("<input type=\"submit\" value=\"Finaliser\">");
          
     %>
     </body>
