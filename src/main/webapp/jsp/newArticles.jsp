@@ -51,6 +51,9 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="CtrlListeArticles">Tous les articles</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Mes commandes</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="d-flex">

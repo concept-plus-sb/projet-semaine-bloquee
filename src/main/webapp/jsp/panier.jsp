@@ -4,6 +4,7 @@
     Author     : luqil
 --%>
 
+<%@page import="miage.bd.CalculPrix"%>
 <%@page import="miage.metier.Photo"%>
 <%@page import="java.util.Set"%>
 <%@page import="java.util.ListIterator"%>
@@ -50,7 +51,7 @@
                     <%//si la session existe, calcule le prix total
                         if (session.getAttribute("panier")!=null){
                             session = request.getSession(false);
-                            HashMap<Article, Integer> panier = new HashMap<Article, Integer>();
+                            HashMap<Article, Integer> panier = new HashMap<>();
                             panier = (HashMap<Article, Integer>)session.getAttribute("panier");
                             float prixTotal = 0;
                             for(HashMap.Entry <Article,Integer> map: panier.entrySet()){
@@ -74,7 +75,7 @@
       
             <%
                 session = request.getSession(false);
-                HashMap<Article, Integer> panier = new HashMap<Article, Integer>();
+                HashMap<Article, Integer> panier = new HashMap<>();
                 panier = (HashMap<Article, Integer>)session.getAttribute("panier");
                 if(panier.isEmpty()){
                     out.println("<div> Mon panier est vide.</div>"); 
@@ -112,5 +113,26 @@
                 }
             %>
         <input type="button" onclick="window.location.href='http://localhost:8080/projet-semaine-bloquee/CtrlListeArticles';" value="retour"/>
+        <% 
+        float prixTotalPromo = 0;
+        int i;
+        for(HashMap.Entry <Article,Integer> map: panier.entrySet()){
+            if(map.getKey().getPromotion()==null){
+                prixTotalPromo = prixTotalPromo + map.getKey().
+                getPrixVente()*map.getValue();
+            } else {
+                for (i=1; i<=map.getValue(); i++){
+                    if(i%map.getKey().getPromotion().getNbArticlePromo()==0){  
+                        prixTotalPromo = prixTotalPromo + ((float)map.getKey().
+                        getPrixVente()*(float)(1-((float)map.getKey().
+                        getPromotion().getPourcentagePromo()/100)));
+                    } else {
+                        prixTotalPromo = prixTotalPromo + 
+                        (float)map.getKey().getPrixVente();
+                    }
+                }
+            }    
+        }
+            out.println("Prix total avec Promo = "+prixTotalPromo); %>
     </body>
 </html>
