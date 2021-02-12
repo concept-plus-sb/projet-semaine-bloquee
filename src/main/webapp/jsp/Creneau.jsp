@@ -38,6 +38,9 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="CtrlListeArticles">Tous les articles</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="CtrlCmdEncours">Mes commandes</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="d-flex">
@@ -53,6 +56,7 @@
                             HashMap<Article, Integer> panier = new HashMap<Article, Integer>();
                             panier = (HashMap<Article, Integer>)session.getAttribute("panier");
                             float prixTotal = 0;
+                            
                             for(HashMap.Entry <Article,Integer> map: panier.entrySet()){
                                 prixTotal = prixTotal + map.getKey().getPrixVente()*map.getValue();
                             }
@@ -61,8 +65,6 @@
                             out.println(0);
                         }
                     %>
-                </div>
-                <div>    
                 </div>
             </div>
         </nav>

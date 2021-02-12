@@ -38,7 +38,7 @@
 
         %>
         
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
                     <img src="img/E.png" alt="" width="60" height="54">
@@ -49,10 +49,10 @@
                             <a class="nav-link active" aria-current="page" href="CtrlListeArticlesAccueil">% Promotions</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="CtrlListeArticles">Tous les articles</a>
+                            <a class="nav-link active" aria-current="page" >Tous les articles</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Mes commandes</a>
+                            <a class="nav-link active" aria-current="page" href="CtrlCmdEncours">Mes commandes</a>
                         </li>
                     </ul>
                 </div>

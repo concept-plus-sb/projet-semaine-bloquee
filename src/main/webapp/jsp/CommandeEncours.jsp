@@ -19,7 +19,7 @@
         
         <title>Commande</title>
     </head>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
                     <img src="img/E.png" alt="" width="60" height="54">
@@ -27,22 +27,20 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+                            <a class="nav-link active" aria-current="page" href="CtrlListeArticlesAccueil">% Promotions</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Rayons
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="CtrlListeArticles">Tous les articles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page">Mes commandes</a>
                         </li>
                     </ul>
                 </div>
                 <div class="d-flex">
+                    <a class="navbar-brand" href="Deconnexion">
+                        <img src="img/deco.png" alt="" width="40" height="34">
+                    </a>
                     <a class="navbar-brand" href="panier">
                         <img src="img/126083.png" alt="" width="40" height="34">
                     </a>
@@ -52,14 +50,18 @@
                             HashMap<Article, Integer> panier = new HashMap<Article, Integer>();
                             panier = (HashMap<Article, Integer>)session.getAttribute("panier");
                             float prixTotal = 0;
+                            
                             for(HashMap.Entry <Article,Integer> map: panier.entrySet()){
                                 prixTotal = prixTotal + map.getKey().getPrixVente()*map.getValue();
                             }
-                            out.println("<span id='prixPanier'>"+prixTotal+"&euro;</span>");
+                            out.println("<span id='prixPanier'>"+Math.round(((float)prixTotal)*100.)/100.+"&euro;</span>");
                         }else{//sinon affiche 0
                             out.println(0);
                         }
                     %>
+                </div>
+                <div> 
+                    
                 </div>
             </div>
         </nav>

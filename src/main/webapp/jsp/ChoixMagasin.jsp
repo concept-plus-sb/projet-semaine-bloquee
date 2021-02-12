@@ -19,8 +19,7 @@
         <link rel="stylesheet" href="css/css.css">
         <title>Choix magasin</title>
     </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
                     <img src="img/E.png" alt="" width="60" height="54">
@@ -32,6 +31,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="CtrlListeArticles">Tous les articles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="CtrlCmdEncours">Mes commandes</a>
                         </li>
                     </ul>
                 </div>
@@ -48,6 +50,7 @@
                             HashMap<Article, Integer> panier = new HashMap<Article, Integer>();
                             panier = (HashMap<Article, Integer>)session.getAttribute("panier");
                             float prixTotal = 0;
+                            
                             for(HashMap.Entry <Article,Integer> map: panier.entrySet()){
                                 prixTotal = prixTotal + map.getKey().getPrixVente()*map.getValue();
                             }
@@ -62,6 +65,7 @@
                 </div>
             </div>
         </nav>
+        <body>
         <% String l_s_libMagasin= ((Client)session.getAttribute("client")).getMagasin().getLibelleMagasin();
            int l_i_idMagasin= ((Client)session.getAttribute("client")).getMagasin().getIdMagasin();
             out.print("<p class='magdispo'>Votre magasin par défaut est :"+l_s_libMagasin+"</p>"); %>

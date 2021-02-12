@@ -39,6 +39,9 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="CtrlListeArticles">Tous les articles</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="CtrlCmdEncours">Mes commandes</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="d-flex">
@@ -49,11 +52,12 @@
                         <img src="img/126083.png" alt="" width="40" height="34">
                     </a>
                     <%//si la session existe, calcule le prix total
-                        session = request.getSession(true);
                         if (session.getAttribute("panier")!=null){
-                            HashMap<Article, Integer> panier = new HashMap<>();
+                            session = request.getSession(false);
+                            HashMap<Article, Integer> panier = new HashMap<Article, Integer>();
                             panier = (HashMap<Article, Integer>)session.getAttribute("panier");
                             float prixTotal = 0;
+                            
                             for(HashMap.Entry <Article,Integer> map: panier.entrySet()){
                                 prixTotal = prixTotal + map.getKey().getPrixVente()*map.getValue();
                             }
@@ -63,7 +67,8 @@
                         }
                     %>
                 </div>
-                <div>      
+                <div> 
+                    
                 </div>
             </div>
         </nav>
