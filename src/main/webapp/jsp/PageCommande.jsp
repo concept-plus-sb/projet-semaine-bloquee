@@ -22,9 +22,10 @@
     <body>
         <h1>Page commande :</h1>
         <%
-        Commande c=new Commande();
-        c= (Commande)request.getAttribute("objetCommande");
-         Map<Article, QteArticle> articles=c.getQteArticles();
+        Commande c= (Commande)request.getAttribute("objetCommande");
+        System.out.println(c.getClient());
+        Map<Article, QteArticle> articles=c.getQteArticles();
+         System.out.println(articles);
          Map<Article, QteArticle> frais= new HashMap<>();
          Map<Article, QteArticle> congele= new HashMap<>();
          Map<Article, QteArticle> normal= new HashMap<>();
@@ -56,7 +57,7 @@
               out.print("<td>"+((Article)mapentry.getKey()).getEan()+"</td></tr>");          }
           out.print("</table>");
          out.print("<h2>Rayon frais:</h2>");
-          out.print("<table border=6 cellspacing=12 cellpadding=20>");%>
+         out.print("<table border=6 cellspacing=12 cellpadding=20>");%>
          
         <tr><td>Article</td>
         <td>Quantité </td>

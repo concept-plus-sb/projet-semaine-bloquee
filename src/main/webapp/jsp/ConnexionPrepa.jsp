@@ -33,9 +33,6 @@
                 </tr>
             </table>
         </form>
-            
-            <div>${erreursaisie} </div>
-            <div>${erreur}</div>
-                
+        
     </body>
 </html>
