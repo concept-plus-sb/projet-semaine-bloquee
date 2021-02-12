@@ -94,8 +94,7 @@ public class CtrlConnexion extends HttpServlet {
                     
                 } catch (Exception ex) {
                     request.setAttribute("erreur", ex.getMessage());
-                RequestDispatcher rd = request.
-                        getRequestDispatcher("Connexion");
+                RequestDispatcher rd = request.getRequestDispatcher("Connexion");
                 rd.forward(request, response); 
                 }
             }

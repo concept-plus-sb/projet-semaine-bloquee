@@ -57,8 +57,6 @@ public class Commande implements Serializable {
         this.creneau = creneau;
     }
     
-    public Commande(EnumEtatCom etatCom, Client client) {this.etatCom = etatCom;this.client = client;}
-    
     
     //Setter et Getter.
     public int getCodeCom() {return CodeCom;}

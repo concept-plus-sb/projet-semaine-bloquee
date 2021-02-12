@@ -92,9 +92,11 @@
                     out.print("<div class='card-body'>");
                         out.print("<h7 class='card-title' style='background-color: red;'>"+a.getLibellePromo()+"</h7>");
                         out.print("<h5 class='card-title'>"+a.getLibelle()+"</h5>");
+                        out.print("<span>"+a.getPrixAuKilo()+"€/"+a.getUniteL()+"<span>");
                         out.println("<a href='CtrlPageArticle?article="+a.getCodeArticle()+"'>");
                         out.print("<img src='"+a.getPhoto()+"' alt='' class='img-fluid'>");
                         out.println("</a>");
+                        out.print(a.getNutriscore());
                             out.print("<div class='row ajouter'>");            
                                 if(a.getQteDisponible() <= 0){
                                     out.print("<h7 class='card-title'>Article bientôt disponible</h7>");                                      

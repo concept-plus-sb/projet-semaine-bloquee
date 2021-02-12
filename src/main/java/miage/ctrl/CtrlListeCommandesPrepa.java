@@ -13,12 +13,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import miage.bd.ClassArticle;
+import miage.bd.ListeCommandes;
+import miage.metier.Preparateur;
 
 /**
  *
  * @author Ismail
  */
-public class CtrlChoixMagasin extends HttpServlet {
+public class CtrlListeCommandesPrepa extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,18 +36,19 @@ public class CtrlChoixMagasin extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String p_i_idMagasin = (String)request.getParameter("idmagasin");
-//            System.out.println(p_i_idMagasin); 
-            
-            //Création session.
-            HttpSession session = request.getSession(true);
-            session.setAttribute("idmagasin", Integer.parseInt(p_i_idMagasin));
-            
-            //Rediriger vers la page créneau
-            RequestDispatcher rd = request.getRequestDispatcher("ServletCreneau?action=afficher");
-            rd.forward(request, response);
-            
-            
+                        //Création session.
+                        HttpSession session = request.getSession(true);
+                        Preparateur p=(Preparateur)session.getAttribute("preparateur");
+                        System.out.println("CtrlListeCommandesPrepa");
+                        int l_i_idMagasin=p.getMagasin().getIdMagasin();
+                        request.setAttribute("commandes",ListeCommandes.listeCommandesByMagasin(l_i_idMagasin));
+                        System.out.println("Ndir");
+
+//Rediriger vers la page articles
+                        RequestDispatcher rd = request.getRequestDispatcher("ListeCommandesPrepa");
+                        rd.forward(request, response);
+                        System.out.println("CtrlListeCommandesPrepa2");
+
         }
     }
 

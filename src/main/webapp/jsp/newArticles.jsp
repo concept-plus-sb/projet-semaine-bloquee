@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="css/css.css">
     </head>
     <body>
-        
+        <div>${msg_erreur}</div>
         
         
         <% 
@@ -90,10 +90,12 @@
             out.print("<div class='col-sm-2'>");
                 out.print("<div class='card'>");
                     out.print("<div class='card-body'>");
-                        out.print("<h5 class='card-title'>"+a.getLibelle()+"</h5>");
+                        out.print("<h7 class='card-title'>"+a.getLibelle()+"</h7><br>");
+                        out.print("<span>"+a.getPrixAuKilo()+"€/"+a.getUniteL()+"<span>");
                         out.println("<a href='CtrlPageArticle?article="+a.getCodeArticle()+"'>");
                         out.print("<img src='"+a.getPhoto()+"' alt='' class='img-fluid'>");
                         out.println("</a>");
+                        out.print(a.getNutriscore());
                             out.print("<div class='row ajouter'>");            
                                 if(a.getQteDisponible() <= 0){
                                     out.print("<h7 class='card-title'>Article bientôt disponible</h7>");                                      

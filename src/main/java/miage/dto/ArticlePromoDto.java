@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class ArticlePromoDto implements Serializable {
     
     private int CodeArticle;
-    private String photo, nutriscore, libelle, libellePromo;
+    private String photo, nutriscore, libelle, libellePromo, uniteL;
     //point = contenance + unité de mesure
     private String point;
     private float prixUnitaire, prixAuKilo, prixUnitairePromo;
@@ -119,6 +119,16 @@ public class ArticlePromoDto implements Serializable {
     public void setPrixUnitairePromo(float prixUnitairePromo) {
         this.prixUnitairePromo = prixUnitairePromo;
     }
+
+    public String getUniteL() {
+        return uniteL;
+    }
+
+    public void setUniteL(String uniteL) {
+        this.uniteL = uniteL;
+    }
+    
+    
     
     
 

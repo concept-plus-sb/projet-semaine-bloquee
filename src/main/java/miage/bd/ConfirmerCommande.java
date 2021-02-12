@@ -43,27 +43,26 @@ public class ConfirmerCommande {
     
  
     /**
-     * On crée la commande en BD
+     * 
      * @param panier
-     * @param cli 
+     * @param cli
+     * @param idcre 
      */
-    public static void creerCommande(HashMap<Article,Integer> panier, Client cli){
+    public static void creerCommande(HashMap<Article,Integer> panier, Client cli, Creneau idcre){
         try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()){
             
-            
             Transaction t=session.beginTransaction();
-//            // POUR TESTER JE CREER UN PANIER FICTIF
 //            HashMap<Article,Integer> panier= new HashMap<Article,Integer>();
 //            Client cli = session.get(Client.class, 1);
-//            
+//            Creneau idcre = session.get(Creneau.class, 1);
 //            
 //            Article a1 = session.get(Article.class, 1);
 //            panier.put(a1,3);
-                    
+    
             //Je récupère le magasin du client
             Magasin m = cli.getMagasin();
             //Je crée la commande 
-            Commande c = new Commande(EnumEtatCom.encours, cli);
+            Commande c = new Commande(EnumEtatCom.encours, cli, idcre);
             session.save(c);
 
             //Je récupère la hashmap de la commande que j'ai crée (qui est vide)
@@ -76,10 +75,10 @@ public class ConfirmerCommande {
                 
                 // Je récupère la disponbilité de l'article et je la décrémente
                 a.getDispo().get(m).decQteDispo(qte);
-                session.save(a);
+                session.update(a);
                 
                 // Je crée la class QteArticle pour une commande
-                QteArticle q = new QteArticle(qte, a, c);
+                QteArticle q = new QteArticle(qte,a,c);
                
                 //J'alimente la hashmap de la commande avec pour chaque article du panier et sa quantité
                 cmd.put(a, q);

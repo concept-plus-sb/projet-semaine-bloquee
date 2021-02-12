@@ -50,19 +50,18 @@ public class TestHibernate
                             
                         /*----- liste articles -----*/
                             try{
-                                List<ArticlePromoDto> articlePromoDtos = ListeArticles.ListeArticlesPromoByMagasin(3);
+                                List<ArticleDto> articleDtos = ListeArticles.listeArticlesByMagasin(1);
                                 
-                                    System.out.println(articlePromoDtos);
-                                for(ArticlePromoDto a : articlePromoDtos){
-                                    System.out.println(a.getCodeArticle());
-                                    System.out.println(a.getLibelle());
-                                    System.out.println(a.getPhoto());
-                                    System.out.println(a.getQteDisponible());
-                                    System.out.println(a.getLibellePromo());
-                                                            
-                        System.out.println("eeeeeeeeeeeee : "+a.getPrixUnitairePromo());
-                                }
-                           // ConfirmerCommande.creerCommande();
+//                                for(ArticleDto a : articleDtos){
+//                                    System.out.println(a.getCodeArticle());
+//                                    System.out.println(a.getLibelle());
+//                                    System.out.println(a.getPhoto());
+//                                    System.out.println(a.getQteDisponible());
+//                                    System.out.println(a.getNutriscore());
+//                                    System.out.println(a.getPrixAuKilo());
+//                                    System.out.println(a.getUniteL());
+//                                }
+                            //ConfirmerCommande.creerCommande();
                             }catch(Exception e){
                                 System.out.println(e.getMessage());
                             }
